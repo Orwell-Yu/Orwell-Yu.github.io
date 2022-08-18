@@ -372,29 +372,151 @@
         <div class="entry-content">
           <h1 id="Lab5：深度神经网络训练与加速"><a href="#Lab5：深度神经网络训练与加速" class="headerlink" title="Lab5：深度神经网络训练与加速"></a>Lab5：深度神经网络训练与加速</h1><center><br>Zhewen Yu<br></center>
 
-<h2 id="第一部分-LeNet-5模型"><a href="#第一部分-LeNet-5模型" class="headerlink" title="第一部分 LeNet-5模型"></a>第一部分 LeNet-5模型</h2><h3 id="1-模型搭建"><a href="#1-模型搭建" class="headerlink" title="1.模型搭建"></a>1.模型搭建</h3><h4 id="1-1初始化网络"><a href="#1-1初始化网络" class="headerlink" title="1.1初始化网络"></a>1.1初始化网络</h4><p>根据给出的参考图片，定义网络层。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(MyLeNet_5,self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(in_channels=<span class="number">1</span>,out_channels=<span class="number">6</span>,kernel_size=<span class="number">5</span>,padding=<span class="number">2</span>)</span><br><span class="line">        self.Sigmoid = nn.Sigmoid()</span><br><span class="line">        self.pool1 = nn.AvgPool2d(kernel_size=<span class="number">2</span>,stride=<span class="number">2</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(in_channels=<span class="number">6</span>,out_channels=<span class="number">16</span>,kernel_size=<span class="number">5</span>)</span><br><span class="line">        self.pool2 = nn.AvgPool2d(kernel_size=<span class="number">2</span>,stride=<span class="number">2</span>)</span><br><span class="line">        self.conv3 = nn.Conv2d(in_channels=<span class="number">16</span>,out_channels=<span class="number">120</span>,kernel_size=<span class="number">5</span>)</span><br><span class="line">        self.flatten = nn.Flatten()</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">120</span>,<span class="number">84</span>)</span><br><span class="line">        self.output = nn.Linear(<span class="number">84</span>,<span class="number">10</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="第一部分-LeNet-5模型"><a href="#第一部分-LeNet-5模型" class="headerlink" title="第一部分 LeNet-5模型"></a>第一部分 LeNet-5模型</h2><h3 id="1-模型搭建"><a href="#1-模型搭建" class="headerlink" title="1.模型搭建"></a>1.模型搭建</h3><h4 id="1-1初始化网络"><a href="#1-1初始化网络" class="headerlink" title="1.1初始化网络"></a>1.1初始化网络</h4><p>根据给出的参考图片，定义网络层。</p>
+<pre><code class="python">def __init__(self):
+        super(MyLeNet_5,self).__init__()
+        self.conv1 = nn.Conv2d(in_channels=1,out_channels=6,kernel_size=5,padding=2)
+        self.Sigmoid = nn.Sigmoid()
+        self.pool1 = nn.AvgPool2d(kernel_size=2,stride=2)
+        self.conv2 = nn.Conv2d(in_channels=6,out_channels=16,kernel_size=5)
+        self.pool2 = nn.AvgPool2d(kernel_size=2,stride=2)
+        self.conv3 = nn.Conv2d(in_channels=16,out_channels=120,kernel_size=5)
+        self.flatten = nn.Flatten()
+        self.fc1 = nn.Linear(120,84)
+        self.output = nn.Linear(84,10)
+</code></pre>
 <p>1.其中，由于输入是<code>32*32</code>，实际图片大小是<code>28*28</code>,定义padding为2。<br>2.这里使用<code>sigmoid</code>函数作为激活函数,<code>nn.Sigmoid()</code> 函数是光滑的，便于求导，同时它能够有效的压缩数据幅度。，<code>sigmoid</code>在该模型中效果好于<code>ReLU</code>作为激活函数。<br>3.在最后一次卷积后，图片成为<code>1*1</code>大小，这里考虑将其展开。<br>4.最后设置两个线性连接层，最后输出10个数字。</p>
-<h4 id="1-2前向传播网络"><a href="#1-2前向传播网络" class="headerlink" title="1.2前向传播网络"></a>1.2前向传播网络</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">    x = self.Sigmoid(self.conv1(x))</span><br><span class="line">    x = self.pool1(x)</span><br><span class="line">    x = self.Sigmoid(self.conv2(x))</span><br><span class="line">    x = self.pool2(x) </span><br><span class="line">    x = self.conv3(x)</span><br><span class="line">    x = self.flatten(x)</span><br><span class="line">    x = self.fc1(x)</span><br><span class="line">    x = self.output(x) </span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<h4 id="1-2前向传播网络"><a href="#1-2前向传播网络" class="headerlink" title="1.2前向传播网络"></a>1.2前向传播网络</h4><pre><code class="python">def forward(self, x):
+    x = self.Sigmoid(self.conv1(x))
+    x = self.pool1(x)
+    x = self.Sigmoid(self.conv2(x))
+    x = self.pool2(x) 
+    x = self.conv3(x)
+    x = self.flatten(x)
+    x = self.fc1(x)
+    x = self.output(x) 
+    return x
+</code></pre>
 <p>1.这里选择激活前两次卷积的结果，以获得较好的结果。<br>2.根据图片逐步搭建池化层和连接层。</p>
-<h3 id="2-模型训练"><a href="#2-模型训练" class="headerlink" title="2.模型训练"></a>2.模型训练</h3><h4 id="2-1将数据转化为张量格式"><a href="#2-1将数据转化为张量格式" class="headerlink" title="2.1将数据转化为张量格式"></a>2.1将数据转化为张量格式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Data to Tensor</span></span><br><span class="line">data_transform = transforms.Compose(</span><br><span class="line">    [transforms.ToTensor()]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="2-模型训练"><a href="#2-模型训练" class="headerlink" title="2.模型训练"></a>2.模型训练</h3><h4 id="2-1将数据转化为张量格式"><a href="#2-1将数据转化为张量格式" class="headerlink" title="2.1将数据转化为张量格式"></a>2.1将数据转化为张量格式</h4><pre><code class="python">#Data to Tensor
+data_transform = transforms.Compose(
+    [transforms.ToTensor()]
+)
+</code></pre>
 <p>矩阵格式的数据在神经网络中要先张量化。</p>
-<h4 id="2-2加载MNIST数据集并设定测试集数据"><a href="#2-2加载MNIST数据集并设定测试集数据" class="headerlink" title="2.2加载MNIST数据集并设定测试集数据"></a>2.2加载<code>MNIST</code>数据集并设定测试集数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#MNIST import</span></span><br><span class="line">train_dataset=datasets.MNIST(root=<span class="string">'./data'</span>, train=<span class="literal">True</span> ,transform=data_transform,download=<span class="literal">True</span>)</span><br><span class="line">train_dataloader=Data.DataLoader(dataset=train_dataset,batch_size=<span class="number">16</span>,shuffle=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#load test</span></span><br><span class="line">test_dataset=datasets.MNIST(root=<span class="string">'./data'</span>, train=<span class="literal">False</span> ,transform=data_transform,download=<span class="literal">True</span>)</span><br><span class="line">test_dataloader=Data.DataLoader(dataset=test_dataset,batch_size=<span class="number">16</span>,shuffle=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="2-2加载MNIST数据集并设定测试集数据"><a href="#2-2加载MNIST数据集并设定测试集数据" class="headerlink" title="2.2加载MNIST数据集并设定测试集数据"></a>2.2加载<code>MNIST</code>数据集并设定测试集数据</h4><pre><code class="python">#MNIST import
+train_dataset=datasets.MNIST(root=&#39;./data&#39;, train=True ,transform=data_transform,download=True)
+train_dataloader=Data.DataLoader(dataset=train_dataset,batch_size=16,shuffle=True)
+#load test
+test_dataset=datasets.MNIST(root=&#39;./data&#39;, train=False ,transform=data_transform,download=True)
+test_dataloader=Data.DataLoader(dataset=test_dataset,batch_size=16,shuffle=False)
+</code></pre>
 <p>使用<code>DataLoader</code>载入已有的<code>MNIST</code>数据集，其中，<code>batch_size</code>定为16，设定为乱序，载入到当前目录的data文件夹中。</p>
-<h4 id="2-3-设置处理设备为GPU"><a href="#2-3-设置处理设备为GPU" class="headerlink" title="2.3 设置处理设备为GPU"></a>2.3 设置处理设备为GPU</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#device : GPU or CPU</span></span><br><span class="line">device = torch.device(<span class="string">"cuda:0"</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">"cpu"</span>)</span><br><span class="line"><span class="comment">#import GPU</span></span><br><span class="line">model=MyLeNet_5().to(device)</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-设置处理设备为GPU"><a href="#2-3-设置处理设备为GPU" class="headerlink" title="2.3 设置处理设备为GPU"></a>2.3 设置处理设备为GPU</h4><pre><code class="python">#device : GPU or CPU
+device = torch.device(&quot;cuda:0&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+#import GPU
+model=MyLeNet_5().to(device)
+</code></pre>
 <p>在没有<code>GPU</code>时，也可以由<code>CPU</code>训练。</p>
-<h4 id="2-4-定义损失函数、优化器和学习率"><a href="#2-4-定义损失函数、优化器和学习率" class="headerlink" title="2.4 定义损失函数、优化器和学习率"></a>2.4 定义损失函数、优化器和学习率</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Loss Function</span></span><br><span class="line">loss_fn=nn.CrossEntropyLoss()</span><br><span class="line"><span class="comment">#optimizer</span></span><br><span class="line">optimizer=optim.SGD(model.parameters(),lr=<span class="number">1e-3</span>,momentum=<span class="number">0.9</span>)</span><br><span class="line"><span class="comment"># Learning Rate</span></span><br><span class="line">Lr_scheduler=optim.lr_scheduler.StepLR(optimizer,step_size=<span class="number">10</span>,gamma=<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-定义损失函数、优化器和学习率"><a href="#2-4-定义损失函数、优化器和学习率" class="headerlink" title="2.4 定义损失函数、优化器和学习率"></a>2.4 定义损失函数、优化器和学习率</h4><pre><code class="python">#Loss Function
+loss_fn=nn.CrossEntropyLoss()
+#optimizer
+optimizer=optim.SGD(model.parameters(),lr=1e-3,momentum=0.9)
+# Learning Rate
+Lr_scheduler=optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.1)
+</code></pre>
 <p>这里的损失函数使用交叉熵函数，优化器使用随机梯度下降法。<br>查询资料得知，<code>momentum</code>参数设定为0.9时训练结果最好。<br>对于学习率，为防止抖动太大，每间隔10轮变为原来的0.1。</p>
-<h4 id="2-5-定义训练函数。"><a href="#2-5-定义训练函数。" class="headerlink" title="2.5 定义训练函数。"></a>2.5 定义训练函数。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#train</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(dataloader,model,loss_fn,optimizer)</span>:</span></span><br><span class="line">    loss,current,n = <span class="number">0.0</span>, <span class="number">0.0</span> ,<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> batch,(X,y) <span class="keyword">in</span> enumerate(dataloader):</span><br><span class="line">        <span class="comment">#forward</span></span><br><span class="line">        X,y=X.to(device),y.to(device)</span><br><span class="line">        output = model(X)</span><br><span class="line">        cur_loss = loss_fn(output,y)</span><br><span class="line">        _, pred = torch.max(output,axis=<span class="number">1</span>)</span><br><span class="line">        cur_acc=torch.sum(y==pred)/output.shape[<span class="number">0</span>]</span><br><span class="line">        <span class="comment">#backward</span></span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line">        cur_loss.backward()</span><br><span class="line">        optimizer.step()</span><br><span class="line">        <span class="comment">#计算准确率</span></span><br><span class="line">        loss += cur_loss.item() <span class="comment">#累加本批次损失</span></span><br><span class="line">        current += cur_acc.item()</span><br><span class="line">        n+=<span class="number">1</span></span><br><span class="line">    print(<span class="string">"train_loss:"</span>+str(loss/n))</span><br><span class="line">    print(<span class="string">"train_acc:"</span>+str(current/n))</span><br></pre></td></tr></table></figure>
+<h4 id="2-5-定义训练函数。"><a href="#2-5-定义训练函数。" class="headerlink" title="2.5 定义训练函数。"></a>2.5 定义训练函数。</h4><pre><code class="python">#train
+def train(dataloader,model,loss_fn,optimizer):
+    loss,current,n = 0.0, 0.0 ,0
+    for batch,(X,y) in enumerate(dataloader):
+        #forward
+        X,y=X.to(device),y.to(device)
+        output = model(X)
+        cur_loss = loss_fn(output,y)
+        _, pred = torch.max(output,axis=1)
+        cur_acc=torch.sum(y==pred)/output.shape[0]
+        #backward
+        optimizer.zero_grad()
+        cur_loss.backward()
+        optimizer.step()
+        #计算准确率
+        loss += cur_loss.item() #累加本批次损失
+        current += cur_acc.item()
+        n+=1
+    print(&quot;train_loss:&quot;+str(loss/n))
+    print(&quot;train_acc:&quot;+str(current/n))
+</code></pre>
 <p>通过交叉熵函数返回的损失值，反向传播增加准确率。</p>
-<h4 id="2-6-定义验证函数"><a href="#2-6-定义验证函数" class="headerlink" title="2.6 定义验证函数"></a>2.6 定义验证函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#验证</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">val</span><span class="params">(dataloader,model,loss_fn,i)</span>:</span></span><br><span class="line">    model.eval()</span><br><span class="line">    loss,current,n = <span class="number">0.0</span>, <span class="number">0.0</span> ,<span class="number">0</span></span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">for</span> batch,(X,y) <span class="keyword">in</span> enumerate(dataloader):</span><br><span class="line">            X,y=X.to(device),y.to(device)</span><br><span class="line">            output = model(X)</span><br><span class="line">            cur_loss = loss_fn(output,y)</span><br><span class="line">            _, pred = torch.max(output,axis=<span class="number">1</span>)</span><br><span class="line">            cur_acc=torch.sum(y==pred)/output.shape[<span class="number">0</span>]</span><br><span class="line">            loss += cur_loss.item() <span class="comment">#累加本批次损失</span></span><br><span class="line">            current += cur_acc.item()</span><br><span class="line">            n+=<span class="number">1</span></span><br><span class="line">    writer.add_scalar(<span class="string">"Loss/train"</span>,cur_loss , i)</span><br><span class="line">    writer.add_scalar(<span class="string">"Acc/train"</span>, cur_acc, i)</span><br><span class="line">    print(<span class="string">"val_loss:"</span>+str(loss/n))</span><br><span class="line">    print(<span class="string">"val_acc:"</span>+str(current/n))</span><br><span class="line">    <span class="keyword">return</span> current/n</span><br></pre></td></tr></table></figure>
+<h4 id="2-6-定义验证函数"><a href="#2-6-定义验证函数" class="headerlink" title="2.6 定义验证函数"></a>2.6 定义验证函数</h4><pre><code class="python">#验证
+def val(dataloader,model,loss_fn,i):
+    model.eval()
+    loss,current,n = 0.0, 0.0 ,0
+    with torch.no_grad():
+        for batch,(X,y) in enumerate(dataloader):
+            X,y=X.to(device),y.to(device)
+            output = model(X)
+            cur_loss = loss_fn(output,y)
+            _, pred = torch.max(output,axis=1)
+            cur_acc=torch.sum(y==pred)/output.shape[0]
+            loss += cur_loss.item() #累加本批次损失
+            current += cur_acc.item()
+            n+=1
+    writer.add_scalar(&quot;Loss/train&quot;,cur_loss , i)
+    writer.add_scalar(&quot;Acc/train&quot;, cur_acc, i)
+    print(&quot;val_loss:&quot;+str(loss/n))
+    print(&quot;val_acc:&quot;+str(current/n))
+    return current/n
+</code></pre>
 <p>基本复制训练部分，值得注意的是验证时模型不参与更新。</p>
-<h4 id="2-7设定训练循环"><a href="#2-7设定训练循环" class="headerlink" title="2.7设定训练循环"></a>2.7设定训练循环</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#start train</span></span><br><span class="line">epoch =<span class="number">50</span></span><br><span class="line">min_acc= <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">    print(<span class="string">f'round<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>\n-------------'</span>)</span><br><span class="line">    train(train_dataloader,model,loss_fn,optimizer)</span><br><span class="line">    a = val(test_dataloader,model,loss_fn,i)</span><br><span class="line">    <span class="comment">#save best model</span></span><br><span class="line">    <span class="keyword">if</span> a &gt;min_acc:</span><br><span class="line">        folder = <span class="string">'save_model'</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(folder):</span><br><span class="line">            os.mkdir(<span class="string">'save_model'</span>)</span><br><span class="line">        min_acc=a</span><br><span class="line">        print(<span class="string">'save best model'</span>)</span><br><span class="line">        torch.save(model.state_dict(),<span class="string">'save_model/best_model.pth'</span>)</span><br><span class="line">print(<span class="string">'Finished Training'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="2-7设定训练循环"><a href="#2-7设定训练循环" class="headerlink" title="2.7设定训练循环"></a>2.7设定训练循环</h4><pre><code class="python">#start train
+epoch =50
+min_acc= 0
+for i in range(epoch):
+    print(f&#39;round{i+1}\n-------------&#39;)
+    train(train_dataloader,model,loss_fn,optimizer)
+    a = val(test_dataloader,model,loss_fn,i)
+    #save best model
+    if a &gt;min_acc:
+        folder = &#39;save_model&#39;
+        if not os.path.exists(folder):
+            os.mkdir(&#39;save_model&#39;)
+        min_acc=a
+        print(&#39;save best model&#39;)
+        torch.save(model.state_dict(),&#39;save_model/best_model.pth&#39;)
+print(&#39;Finished Training&#39;)
+</code></pre>
 <p>设定训练50轮次，保存模型数据到<code>best_model</code>文件夹。</p>
-<h4 id="2-8使用TensorBoard实现可视化"><a href="#2-8使用TensorBoard实现可视化" class="headerlink" title="2.8使用TensorBoard实现可视化"></a>2.8使用<code>TensorBoard</code>实现可视化</h4><p>期间也根据<code>TensorBoard</code>官网教程，在训练程序头尾加上相应代码。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.tensorboard <span class="keyword">import</span> SummaryWriter</span><br><span class="line">writer = SummaryWriter()</span><br><span class="line"><span class="comment"># ...中间部分省略</span></span><br><span class="line">writer.flush()</span><br><span class="line">writer.close()</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-8使用TensorBoard实现可视化"><a href="#2-8使用TensorBoard实现可视化" class="headerlink" title="2.8使用TensorBoard实现可视化"></a>2.8使用<code>TensorBoard</code>实现可视化</h4><p>期间也根据<code>TensorBoard</code>官网教程，在训练程序头尾加上相应代码。</p>
+<pre><code class="python">from torch.utils.tensorboard import SummaryWriter
+writer = SummaryWriter()
+# ...中间部分省略
+writer.flush()
+writer.close()
+</code></pre>
 <p>关于<code>TensorBoard</code>结果，在4.4中。</p>
-<h3 id="3-模型测试"><a href="#3-模型测试" class="headerlink" title="3.模型测试"></a>3.模型测试</h3><h4 id="3-1-前期导入"><a href="#3-1-前期导入" class="headerlink" title="3.1 前期导入"></a>3.1 前期导入</h4><p>基本与<code>train.py</code>一致<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Data to Tensor</span></span><br><span class="line">data_transform = transforms.Compose(</span><br><span class="line">    [transforms.ToTensor()]</span><br><span class="line">)</span><br><span class="line"><span class="comment"># ...中间部分省略</span></span><br><span class="line">model.load_state_dict(torch.load(<span class="string">"save_model/best_model.pth"</span>))</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-模型测试"><a href="#3-模型测试" class="headerlink" title="3.模型测试"></a>3.模型测试</h3><h4 id="3-1-前期导入"><a href="#3-1-前期导入" class="headerlink" title="3.1 前期导入"></a>3.1 前期导入</h4><p>基本与<code>train.py</code>一致</p>
+<pre><code class="python">#Data to Tensor
+data_transform = transforms.Compose(
+    [transforms.ToTensor()]
+)
+# ...中间部分省略
+model.load_state_dict(torch.load(&quot;save_model/best_model.pth&quot;))
+</code></pre>
 <p>从保存模型参数的<code>best_model</code>文件夹中导入模型。</p>
-<h4 id="3-2将张量转化为图片并进行20轮测试"><a href="#3-2将张量转化为图片并进行20轮测试" class="headerlink" title="3.2将张量转化为图片并进行20轮测试"></a>3.2将张量转化为图片并进行20轮测试</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tensor to pictures</span></span><br><span class="line">show = ToPILImage()</span><br><span class="line"></span><br><span class="line"><span class="comment">#vertify</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>):</span><br><span class="line">    X,y = test_dataset[i][<span class="number">0</span>],test_dataset[i][<span class="number">1</span>]</span><br><span class="line">    show(X).show()</span><br><span class="line">    X = Variable(torch.unsqueeze(X, dim =<span class="number">0</span>).float(),requires_grad=<span class="literal">False</span>).to(device)</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        pred = model(X)</span><br><span class="line">        predicted, actual = classes[torch.argmax(pred[<span class="number">0</span>])],classes[y]</span><br><span class="line">        print(<span class="string">f'predicted:"<span class="subst">&#123;predicted&#125;</span>",actual:"<span class="subst">&#123;actual&#125;</span>"'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="3-2将张量转化为图片并进行20轮测试"><a href="#3-2将张量转化为图片并进行20轮测试" class="headerlink" title="3.2将张量转化为图片并进行20轮测试"></a>3.2将张量转化为图片并进行20轮测试</h4><pre><code class="python"># tensor to pictures
+show = ToPILImage()
+
+#vertify
+for i in range(20):
+    X,y = test_dataset[i][0],test_dataset[i][1]
+    show(X).show()
+    X = Variable(torch.unsqueeze(X, dim =0).float(),requires_grad=False).to(device)
+    with torch.no_grad():
+        pred = model(X)
+        predicted, actual = classes[torch.argmax(pred[0])],classes[y]
+        print(f&#39;predicted:&quot;{predicted}&quot;,actual:&quot;{actual}&quot;&#39;)
+</code></pre>
 <h3 id="4-模型结果"><a href="#4-模型结果" class="headerlink" title="4.模型结果"></a>4.模型结果</h3><h4 id="4-1-GPU占用率截图"><a href="#4-1-GPU占用率截图" class="headerlink" title="4.1 GPU占用率截图"></a>4.1 GPU占用率截图</h4><p><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/LeNet5/屏幕截图%202022-08-10%20111622.png" alt></p>
 <h4 id="4-2-训练结束截图"><a href="#4-2-训练结束截图" class="headerlink" title="4.2 训练结束截图"></a>4.2 训练结束截图</h4><p><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/LeNet5/屏幕截图%202022-08-10%20153549.png" alt></p>
 <h4 id="4-3-训练测试截图"><a href="#4-3-训练测试截图" class="headerlink" title="4.3 训练测试截图"></a>4.3 训练测试截图</h4><p><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/LeNet5/屏幕截图%202022-08-10%20153934.png" alt></p>
@@ -428,36 +550,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+        
           
-            <div class="post-nepre half previous">
+            <div class="post-nepre full next">
           
-            <a href="/2022/08/18/NTR/" rel="prev">
+            <a href="/2022/08/18/NTR/" rel="next">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/NTR/cover.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/NTR/cover.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                当我们在看寝取（ntr)本时，我们在看些什么</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2022/08/18/苏联笑话/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/SovietUnion/cover.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/SovietUnion/cover.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                苏联笑话合集</h3>
+                当我们在看寝取（ntr)本时，我们在看些什么</h3>
                 <hr>
               </div>
             </a>
