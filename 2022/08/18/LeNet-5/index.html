@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">PyTorch初步：`LeNet-5`模型搭建 | mio的博客</title>
+  <title itemprop="name">PyTorch初步：LeNet-5模型搭建 | mio的博客</title>
   
     <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/hutaoicon.png">
   
@@ -346,7 +346,7 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
           <header class="entry-header">
-            <h1 class="entry-title">PyTorch初步：`LeNet-5`模型搭建</h1>
+            <h1 class="entry-title">PyTorch初步：LeNet-5模型搭建</h1>
             <p class="entry-census">mio&nbsp;·&nbsp;2022-8-18&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
@@ -355,7 +355,6 @@
         <div class="entry-content">
           <h1 id="Lab5：深度神经网络训练与加速"><a href="#Lab5：深度神经网络训练与加速" class="headerlink" title="Lab5：深度神经网络训练与加速"></a>Lab5：深度神经网络训练与加速</h1><center><br>Zhewen Yu<br></center>
 
-<hr>
 <h2 id="第一部分-LeNet-5模型"><a href="#第一部分-LeNet-5模型" class="headerlink" title="第一部分 LeNet-5模型"></a>第一部分 LeNet-5模型</h2><h3 id="1-模型搭建"><a href="#1-模型搭建" class="headerlink" title="1.模型搭建"></a>1.模型搭建</h3><h4 id="1-1初始化网络"><a href="#1-1初始化网络" class="headerlink" title="1.1初始化网络"></a>1.1初始化网络</h4><p>根据给出的参考图片，定义网络层。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(MyLeNet_5,self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(in_channels=<span class="number">1</span>,out_channels=<span class="number">6</span>,kernel_size=<span class="number">5</span>,padding=<span class="number">2</span>)</span><br><span class="line">        self.Sigmoid = nn.Sigmoid()</span><br><span class="line">        self.pool1 = nn.AvgPool2d(kernel_size=<span class="number">2</span>,stride=<span class="number">2</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(in_channels=<span class="number">6</span>,out_channels=<span class="number">16</span>,kernel_size=<span class="number">5</span>)</span><br><span class="line">        self.pool2 = nn.AvgPool2d(kernel_size=<span class="number">2</span>,stride=<span class="number">2</span>)</span><br><span class="line">        self.conv3 = nn.Conv2d(in_channels=<span class="number">16</span>,out_channels=<span class="number">120</span>,kernel_size=<span class="number">5</span>)</span><br><span class="line">        self.flatten = nn.Flatten()</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">120</span>,<span class="number">84</span>)</span><br><span class="line">        self.output = nn.Linear(<span class="number">84</span>,<span class="number">10</span>)</span><br></pre></td></tr></table></figure></p>
 <p>1.其中，由于输入是<code>32*32</code>，实际图片大小是<code>28*28</code>,定义padding为2。<br>2.这里使用<code>sigmoid</code>函数作为激活函数,<code>nn.Sigmoid()</code> 函数是光滑的，便于求导，同时它能够有效的压缩数据幅度。，<code>sigmoid</code>在该模型中效果好于<code>ReLU</code>作为激活函数。<br>3.在最后一次卷积后，图片成为<code>1*1</code>大小，这里考虑将其展开。<br>4.最后设置两个线性连接层，最后输出10个数字。</p>
 <h4 id="1-2前向传播网络"><a href="#1-2前向传播网络" class="headerlink" title="1.2前向传播网络"></a>1.2前向传播网络</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">    x = self.Sigmoid(self.conv1(x))</span><br><span class="line">    x = self.pool1(x)</span><br><span class="line">    x = self.Sigmoid(self.conv2(x))</span><br><span class="line">    x = self.pool2(x) </span><br><span class="line">    x = self.conv3(x)</span><br><span class="line">    x = self.flatten(x)</span><br><span class="line">    x = self.fc1(x)</span><br><span class="line">    x = self.output(x) </span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
