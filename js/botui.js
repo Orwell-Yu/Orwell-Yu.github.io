@@ -106,7 +106,7 @@ function bot_ui_ini() {
         thirdpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "mio以及站名都来自一部动画，因为...感觉女孩子之间真是好啊~ 如果有兴趣可以去补补番~"
+                content: "mio以及站名都来自一部动画，因为...感觉女孩子之间真是好啊... 如果有兴趣可以去补补番~"
             }).then(function () {
                 botui.action.button({
                     delay: 1500,
@@ -143,7 +143,7 @@ function bot_ui_ini() {
         fifthpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "emmmm，Orwell是我的英文名=.= 而且乔治·奥威尔，但我真不是50万！"
+                content: "emmmm，Orwell是我的英文名=.= 而且乔治·奥威尔...  但我真不是50万！"
             }).then(function () {
                 botui.message.add({
                     delay: 1600,

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://orwell-yu.github.io/"/>
-  <updated>2022-08-18T08:14:27.036Z</updated>
+  <updated>2022-08-18T08:24:11.450Z</updated>
   <id>https://orwell-yu.github.io/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>PyTorch初步：LeNet-5模型搭建</title>
-    <link href="https://orwell-yu.github.io/2022/08/18/LeNet-5/"/>
-    <id>https://orwell-yu.github.io/2022/08/18/LeNet-5/</id>
-    <published>2022-08-18T04:29:00.000Z</published>
-    <updated>2022-08-18T08:14:27.036Z</updated>
-    
-    <summary type="html">
-    
-      从零开始搭建`LeNet5`模型
-    
-    </summary>
-    
-      <category term="技术" scheme="https://orwell-yu.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="web" scheme="https://orwell-yu.github.io/tags/web/"/>
-    
-      <category term="AI" scheme="https://orwell-yu.github.io/tags/AI/"/>
-    
-  </entry>
   
   <entry>
     <title>当我们在看寝取（ntr)本时，我们在看些什么</title>
@@ -59,6 +37,28 @@
       <category term="本子讨论" scheme="https://orwell-yu.github.io/tags/%E6%9C%AC%E5%AD%90%E8%AE%A8%E8%AE%BA/"/>
     
       <category term="哲学" scheme="https://orwell-yu.github.io/tags/%E5%93%B2%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PyTorch初步：LeNet-5模型搭建</title>
+    <link href="https://orwell-yu.github.io/2022/08/18/LeNet-5/"/>
+    <id>https://orwell-yu.github.io/2022/08/18/LeNet-5/</id>
+    <published>2022-08-18T04:29:00.000Z</published>
+    <updated>2022-08-18T08:14:27.036Z</updated>
+    
+    <summary type="html">
+    
+      从零开始搭建`LeNet5`模型
+    
+    </summary>
+    
+      <category term="技术" scheme="https://orwell-yu.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="https://orwell-yu.github.io/tags/web/"/>
+    
+      <category term="AI" scheme="https://orwell-yu.github.io/tags/AI/"/>
     
   </entry>
   
