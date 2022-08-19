@@ -39,24 +39,26 @@
   </entry>
   
   <entry>
-    <title>PyTorch初步：LeNet-5模型搭建</title>
-    <link href="https://orwell-yu.github.io/2022/08/18/LeNet-5/"/>
-    <id>https://orwell-yu.github.io/2022/08/18/LeNet-5/</id>
-    <published>2022-08-18T04:29:00.000Z</published>
-    <updated>2022-08-18T08:14:27.036Z</updated>
+    <title>2022 Summer</title>
+    <link href="https://orwell-yu.github.io/2022/08/18/2022%20Summer/"/>
+    <id>https://orwell-yu.github.io/2022/08/18/2022 Summer/</id>
+    <published>2022-08-18T07:29:00.000Z</published>
+    <updated>2022-08-19T08:41:39.278Z</updated>
     
     <summary type="html">
     
-      从零开始搭建`LeNet5`模型
+      2022年度出游计划
     
     </summary>
     
-      <category term="技术" scheme="https://orwell-yu.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="生活" scheme="https://orwell-yu.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="web" scheme="https://orwell-yu.github.io/tags/web/"/>
+      <category term="生活" scheme="https://orwell-yu.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
-      <category term="AI" scheme="https://orwell-yu.github.io/tags/AI/"/>
+      <category term="记录" scheme="https://orwell-yu.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="旅行" scheme="https://orwell-yu.github.io/tags/%E6%97%85%E8%A1%8C/"/>
     
   </entry>
   
@@ -81,6 +83,28 @@
       <category term="本子讨论" scheme="https://orwell-yu.github.io/tags/%E6%9C%AC%E5%AD%90%E8%AE%A8%E8%AE%BA/"/>
     
       <category term="哲学" scheme="https://orwell-yu.github.io/tags/%E5%93%B2%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PyTorch初步：LeNet-5模型搭建</title>
+    <link href="https://orwell-yu.github.io/2022/08/18/LeNet-5/"/>
+    <id>https://orwell-yu.github.io/2022/08/18/LeNet-5/</id>
+    <published>2022-08-18T04:29:00.000Z</published>
+    <updated>2022-08-19T08:19:56.451Z</updated>
+    
+    <summary type="html">
+    
+      从零开始搭建`LeNet5`模型
+    
+    </summary>
+    
+      <category term="技术" scheme="https://orwell-yu.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="资源" scheme="https://orwell-yu.github.io/tags/%E8%B5%84%E6%BA%90/"/>
+    
+      <category term="AI" scheme="https://orwell-yu.github.io/tags/AI/"/>
     
   </entry>
   
