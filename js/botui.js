@@ -22,7 +22,7 @@ function bot_ui_ini() {
     var botui = new BotUI("hello-mashiro")
     botui.message.add({
         delay: 800,
-        content: "Hi, there👋"
+        content: "Ciallo～(∠・ω< )⌒☆"
     }).then(function () {
         botui.message.add({
             delay: 1100,
