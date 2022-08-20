@@ -38,7 +38,7 @@ function bot_ui_ini() {
                         text: "然后呢？ 😃",
                         value: "sure"
                     }, {
-                        text: "少废话！ 🙄",
+                        text: "柚子厨k48！😡",
                         value: "skip"
                     }]
                 }).then(function (a) {
