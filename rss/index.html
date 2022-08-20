@@ -36,8 +36,8 @@
   mashiro_option.site_name = "秋山澪の小站";
   mashiro_option.author_name = "小站";
   mashiro_option.site_url = "https://orwell-yu.github.io/";
-  mashiro_option.v_appId = "PaRk8bvVnnMzldkzMrv38xnd-gzGzoHsz";
-  mashiro_option.v_appKey = "liG2MMf1SRwFpuUNapsEA9cU";
+  mashiro_option.v_appId = "cufCqTylUQUH7Ez5kCgC3fbR-MdYXbMMI";
+  mashiro_option.v_appKey = "lychiSFCksLLUOndXBDAsg3A";
   mashiro_option.mathjax = "0";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
@@ -340,8 +340,8 @@
       var valine = new Valine();
       valine.init({
         el: '#vcomments',
-        appId: "PaRk8bvVnnMzldkzMrv38xnd-gzGzoHsz",
-        appKey: "liG2MMf1SRwFpuUNapsEA9cU",
+        appId: "cufCqTylUQUH7Ez5kCgC3fbR-MdYXbMMI",
+        appKey: "lychiSFCksLLUOndXBDAsg3A",
         path: window.location.pathname,
         placeholder: "你是我一生只会遇见一次的惊喜 ..."
       })
@@ -349,6 +349,33 @@
 </script>
 
 
+
+    <script src="//cdn.jsdelivr.net/npm/@waline/client"></script>
+    <div id="waline"></div>
+    <style>
+    #waline textarea {
+        box-sizing: border-box;
+        background: url("https://gitee.com/cungudafa/source/raw/master/img/gif/Sitich/Sitich2.gif") 100% 100% no-repeat;
+    }
+    </style>
+    <script>
+        Waline({
+              el: '#waline',
+              serverURL: 'https://waline-j7soumapm-orwell-yu.vercel.app/',
+              pageSize: '10',
+              lang: 'zh-CN',
+              requiredFields: ['nick','mail'], //设置必填项
+              placeholder: 'Ciallo～(∠・ω&lt; )⌒☆',
+              visitor: 'true',
+              emoji: [
+                  'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba',
+                  'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
+                  'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo',
+              ],
+              avatar: 'mp',
+              dark: 'auto',
+            });
+    </script>
 
 
       <div class="single-reward">
