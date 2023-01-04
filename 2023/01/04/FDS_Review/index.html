@@ -349,7 +349,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2022-8-18<span class="bull">
+        2023-1-4<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -363,10 +363,33 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="Algorithm-Anlysis"><a href="#Algorithm-Anlysis" class="headerlink" title="Algorithm Anlysis"></a>Algorithm Anlysis</h2><h3 id="Space-Comlexity"><a href="#Space-Comlexity" class="headerlink" title="Space Comlexity"></a>Space Comlexity</h3><h3 id="Time-Comlexity"><a href="#Time-Comlexity" class="headerlink" title="Time Comlexity"></a>Time Comlexity</h3><h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="Abustrct-Data-Type"><a href="#Abustrct-Data-Type" class="headerlink" title="Abustrct Data Type"></a>Abustrct Data Type</h3><blockquote>
+          <h2 id="Algorithm-Anlysis"><a href="#Algorithm-Anlysis" class="headerlink" title="Algorithm Anlysis"></a>Algorithm Anlysis</h2><h3 id="Space-Comlexity"><a href="#Space-Comlexity" class="headerlink" title="Space Comlexity"></a>Space Comlexity</h3><p>The space complexity of an algorithm or a computer program is the amount of memory space required to solve an instance of the computational problem as a function of characteristics of the input. It is the memory required by an algorithm until it executes completely.</p>
+<h3 id="Time-Comlexity"><a href="#Time-Comlexity" class="headerlink" title="Time Comlexity"></a>Time Comlexity</h3><p>In computer science, the time complexity is the computational complexity that describes the amount of computer time it takes to run an algorithm. Time complexity is commonly estimated by counting the number of elementary operations performed by the algorithm, supposing that each elementary operation takes a fixed amount of time to perform. Thus, the amount of time taken and the number of elementary operations performed by the algorithm are taken to be related by a constant factor.</p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="Abustrct-Data-Type"><a href="#Abustrct-Data-Type" class="headerlink" title="Abustrct Data Type"></a>Abustrct Data Type</h3><blockquote>
 <p>【Definition】<br>An Abstract Data Type (ADT) is a data type that is organized in such a way that the specification on the objects and specification of the operations on the objects are separated from the representation of the objects and the implementation on the operations.</p>
 </blockquote>
-<h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><h2 id="Stack-amp-Queue"><a href="#Stack-amp-Queue" class="headerlink" title="Stack &amp; Queue"></a>Stack &amp; Queue</h2><h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><blockquote>
+<h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><h4 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h4><pre><code class="C">#ifndef LLIST_H
+#define LLIST_H
+
+typedef void node_proc_fun_t(void*);
+typedef int node_comp_fun_t(const void*, const void*);
+
+typedef void LLIST_T;
+
+LLIST_T *llist_new(int elmsize);
+int llist_delete(LLIST_T *ptr);
+
+int llist_node_append(LLIST_T *ptr, const void *datap);
+int llist_node_prepend(LLIST_T *ptr, const void *datap);
+
+int llist_travel(LLIST_T *ptr, node_proc_fun_t *proc);
+
+void llist_node_delete(LLIST_T *ptr, node_comp_fun_t *comp, const void *key); 
+void *llist_node_find(LLIST_T *ptr, node_comp_fun_t *comp, const void *key);
+
+#endif
+</code></pre>
+<h2 id="Stack-amp-Queue"><a href="#Stack-amp-Queue" class="headerlink" title="Stack &amp; Queue"></a>Stack &amp; Queue</h2><h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><blockquote>
 <p>【Definition】<br>A stack is a Last-In-First-Out (LIFO) list, that is, an ordered list in which insertions and deletions are made at the top only.</p>
 </blockquote>
 <h4 id="Operations-amp-Implementations"><a href="#Operations-amp-Implementations" class="headerlink" title="Operations &amp; Implementations"></a>Operations &amp; Implementations</h4><h5 id="Operations"><a href="#Operations" class="headerlink" title="Operations:"></a>Operations:</h5><pre><code class="C">Int  IsEmpty( Stack S );
@@ -1924,36 +1947,19 @@ struct  HashTbl {
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2022/08/18/LeNet-5/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/LeNet5/cover.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/LeNet5/cover.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                PyTorch初步：LeNet-5模型搭建</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2022/08/18/苏联笑话/" rel="next">
+            <a href="/2022/08/19/孙吧顶真/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/SovietUnion/cover.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/SovietUnion/cover.jpg">
+                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/dingzhen/dingzhen.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/dingzhen/dingzhen.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                苏联笑话合集</h3>
+                孙吧顶针</h3>
                 <hr>
               </div>
             </a>
