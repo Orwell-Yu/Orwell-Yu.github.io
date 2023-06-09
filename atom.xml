@@ -61,6 +61,28 @@
   </entry>
   
   <entry>
+    <title>ADS复习笔记（截止到Traceback）</title>
+    <link href="https://orwell-yu.github.io/2023/04/16/OOP/"/>
+    <id>https://orwell-yu.github.io/2023/04/16/OOP/</id>
+    <published>2023-04-16T15:11:00.000Z</published>
+    <updated>2023-06-09T03:30:38.528Z</updated>
+    
+    <summary type="html">
+    
+      期末复习
+    
+    </summary>
+    
+      <category term="技术" scheme="https://orwell-yu.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="技术" scheme="https://orwell-yu.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="学习" scheme="https://orwell-yu.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>FDS Review</title>
     <link href="https://orwell-yu.github.io/2023/01/04/FDS_Review/"/>
     <id>https://orwell-yu.github.io/2023/01/04/FDS_Review/</id>
@@ -131,28 +153,6 @@
   </entry>
   
   <entry>
-    <title>PyTorch初步：LeNet-5模型搭建</title>
-    <link href="https://orwell-yu.github.io/2022/08/18/LeNet-5/"/>
-    <id>https://orwell-yu.github.io/2022/08/18/LeNet-5/</id>
-    <published>2022-08-18T04:29:00.000Z</published>
-    <updated>2022-08-19T10:33:56.000Z</updated>
-    
-    <summary type="html">
-    
-      从零开始搭建`LeNet5`模型
-    
-    </summary>
-    
-      <category term="技术" scheme="https://orwell-yu.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="资源" scheme="https://orwell-yu.github.io/tags/%E8%B5%84%E6%BA%90/"/>
-    
-      <category term="AI" scheme="https://orwell-yu.github.io/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
     <title>当我们在看寝取（ntr)本时，我们在看些什么</title>
     <link href="https://orwell-yu.github.io/2022/08/18/NTR/"/>
     <id>https://orwell-yu.github.io/2022/08/18/NTR/</id>
@@ -173,6 +173,28 @@
       <category term="本子讨论" scheme="https://orwell-yu.github.io/tags/%E6%9C%AC%E5%AD%90%E8%AE%A8%E8%AE%BA/"/>
     
       <category term="哲学" scheme="https://orwell-yu.github.io/tags/%E5%93%B2%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PyTorch初步：LeNet-5模型搭建</title>
+    <link href="https://orwell-yu.github.io/2022/08/18/LeNet-5/"/>
+    <id>https://orwell-yu.github.io/2022/08/18/LeNet-5/</id>
+    <published>2022-08-18T04:29:00.000Z</published>
+    <updated>2022-08-19T10:33:56.000Z</updated>
+    
+    <summary type="html">
+    
+      从零开始搭建`LeNet5`模型
+    
+    </summary>
+    
+      <category term="技术" scheme="https://orwell-yu.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="资源" scheme="https://orwell-yu.github.io/tags/%E8%B5%84%E6%BA%90/"/>
+    
+      <category term="AI" scheme="https://orwell-yu.github.io/tags/AI/"/>
     
   </entry>
   
