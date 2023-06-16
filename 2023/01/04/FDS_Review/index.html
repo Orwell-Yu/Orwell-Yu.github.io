@@ -368,7 +368,7 @@
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="Abustrct-Data-Type"><a href="#Abustrct-Data-Type" class="headerlink" title="Abustrct Data Type"></a>Abustrct Data Type</h3><blockquote>
 <p>【Definition】<br>An Abstract Data Type (ADT) is a data type that is organized in such a way that the specification on the objects and specification of the operations on the objects are separated from the representation of the objects and the implementation on the operations.</p>
 </blockquote>
-<h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><h4 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h4><pre><code class="C">#ifndef LLIST_H
+<h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><h4 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h4><pre><code class="lang-C">#ifndef LLIST_H
 #define LLIST_H
 
 typedef void node_proc_fun_t(void*);
@@ -378,12 +378,12 @@ typedef void LLIST_T;
 
 LLIST_T *llist_new(int elmsize);
 int llist_delete(LLIST_T *ptr);
- 
+
 int llist_node_append(LLIST_T *ptr, const void *datap);
 int llist_node_prepend(LLIST_T *ptr, const void *datap);
 
 int llist_travel(LLIST_T *ptr, node_proc_fun_t *proc);
- 
+
 void llist_node_delete(LLIST_T *ptr, node_comp_fun_t *comp, const void *key); 
 void *llist_node_find(LLIST_T *ptr, node_comp_fun_t *comp, const void *key);
 
@@ -391,24 +391,24 @@ void *llist_node_find(LLIST_T *ptr, node_comp_fun_t *comp, const void *key);
 </code></pre>
 <h2 id="Stack-amp-Queue"><a href="#Stack-amp-Queue" class="headerlink" title="Stack &amp; Queue"></a>Stack &amp; Queue</h2><h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><blockquote>
 <p>【Definition】<br>A stack is a Last-In-First-Out (LIFO) list, that is, an ordered list in which insertions and deletions are made at the top only.</p>
-</blockquote>
-<h4 id="Operations-amp-Implementations"><a href="#Operations-amp-Implementations" class="headerlink" title="Operations &amp; Implementations"></a>Operations &amp; Implementations</h4><h5 id="Operations"><a href="#Operations" class="headerlink" title="Operations:"></a>Operations:</h5><pre><code class="C">Int  IsEmpty( Stack S );
+<h4 id="Operations-amp-Implementations"><a href="#Operations-amp-Implementations" class="headerlink" title="Operations &amp; Implementations"></a>Operations &amp; Implementations</h4><h5 id="Operations"><a href="#Operations" class="headerlink" title="Operations:"></a>Operations:</h5><pre><code class="lang-C">Int  IsEmpty( Stack S );
 Stack CreateStack(); 
 DisposeStack( Stack S ); //该函数销毁数组栈(释放数组空间与栈空间)，返回NULL指针
 MakeEmpty( Stack S ); 
 Push( ElementType X, Stack S ); 
 ElementType Top( Stack S ); 
-Pop( Stack S ); 
+Pop( Stack S );
 </code></pre>
-<h5 id="Array-Implementation"><a href="#Array-Implementation" class="headerlink" title="Array Implementation:"></a>Array Implementation:</h5><pre><code class="C">struct  StackRecord &#123;
+<h5 id="Array-Implementation"><a href="#Array-Implementation" class="headerlink" title="Array Implementation:"></a>Array Implementation:</h5><pre><code class="lang-C">struct  StackRecord &#123;
     int Capacity ;              /* size of stack */
     int TopOfStack;          /* the top pointer */
     /* ++ for push, -- for pop, -1 for empty stack */
     ElementType *Array;    /* array for stack elements */
- &#125; ; 
+ &#125; ;
 </code></pre>
-<h5 id="Linked-List-Implemetation-with-Dummy"><a href="#Linked-List-Implemetation-with-Dummy" class="headerlink" title="Linked List Implemetation(with Dummy):"></a>Linked List Implemetation(with Dummy):</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20171518.jpg"></p>
-<h4 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h4><h5 id="Balance-Symbols"><a href="#Balance-Symbols" class="headerlink" title="Balance Symbols"></a>Balance Symbols</h5><pre><code class="C">Algorithm &#123;
+<h5 id="Linked-List-Implemetation-with-Dummy"><a href="#Linked-List-Implemetation-with-Dummy" class="headerlink" title="Linked List Implemetation(with Dummy):"></a>Linked List Implemetation(with Dummy):</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20171518.jpg" alt=""></p>
+</blockquote>
+<h4 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h4><h5 id="Balance-Symbols"><a href="#Balance-Symbols" class="headerlink" title="Balance Symbols"></a>Balance Symbols</h5><pre><code class="lang-C">Algorithm &#123;
     Make an empty stack S;
     while(read in a character c) &#123;
         if(c is an opening symbol)
@@ -435,50 +435,45 @@ Pop( Stack S );
 <li>Observe that when <code>(</code>  is not in the stack, its precedence is the highest; but when it is in the stack, its precedence is the lowest.  Define in-stack precedence and incoming precedence for symbols, and each time use the corresponding precedence for comparison. </li>
 <li>括号入栈前优先级最高，入栈后优先级最低。<blockquote>
 <p>Plz read DS03 PPT Page 7 for further.</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><h4 id="Definition-1"><a href="#Definition-1" class="headerlink" title="Definition"></a>Definition</h4><blockquote>
-<p>【Definition】<br>A queue is a First-In-First-Out (FIFO) list, that is, an ordered list in which insertions take place at one end and deletions take place at the opposite end.</p>
-</blockquote>
-<h4 id="Operations-amp-Implementations-1"><a href="#Operations-amp-Implementations-1" class="headerlink" title="Operations &amp; Implementations"></a>Operations &amp; Implementations</h4><h5 id="Operations-1"><a href="#Operations-1" class="headerlink" title="Operations:"></a>Operations:</h5><pre><code class="C">int IsEmpty( Queue Q );
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><h4 id="Definition-1"><a href="#Definition-1" class="headerlink" title="Definition"></a>Definition</h4><p>【Definition】<br>A queue is a First-In-First-Out (FIFO) list, that is, an ordered list in which insertions take place at one end and deletions take place at the opposite end.</p>
+<h4 id="Operations-amp-Implementations-1"><a href="#Operations-amp-Implementations-1" class="headerlink" title="Operations &amp; Implementations"></a>Operations &amp; Implementations</h4><h5 id="Operations-1"><a href="#Operations-1" class="headerlink" title="Operations:"></a>Operations:</h5><pre><code class="lang-C">int IsEmpty( Queue Q );
 Queue CreateQueue( ); 
 DisposeQueue( Queue Q ); 
 MakeEmpty( Queue Q ); 
 Enqueue( ElementType X, Queue Q ); 
 ElementType  Front( Queue Q ); 
-Dequeue( Queue Q ); 
+Dequeue( Queue Q );
 </code></pre>
-<h5 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations:"></a>Implementations:</h5><pre><code class="C">struct  QueueRecord &#123;
-    int Capacity ;   /* max size of queue */
-    int Front;          /* the front pointer */
-    int Rear;           /* the rear pointer */
-    int Size;  /* Optional - the current size of queue */
-    ElementType *Array;    /* array for queue elements */
- &#125; ; 
+<h5 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations:"></a>Implementations:</h5><pre><code class="lang-C">struct  QueueRecord &#123;
+ int Capacity ;   /* max size of queue */
+ int Front;          /* the front pointer */
+ int Rear;           /* the rear pointer */
+ int Size;  /* Optional - the current size of queue */
+ ElementType *Array;    /* array for queue elements */
+&#125; ;
 </code></pre>
-<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20182729.jpg"></p>
-<blockquote>
-<p>Learn more about queue plz read PPT DS03 Page 11</p>
-</blockquote>
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20182729.jpg" alt=""><br>Learn more about queue plz read PPT DS03 Page 11</p>
 <h5 id="Circular-Queue"><a href="#Circular-Queue" class="headerlink" title="Circular Queue:"></a>Circular Queue:</h5><p>队列的入队、出队操作很简单。入队时，通过<code>rear</code>的位置判断队列是否已满。如果没有满，则将<code>rear</code>后移一位，将新元素放置在<code>rear</code>所在位置。出队时，也可以通过<code>rear</code>的位置判断队列是否为空。如果不空，则只需将<code>front</code>后移一位即可。 获取队头元素，判断队列不空，则只需返回<code>front</code>指向位置的元素即可。</p>
+</blockquote>
+</li>
+</ol>
 <p>想像一下，通过出队操作将数据弹出队列后，<code>front</code>之前的空间还能够再次得到吗？不能。所以使用普通数组实现队列，就再也不能使用<code>front</code>之前的空间了，这会导致大量空间丢失。</p>
 <p>为了解决这个问题，将普通数组换成循环数组。在循环数组中，末尾元素的下一个元素不是数组外，而是数组的头元素。这样就能够再次使用<code>front</code>之前的存储空间了。</p>
 <p>为了规避环形队列的两种边界情况：空或者满时都有<code>rear-front=1</code>,我们让两者始终差1，即始终有一个空位。</p>
 <h3 id="Complete-Binary-Tree-and-Heap"><a href="#Complete-Binary-Tree-and-Heap" class="headerlink" title="Complete Binary Tree and Heap"></a>Complete Binary Tree and Heap</h3><h4 id="Operations-and-Implementations"><a href="#Operations-and-Implementations" class="headerlink" title="Operations and Implementations"></a>Operations and Implementations</h4><p><strong>Operations</strong></p>
-<pre><code class="C">PriorityQueue  Initialize( int MaxElements ); 
+<pre><code class="lang-C">PriorityQueue  Initialize( int MaxElements ); 
 void  Insert( ElementType X, PriorityQueue H ); 
 ElementType  DeleteMin( PriorityQueue H ); 
-ElementType  FindMin( PriorityQueue H ); 
+ElementType  FindMin( PriorityQueue H );
 </code></pre>
-<p><strong>Simple Implementations</strong><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20202216.jpg"></p>
+<p><strong>Simple Implementations</strong><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20202216.jpg" alt=""></p>
 <h3 id="Binary-Heap"><a href="#Binary-Heap" class="headerlink" title="Binary Heap"></a>Binary Heap</h3><h4 id="Definition-2"><a href="#Definition-2" class="headerlink" title="Definition"></a>Definition</h4><blockquote>
 <p>【Definition】<br>A binary tree with n nodes and height h is complete  iff  its nodes correspond to the nodes numbered from 1 to n in the perfect binary tree of height h.</p>
 </blockquote>
 <p>也就是说，叶子节点只可能在最大的两层出现，上一层不满不可能有下一层。</p>
-<h4 id="Array-Representation"><a href="#Array-Representation" class="headerlink" title="Array Representation"></a>Array Representation</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20202340.jpg"><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%9B%BE%E7%89%871.png"></p>
-<h4 id="MinHeap-amp-MaxHeap"><a href="#MinHeap-amp-MaxHeap" class="headerlink" title="MinHeap &amp; MaxHeap"></a>MinHeap &amp; MaxHeap</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20202853.jpg"></p>
-<h4 id="Implementations-1"><a href="#Implementations-1" class="headerlink" title="Implementations"></a>Implementations</h4><h5 id="Initialize"><a href="#Initialize" class="headerlink" title="Initialize"></a>Initialize</h5><pre><code class="C">PriorityQueue Initialize( int  MaxElements ) 
+<h4 id="Array-Representation"><a href="#Array-Representation" class="headerlink" title="Array Representation"></a>Array Representation</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20202340.jpg" alt=""><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/图片1.png" alt=""></p>
+<h4 id="MinHeap-amp-MaxHeap"><a href="#MinHeap-amp-MaxHeap" class="headerlink" title="MinHeap &amp; MaxHeap"></a>MinHeap &amp; MaxHeap</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20202853.jpg" alt=""></p>
+<h4 id="Implementations-1"><a href="#Implementations-1" class="headerlink" title="Implementations"></a>Implementations</h4><h5 id="Initialize"><a href="#Initialize" class="headerlink" title="Initialize"></a>Initialize</h5><pre><code class="lang-C">PriorityQueue Initialize( int  MaxElements ) 
 &#123; 
      PriorityQueue  H; 
      if ( MaxElements &lt; MinPQSize ) 
@@ -496,7 +491,7 @@ ElementType  FindMin( PriorityQueue H );
      return  H; 
 &#125;
 </code></pre>
-<h5 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h5><pre><code class="C">/* H-&gt;Element[ 0 ] is a sentinel */ sentinel:dummy
+<h5 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h5><pre><code class="lang-C">/* H-&gt;Element[ 0 ] is a sentinel */ sentinel:dummy
 void  Insert( ElementType  X,  PriorityQueue  H ) 
 &#123; 
      int  i; 
@@ -512,8 +507,8 @@ void  Insert( ElementType  X,  PriorityQueue  H )
      H-&gt;Elements[ i ] = X; 
 &#125;
 </code></pre>
-<p>$T (N) &#x3D; O ( log N )$</p>
-<h5 id="DeleteMin"><a href="#DeleteMin" class="headerlink" title="DeleteMin"></a>DeleteMin</h5><pre><code class="C">ElementType  DeleteMin( PriorityQueue  H ) 
+<p>$T (N) = O ( log N )$</p>
+<h5 id="DeleteMin"><a href="#DeleteMin" class="headerlink" title="DeleteMin"></a>DeleteMin</h5><pre><code class="lang-C">ElementType  DeleteMin( PriorityQueue  H ) 
 &#123; 
     int  i, Child; 
     ElementType  MinElement, LastElement; 
@@ -534,8 +529,8 @@ void  Insert( ElementType  X,  PriorityQueue  H )
     return  MinElement; 
 &#125;
 </code></pre>
-<p>$T (N) &#x3D; O ( log N )$</p>
-<h5 id="PercolateUp-amp-PercolateDown"><a href="#PercolateUp-amp-PercolateDown" class="headerlink" title="PercolateUp &amp; PercolateDown"></a>PercolateUp &amp; PercolateDown</h5><pre><code class="C">void PercolateUp( int p, PriorityQueue H )&#123;
+<p>$T (N) = O ( log N )$</p>
+<h5 id="PercolateUp-amp-PercolateDown"><a href="#PercolateUp-amp-PercolateDown" class="headerlink" title="PercolateUp &amp; PercolateDown"></a>PercolateUp &amp; PercolateDown</h5><pre><code class="lang-C">void PercolateUp( int p, PriorityQueue H )&#123;
     int i;
     int x=H-&gt;Elements[p];
     for(i = p;H-&gt;Elements[i/2]&gt;x &amp;&amp; i&gt;0;i/=2)&#123;
@@ -544,7 +539,7 @@ void  Insert( ElementType  X,  PriorityQueue  H )
     H-&gt;Elements[i]=x;
 &#125;
 </code></pre>
-<pre><code class="C">void PercolateDown( int p, PriorityQueue H )&#123;
+<pre><code class="lang-C">void PercolateDown( int p, PriorityQueue H )&#123;
     int i;
     int child;
     int x=H-&gt;Elements[p];
@@ -570,11 +565,10 @@ void  Insert( ElementType  X,  PriorityQueue  H )
 </blockquote>
 </li>
 <li><p>Suppose that an array of size 6 is used to store a circular queue, and the values of <code>front</code> and <code>rear</code> are 0 and 4, respectively. Now after 2 dequeues and 2 enqueues, what will the values of <code>front</code> and <code>rear</code> be?</p>
+<pre><code>A.2 and 0
+</code></pre><h4 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h4><h5 id="7-1-Pop-Sequence"><a href="#7-1-Pop-Sequence" class="headerlink" title="7-1 Pop Sequence"></a>7-1 Pop Sequence</h5><p>Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, …, N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the stack. For example, if M is 5 and N is 7, we can obtain 1, 2, 3, 4, 5, 6, 7 from the stack, but not 3, 2, 1, 7, 5, 6, 4.</p>
 </li>
 </ol>
-<pre><code>A.2 and 0
-</code></pre>
-<h4 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h4><h5 id="7-1-Pop-Sequence"><a href="#7-1-Pop-Sequence" class="headerlink" title="7-1 Pop Sequence"></a>7-1 Pop Sequence</h5><p>Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, …, N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the stack. For example, if M is 5 and N is 7, we can obtain 1, 2, 3, 4, 5, 6, 7 from the stack, but not 3, 2, 1, 7, 5, 6, 4.</p>
 <p><strong>Input Specification:</strong><br>Each input file contains one test case. For each case, the first line contains 3 numbers (all no more than 1000): M (the maximum capacity of the stack), N (the length of push sequence), and K (the number of pop sequences to be checked). Then K lines follow, each contains a pop sequence of N numbers. All the numbers in a line are separated by a space.</p>
 <p><strong>Output Specification:</strong><br>For each pop sequence, print in one line “YES” if it is indeed a possible pop sequence of the stack, or “NO” if not.</p>
 <p><strong>Sample Input:</strong></p>
@@ -584,9 +578,8 @@ void  Insert( ElementType  X,  PriorityQueue  H )
 7 6 5 4 3 2 1
 5 6 4 3 7 2 1
 1 7 6 5 4 3 2
-</code></pre>
-<p><strong>Solution</strong></p>
-<pre><code class="C">#include&lt;stdio.h&gt;
+</code></pre><p><strong>Solution</strong></p>
+<pre><code class="lang-C">#include&lt;stdio.h&gt;
 void StackCheck(int m,int n,int a[])&#123;
         int b[1000];
         int top=0,ptr=0,temp=1;
@@ -629,11 +622,10 @@ NO
 NO
 YES
 NO
-</code></pre>
-<h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><h3 id="Definition-3"><a href="#Definition-3" class="headerlink" title="Definition"></a>Definition</h3><blockquote>
+</code></pre><h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><h3 id="Definition-3"><a href="#Definition-3" class="headerlink" title="Definition"></a>Definition</h3><blockquote>
 <p>【Definition】<br>A tree is a collection of nodes.  The collection can be empty; otherwise, a tree consists of:<br>  (1)  a distinguished node r, called the root;<br>  (2)  and zero or more nonempty (sub)trees T1, …, Tk, each of whose roots are connected by a directed edge from r.</p>
 </blockquote>
-<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20184212.jpg"><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20184633.jpg"><br>深度：从root算起<br>高度：从leaf算起</p>
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20184212.jpg" alt=""><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20184633.jpg" alt=""><br>深度：从root算起<br>高度：从leaf算起</p>
 <h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><h4 id="Turn-to-BiTree"><a href="#Turn-to-BiTree" class="headerlink" title="Turn to BiTree"></a>Turn to BiTree</h4><p>First, we need to transfer the tree into a BiTree.<br>要点：</p>
 <p>从这棵树的根结点开始，从上到下，看每一个结点，把你正在看的结点的孩子放在左子树，兄弟放在右子树。</p>
 <p>口诀：</p>
@@ -641,12 +633,13 @@ NO
 <li>将节点的孩子 放在左子树；</li>
 <li>将节点的兄弟 放在右子树。</li>
 </ol>
-<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20185145.jpg"></p>
-<h4 id="Implementation-of-a-BiTree"><a href="#Implementation-of-a-BiTree" class="headerlink" title="Implementation of a BiTree"></a>Implementation of a BiTree</h4><pre><code class="C">
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20185145.jpg" alt=""></p>
+<h4 id="Implementation-of-a-BiTree"><a href="#Implementation-of-a-BiTree" class="headerlink" title="Implementation of a BiTree"></a>Implementation of a BiTree</h4><pre><code class="lang-C">
+
 </code></pre>
-<h3 id="Traversal"><a href="#Traversal" class="headerlink" title="Traversal"></a>Traversal</h3><h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>There is a picture to better understand tree trasval.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20190405.jpg"></p>
-<h4 id="Implementation-1"><a href="#Implementation-1" class="headerlink" title="Implementation"></a>Implementation</h4><h5 id="inorder"><a href="#inorder" class="headerlink" title="inorder"></a>inorder</h5><h5 id="preorder"><a href="#preorder" class="headerlink" title="preorder"></a>preorder</h5><h5 id="postorder"><a href="#postorder" class="headerlink" title="postorder"></a>postorder</h5><h5 id="rebuild"><a href="#rebuild" class="headerlink" title="rebuild"></a>rebuild</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/aHR0cHM6Ly9pbWcuaGFjcGFpLmNvbS9maWxlLzIwMTkvMDcvJUU4JUJGJTg3JUU3JUE4JThCLWY1NzRhNWJlLnBuZw.png"></p>
-<pre><code class="C">Tree BuildMyTree(int inorder[],int postorder[],int n)
+<h3 id="Traversal"><a href="#Traversal" class="headerlink" title="Traversal"></a>Traversal</h3><h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>There is a picture to better understand tree trasval.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20190405.jpg" alt=""></p>
+<h4 id="Implementation-1"><a href="#Implementation-1" class="headerlink" title="Implementation"></a>Implementation</h4><h5 id="inorder"><a href="#inorder" class="headerlink" title="inorder"></a>inorder</h5><h5 id="preorder"><a href="#preorder" class="headerlink" title="preorder"></a>preorder</h5><h5 id="postorder"><a href="#postorder" class="headerlink" title="postorder"></a>postorder</h5><h5 id="rebuild"><a href="#rebuild" class="headerlink" title="rebuild"></a>rebuild</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/aHR0cHM6Ly9pbWcuaGFjcGFpLmNvbS9maWxlLzIwMTkvMDcvJUU4JUJGJTg3JUU3JUE4JThCLWY1NzRhNWJlLnBuZw.png" alt=""></p>
+<pre><code class="lang-C">Tree BuildMyTree(int inorder[],int postorder[],int n)
 &#123;
     Tree T;
     if(n==0)&#123;
@@ -674,9 +667,9 @@ NO
     return T;
 &#125;
 </code></pre>
-<h3 id="Properties-of-Binary-Trees"><a href="#Properties-of-Binary-Trees" class="headerlink" title="Properties of Binary Trees"></a>Properties of Binary Trees</h3><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20194233.jpg"></p>
-<h3 id="Threaded-BinaryTree"><a href="#Threaded-BinaryTree" class="headerlink" title="Threaded BinaryTree"></a>Threaded BinaryTree</h3><p>对于没有左或者右孩子的节点，我们根据线索二叉树的不同，让他们分别指向不同的遍历顺序中的前继节点或者后继节点，更大化地利用空间。<br>对于没有孩子又没有前&#x2F;后继的节点，其线索为<code>NULL</code><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/v2-890ef1e99682f6ce51523ea9463a481d_r.jpg"><br>同时，为了知道左右子树到底是不是真的孩子还是线索二叉树的线索，还有两个布尔变量应该在结构体中申明。</p>
-<h4 id="Implementation-2"><a href="#Implementation-2" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="C">typedef  struct  ThreadedTreeNode  *PtrTo  ThreadedNode;
+<h3 id="Properties-of-Binary-Trees"><a href="#Properties-of-Binary-Trees" class="headerlink" title="Properties of Binary Trees"></a>Properties of Binary Trees</h3><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20194233.jpg" alt=""></p>
+<h3 id="Threaded-BinaryTree"><a href="#Threaded-BinaryTree" class="headerlink" title="Threaded BinaryTree"></a>Threaded BinaryTree</h3><p>对于没有左或者右孩子的节点，我们根据线索二叉树的不同，让他们分别指向不同的遍历顺序中的前继节点或者后继节点，更大化地利用空间。<br>对于没有孩子又没有前/后继的节点，其线索为<code>NULL</code><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/v2-890ef1e99682f6ce51523ea9463a481d_r.jpg" alt=""><br>同时，为了知道左右子树到底是不是真的孩子还是线索二叉树的线索，还有两个布尔变量应该在结构体中申明。</p>
+<h4 id="Implementation-2"><a href="#Implementation-2" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="lang-C">typedef  struct  ThreadedTreeNode  *PtrTo  ThreadedNode;
 typedef  struct  PtrToThreadedNode  ThreadedTree;
 typedef  struct  ThreadedTreeNode &#123;
        int LeftThread;   /* if it is TRUE, then Left */
@@ -689,17 +682,17 @@ typedef  struct  ThreadedTreeNode &#123;
 <h4 id="Binary-Search-Tree"><a href="#Binary-Search-Tree" class="headerlink" title="Binary Search Tree"></a>Binary Search Tree</h4><h4 id="Definition-4"><a href="#Definition-4" class="headerlink" title="Definition"></a>Definition</h4><blockquote>
 <p>【Definition】<br>A binary search tree is a binary tree.  It may be empty.  If it is not empty, it satisfies the following properties:<br>(1)  Every node has a key which is an integer, and the keys are distinct.<br>(2)  The keys in a nonempty left subtree must be smaller than the key in the root of the subtree.<br>(3)  The keys in a nonempty right subtree must be larger than the key in the root of the subtree.<br>(4)  The left and right subtrees are also binary search trees.</p>
 </blockquote>
-<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20194408.jpg"></p>
-<h4 id="Operations-amp-Implementations-2"><a href="#Operations-amp-Implementations-2" class="headerlink" title="Operations &amp; Implementations"></a>Operations &amp; Implementations</h4><h5 id="Operations-2"><a href="#Operations-2" class="headerlink" title="Operations"></a>Operations</h5><pre><code class="C">SearchTree  MakeEmpty( SearchTree T ); 
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20194408.jpg" alt=""></p>
+<h4 id="Operations-amp-Implementations-2"><a href="#Operations-amp-Implementations-2" class="headerlink" title="Operations &amp; Implementations"></a>Operations &amp; Implementations</h4><h5 id="Operations-2"><a href="#Operations-2" class="headerlink" title="Operations"></a>Operations</h5><pre><code class="lang-C">SearchTree  MakeEmpty( SearchTree T ); 
 Position  Find( ElementType X, SearchTree T ); 
 Position  FindMin( SearchTree T ); 
 Position  FindMax( SearchTree T ); 
 SearchTree  Insert( ElementType X, SearchTree T ); 
 SearchTree  Delete( ElementType X, SearchTree T ); 
-ElementType  Retrieve( Position P ); 
+ElementType  Retrieve( Position P );
 </code></pre>
 <h5 id="Implementation-3"><a href="#Implementation-3" class="headerlink" title="Implementation"></a>Implementation</h5><h6 id="Find"><a href="#Find" class="headerlink" title="Find"></a>Find</h6><p><strong>Recusive Version</strong></p>
-<pre><code class="C">Position  Find( ElementType X,  SearchTree T ) 
+<pre><code class="lang-C">Position  Find( ElementType X,  SearchTree T ) 
 &#123; 
       if ( T == NULL ) 
           return  NULL;  /* not found in an empty tree */
@@ -710,10 +703,10 @@ ElementType  Retrieve( Position P );
       return  Find( X, T-&gt;Right );  /* search right subtree */
           else   /* if X == root */
       return  T;  /* found */
-&#125; 
+&#125;
 </code></pre>
 <p><strong>Iterate Version</strong></p>
-<pre><code class="C">Position  Iter_Find( ElementType X,  SearchTree T ) 
+<pre><code class="lang-C">Position  Iter_Find( ElementType X,  SearchTree T ) 
 &#123; 
       /* iterative version of Find */
       while  ( T )   &#123;
@@ -725,30 +718,30 @@ ElementType  Retrieve( Position P );
      T = T-&gt; Right ; /* move down along right path */
       &#125;  /* end while-loop */
       return  NULL ;   /* not found */
-&#125; 
+&#125;
 </code></pre>
 <p><strong>FindMin</strong></p>
-<pre><code class="C">Position  FindMin( SearchTree T ) 
+<pre><code class="lang-C">Position  FindMin( SearchTree T ) 
 &#123; 
       if ( T == NULL )   
           return  NULL; /* not found in an empty tree */
       else 
           if ( T-&gt;Left == NULL )   return  T;  /* found left most */
           else   return  FindMin( T-&gt;Left );   /* keep moving to left */
-&#125; 
+&#125;
 </code></pre>
 <p><strong>FindMax</strong></p>
-<pre><code class="C">Position  FindMax( SearchTree T ) 
+<pre><code class="lang-C">Position  FindMax( SearchTree T ) 
 &#123; 
       if ( T != NULL ) 
           while ( T-&gt;Right != NULL )   
             T = T-&gt;Right;   /* keep moving to find right most */
       return T;  /* return NULL or the right most */
-&#125; 
+&#125;
 </code></pre>
-<p>$T(N)&#x3D;S(N)&#x3D;d$<br>where d is the depth of X</p>
-<h6 id="Insert-1"><a href="#Insert-1" class="headerlink" title="Insert"></a>Insert</h6><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20195553.jpg"></p>
-<pre><code class="C">SearchTree Insert( ElementType X, SearchTree T ) 
+<p>$T(N)=S(N)=d$<br>where d is the depth of X</p>
+<h6 id="Insert-1"><a href="#Insert-1" class="headerlink" title="Insert"></a>Insert</h6><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20195553.jpg" alt=""></p>
+<pre><code class="lang-C">SearchTree Insert( ElementType X, SearchTree T ) 
 &#123; 
       if ( T == NULL ) &#123; /* Create and return a one-node tree */ 
     T = malloc( sizeof( struct TreeNode ) ); 
@@ -768,9 +761,9 @@ ElementType  Retrieve( Position P );
     return  T;   /* Do not forget this line!! */ 
 &#125;
 </code></pre>
-<p>$T(N)&#x3D;O(d)$<br>where d is the depth of X</p>
-<h6 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h6><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20195743.jpg"></p>
-<pre><code class="C">SearchTree  Delete( ElementType X, SearchTree T ) 
+<p>$T(N)=O(d)$<br>where d is the depth of X</p>
+<h6 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h6><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20195743.jpg" alt=""></p>
+<pre><code class="lang-C">SearchTree  Delete( ElementType X, SearchTree T ) 
 &#123;    Position  TmpCell; 
       if ( T == NULL )   Error( &quot;Element not found&quot; ); 
       else  if ( X &lt; T-&gt;Element )  /* Go left */ 
@@ -792,37 +785,37 @@ ElementType  Retrieve( Position P );
       return  T; 
 &#125;
 </code></pre>
-<p>$T(N) &#x3D;O(h)$<br>where h is the height of the tree</p>
+<p>$T(N) =O(h)$<br>where h is the height of the tree</p>
 <h3 id="Puzzles-1"><a href="#Puzzles-1" class="headerlink" title="Puzzles"></a>Puzzles</h3><h4 id="Judgment-and-Choice-1"><a href="#Judgment-and-Choice-1" class="headerlink" title="Judgment and Choice"></a>Judgment and Choice</h4><ol>
 <li><p>There exists a binary tree with 2016 nodes in total, and with 16 nodes having only one child.<br><code>F</code></p>
 <blockquote>
-<p>分析： 假设没有孩子的结点(叶结点)个数为n₀，只有一个孩子的结点(度为1的结点)个数为n₁，有两个孩子的结点(度为2的结点)个数为n₂。<br>则n₀+n₁+n₂&#x3D;2016 ∵n₀&#x3D;n₂+1(二叉树的性质：叶结点个数等于度为2的结点个数加1) ∴n₀+n₁+n₂&#x3D;2016<br>⇨n₂+1+16+n₂&#x3D;2016 ⇨2n₂&#x3D;1999 n₂除不尽，所以答案错误。<br>公式在课本P118；<br><strong>树的节点数&#x3D;所有节点的度数+1<br>二叉树，叶结点个数等于度为2的结点个数+1</strong></p>
+<p>分析： 假设没有孩子的结点(叶结点)个数为n₀，只有一个孩子的结点(度为1的结点)个数为n₁，有两个孩子的结点(度为2的结点)个数为n₂。<br>则n₀+n₁+n₂=2016 ∵n₀=n₂+1(二叉树的性质：叶结点个数等于度为2的结点个数加1) ∴n₀+n₁+n₂=2016<br>⇨n₂+1+16+n₂=2016 ⇨2n₂=1999 n₂除不尽，所以答案错误。<br>公式在课本P118；<br><strong>树的节点数=所有节点的度数+1<br>二叉树，叶结点个数等于度为2的结点个数+1</strong></p>
 </blockquote>
 </li>
 <li><p>If a general tree T is converted into a binary tree BT, then which of the following BT traversals gives the same sequence as that of the post-order traversal of T?<br><code>inorder</code> </p>
 <blockquote>
-<p>转换后，<br>T的preorder &#x3D; BT的preorder(preorder不变)<br>T的postorder &#x3D; BT的inorder</p>
+<p>转换后，<br>T的preorder = BT的preorder(preorder不变)<br>T的postorder = BT的inorder</p>
 </blockquote>
 </li>
-<li><p>As the picture showed.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20193936.jpg"></p>
+<li><p>As the picture showed.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20193936.jpg" alt=""></p>
 </li>
 </ol>
 <blockquote>
 <p>注意:左右子树不同,这棵树的左子树的左子树是空的</p>
 </blockquote>
-<h4 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h4><h5 id="6-1-Isomorphic"><a href="#6-1-Isomorphic" class="headerlink" title="6-1 Isomorphic"></a>6-1 Isomorphic</h5><p>Two trees, <code>T1</code> and <code>T2</code>, are isomorphic if <code>T1</code> can be transformed into <code>T2</code> by swapping left and right children of (some of the) nodes in T1. For instance, the two trees in Figure 1 are isomorphic because they are the same if the children of <code>A</code>, <code>B</code>, and <code>G</code>, but not the other nodes, are swapped. Give a polynomial time algorithm to decide if two trees are isomorphic.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20191055.jpg"><br><strong>Format of functions:</strong></p>
-<pre><code class="C">int Isomorphic( Tree T1, Tree T2 );
+<h4 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h4><h5 id="6-1-Isomorphic"><a href="#6-1-Isomorphic" class="headerlink" title="6-1 Isomorphic"></a>6-1 Isomorphic</h5><p>Two trees, <code>T1</code> and <code>T2</code>, are isomorphic if <code>T1</code> can be transformed into <code>T2</code> by swapping left and right children of (some of the) nodes in T1. For instance, the two trees in Figure 1 are isomorphic because they are the same if the children of <code>A</code>, <code>B</code>, and <code>G</code>, but not the other nodes, are swapped. Give a polynomial time algorithm to decide if two trees are isomorphic.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20191055.jpg" alt=""><br><strong>Format of functions:</strong></p>
+<pre><code class="lang-C">int Isomorphic( Tree T1, Tree T2 );
 </code></pre>
 <p>where Tree is defined as the following:</p>
-<pre><code class="C">typedef struct TreeNode *Tree;
+<pre><code class="lang-C">typedef struct TreeNode *Tree;
 struct TreeNode &#123;
     ElementType Element;
     Tree  Left;
     Tree  Right;
 &#125;;
 </code></pre>
-<p>The function is supposed to return <code>1</code> if <code>T1 </code>and <code>T2</code> are indeed isomorphic, or <code>0</code> if not.</p>
-<pre><code class="C">Sample program of judge:
+<p>The function is supposed to return <code>1</code> if <code>T1</code>and <code>T2</code> are indeed isomorphic, or <code>0</code> if not.</p>
+<pre><code class="lang-C">Sample program of judge:
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
@@ -852,12 +845,10 @@ int main()
 </code></pre>
 <p><strong>Sample Output 1 (for the trees shown in Figure 1):</strong></p>
 <pre><code>1
-</code></pre>
-<p><strong>Sample Output 2 (for the trees shown in Figure 2):</strong></p>
+</code></pre><p><strong>Sample Output 2 (for the trees shown in Figure 2):</strong></p>
 <pre><code>0
-</code></pre>
-<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-11-14%20191108.jpg"><br><strong>solution</strong></p>
-<pre><code class="C">int Isomorphic( Tree T1, Tree T2 )
+</code></pre><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-11-14%20191108.jpg" alt=""><br><strong>solution</strong></p>
+<pre><code class="lang-C">int Isomorphic( Tree T1, Tree T2 )
 &#123;
     if(T1==NULL&amp;&amp;T2==NULL)
         return 1;//First Case
@@ -875,17 +866,15 @@ int main()
         return Isomorphic(T1-&gt;Left,T2-&gt;Right)&amp;&amp;Isomorphic(T1-&gt;Right,T2-&gt;Left);
 &#125;
 </code></pre>
-<h4 id="Program-1"><a href="#Program-1" class="headerlink" title="Program"></a>Program</h4><h5 id="7-1-ZigZagging-on-a-Tree"><a href="#7-1-ZigZagging-on-a-Tree" class="headerlink" title="7-1 ZigZagging on a Tree"></a>7-1 ZigZagging on a Tree</h5><p>Suppose that all the keys in a binary tree are distinct positive integers. A unique binary tree can be determined by a given pair of postorder and inorder traversal sequences. And it is a simple standard routine to print the numbers in level-order. However, if you think the problem is too simple, then you are too naive. This time you are supposed to print the numbers in “zigzagging order” – that is, starting from the root, print the numbers level-by-level, alternating between left to right and right to left. For example, for the following tree you must output: <code>1 11 5 8 17 12 20 15</code>.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/337cbfb0-a7b2-4500-9664-318e9ffc870e.jpg"><br><strong>Input Specification:</strong><br>Each input file contains one test case. For each case, the first line gives a positive integer N (≤30), the total number of nodes in the binary tree. The second line gives the inorder sequence and the third line gives the postorder sequence. All the numbers in a line are separated by a space.</p>
+<h4 id="Program-1"><a href="#Program-1" class="headerlink" title="Program"></a>Program</h4><h5 id="7-1-ZigZagging-on-a-Tree"><a href="#7-1-ZigZagging-on-a-Tree" class="headerlink" title="7-1 ZigZagging on a Tree"></a>7-1 ZigZagging on a Tree</h5><p>Suppose that all the keys in a binary tree are distinct positive integers. A unique binary tree can be determined by a given pair of postorder and inorder traversal sequences. And it is a simple standard routine to print the numbers in level-order. However, if you think the problem is too simple, then you are too naive. This time you are supposed to print the numbers in “zigzagging order” — that is, starting from the root, print the numbers level-by-level, alternating between left to right and right to left. For example, for the following tree you must output: <code>1 11 5 8 17 12 20 15</code>.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/337cbfb0-a7b2-4500-9664-318e9ffc870e.jpg" alt=""><br><strong>Input Specification:</strong><br>Each input file contains one test case. For each case, the first line gives a positive integer N (≤30), the total number of nodes in the binary tree. The second line gives the inorder sequence and the third line gives the postorder sequence. All the numbers in a line are separated by a space.</p>
 <p><strong>Output Specification:</strong><br>For each test case, print the zigzagging sequence of the tree in a line. All the numbers in a line must be separated by exactly one space, and there must be no extra space at the end of the line.<br><strong>Sample Input:</strong></p>
 <pre><code>8
 12 11 20 17 1 15 8 5
 12 20 17 11 15 8 5 1
-</code></pre>
-<p><strong>Sample Output:</strong></p>
+</code></pre><p><strong>Sample Output:</strong></p>
 <pre><code>1 11 5 8 17 12 20 15
-</code></pre>
-<p><strong>solution</strong></p>
-<pre><code class="C">#include&lt;stdio.h&gt;
+</code></pre><p><strong>solution</strong></p>
+<pre><code class="lang-C">#include&lt;stdio.h&gt;
 #include&lt;stdlib.h&gt;
 
 typedef struct BiTree
@@ -995,13 +984,13 @@ int main()&#123;
 <h4 id="Relflexive"><a href="#Relflexive" class="headerlink" title="Relflexive"></a>Relflexive</h4><p>Relation is relflexive, If $(a, a) ∈ R$.</p>
 <h4 id="Consistent"><a href="#Consistent" class="headerlink" title="Consistent"></a>Consistent</h4><p>Relation is symmetric and relflexive.</p>
 <h3 id="Implementation-4"><a href="#Implementation-4" class="headerlink" title="Implementation"></a>Implementation</h3><h4 id="Array-Data-Stucture-Implementation"><a href="#Array-Data-Stucture-Implementation" class="headerlink" title="Array Data Stucture Implementation"></a>Array Data Stucture Implementation</h4><p><code>S [element] = the element’s parent</code><br><code>S [root] = -SetSize and  set name = root&#39;s index</code></p>
-<h4 id="Union"><a href="#Union" class="headerlink" title="Union"></a>Union</h4><pre><code class="C">void  SetUnion ( DisjSet S, SetType Rt1,SetType Rt2 )
+<h4 id="Union"><a href="#Union" class="headerlink" title="Union"></a>Union</h4><pre><code class="lang-C">void  SetUnion ( DisjSet S, SetType Rt1,SetType Rt2 )
 &#123;
     S[Rt2] = Rt1;     
 &#125;
 </code></pre>
 <h4 id="Find-Including-Path-Compression"><a href="#Find-Including-Path-Compression" class="headerlink" title="Find (Including Path Compression)"></a>Find (Including Path Compression)</h4><p><strong>Recursive Version</strong></p>
-<pre><code class="C">SetType  Find ( ElementType  X, DisjSet  S )
+<pre><code class="lang-C">SetType  Find ( ElementType  X, DisjSet  S )
 &#123;
     if ( S[ X ] &lt;= 0 )
         return  X;
@@ -1010,7 +999,7 @@ int main()&#123;
 &#125;
 </code></pre>
 <p><strong>Iterate Version</strong></p>
-<pre><code class="C">SetType  Find ( ElementType  X, DisjSet  S )
+<pre><code class="lang-C">SetType  Find ( ElementType  X, DisjSet  S )
 &#123;   ElementType  root,  trail,  lead;
     for ( root = X; S[ root ] &gt; 0; root = S[ root ] );  /* find the root */
     for ( trail = X; trail != root; trail = lead ) &#123;
@@ -1020,7 +1009,7 @@ int main()&#123;
     return  root ;
 &#125;
 </code></pre>
-<h4 id="SetUnion-By-Size"><a href="#SetUnion-By-Size" class="headerlink" title="SetUnion By Size"></a>SetUnion By Size</h4><pre><code class="C">void SetUnion(int X1,int X2)
+<h4 id="SetUnion-By-Size"><a href="#SetUnion-By-Size" class="headerlink" title="SetUnion By Size"></a>SetUnion By Size</h4><pre><code class="lang-C">void SetUnion(int X1,int X2)
 &#123;
     int root1=Find(X1);
     int root2=Find(X2);
@@ -1045,16 +1034,16 @@ int main()&#123;
 &#125;
 </code></pre>
 <h3 id="Puzzles-2"><a href="#Puzzles-2" class="headerlink" title="Puzzles"></a>Puzzles</h3><h4 id="Judgement-amp-Choice"><a href="#Judgement-amp-Choice" class="headerlink" title="Judgement &amp; Choice"></a>Judgement &amp; Choice</h4><ol>
-<li>In Union&#x2F;Find algorithm, if Unions are done by size, the depth of any node must be no more than $N&#x2F;2$, but not $O(logN)$.<br><code>F</code><blockquote>
+<li>In Union/Find algorithm, if Unions are done by size, the depth of any node must be no more than $N/2$, but not $O(logN)$.<br><code>F</code><blockquote>
 <p>每做一次归并，都会使得小的集合深度加1，但是总的深度还是看大的集合。只有深度相同的归并才能使得总的深度加1，2,2归并，深度变为3；3,3归并深度变为4。因此深度最大为$log_{2}N+1$<br>所以，N次归并和M次查找，复杂度为$O(N+M\log_2N)$</p>
 </blockquote>
 </li>
 <li>The array representation of a disjoint set containing numbers 0 to 8 is given by { 1, -4, 1, 1, -3, 4, 4, 8, -2 }. Then to union the two sets which contain 6 and 8 (with union-by-size), the index of the resulting root and the value stored at the root are:<br><code>B.4 and -5</code><blockquote>
 <p>正的数代表根，负的数代表最终根以及集合的元素个数。没合并前是{0，1，2，3}，{4，5，6}，{7，8}</p>
+<h4 id="Program-2"><a href="#Program-2" class="headerlink" title="Program"></a>Program</h4><h5 id="7-1-File-Transfer"><a href="#7-1-File-Transfer" class="headerlink" title="7-1 File Transfer"></a>7-1 File Transfer</h5><p>We have a network of computers and a list of bi-directional connections. Each of these connections allows a file transfer from one computer to another. Is it possible to send a file from any computer on the network to any other?<br><strong>Input Specification:</strong><br>Each input file contains one test case. For each test case, the first line contains $N (2≤N≤10^4)$, the total number of computers in a network. Each computer in the network is then represented by a positive integer between 1 and N. Then in the following lines, the input is given in the format:<br><code>I c1 c2</code><br>where <code>I</code> stands for inputting a connection between <code>c1</code> and <code>c2</code>;<br>or<br><code>C c1 c2</code><br>where <code>C</code> stands for checking if it is possible to transfer files between c1 and c2;<br>or<br><code>S</code><br>where <code>S</code> stands for stopping this case.</p>
 </blockquote>
 </li>
 </ol>
-<h4 id="Program-2"><a href="#Program-2" class="headerlink" title="Program"></a>Program</h4><h5 id="7-1-File-Transfer"><a href="#7-1-File-Transfer" class="headerlink" title="7-1 File Transfer"></a>7-1 File Transfer</h5><p>We have a network of computers and a list of bi-directional connections. Each of these connections allows a file transfer from one computer to another. Is it possible to send a file from any computer on the network to any other?<br><strong>Input Specification:</strong><br>Each input file contains one test case. For each test case, the first line contains $N (2≤N≤10^4)$, the total number of computers in a network. Each computer in the network is then represented by a positive integer between 1 and N. Then in the following lines, the input is given in the format:<br><code>I c1 c2</code><br>where <code>I</code> stands for inputting a connection between <code>c1</code> and <code>c2</code>;<br>or<br><code>C c1 c2</code><br>where <code>C</code> stands for checking if it is possible to transfer files between c1 and c2;<br>or<br><code>S</code><br>where <code>S</code> stands for stopping this case.</p>
 <p><strong>Output Specification:</strong><br>For each C case, print in one line the word “yes” or “no” if it is possible or impossible to transfer files between c1 and c2, respectively. At the end of each case, print in one line “The network is connected.” if there is a path between any pair of computers; or “There are k components.” where k is the number of connected components in this network.</p>
 <p><strong>Sample Input 1:</strong></p>
 <pre><code>5
@@ -1065,14 +1054,12 @@ I 4 5
 I 2 4
 C 3 5
 S
-</code></pre>
-<p><strong>Sample Output 1:</strong></p>
+</code></pre><p><strong>Sample Output 1:</strong></p>
 <pre><code>no
 no
 yes
 There are 2 components.
-</code></pre>
-<p><strong>Sample Input 2:</strong></p>
+</code></pre><p><strong>Sample Input 2:</strong></p>
 <pre><code>5
 C 3 2
 I 3 2
@@ -1083,16 +1070,14 @@ C 3 5
 I 1 3
 C 1 5
 S
-</code></pre>
-<p><strong>Sample Output 2:</strong></p>
+</code></pre><p><strong>Sample Output 2:</strong></p>
 <pre><code>no
 no
 yes
 yes
 The network is connected.
-</code></pre>
-<p><strong>Solution</strong></p>
-<pre><code class="C">#include&lt;stdio.h&gt;
+</code></pre><p><strong>Solution</strong></p>
+<pre><code class="lang-C">#include&lt;stdio.h&gt;
 
 
 int Find ( int X, int S[] )
@@ -1173,10 +1158,10 @@ int main()&#123;
     return 0;
 &#125;
 </code></pre>
-<h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>$G( V, E )$  where  $G$ ::&#x3D; graph,<br>$V &#x3D; V( G )$ ::&#x3D; finite nonempty set of vertices,<br>and $E &#x3D; E( G )$ ::&#x3D; finite set of edges.<br><strong>Undirected graph:</strong>  $( vi , vj ) &#x3D; ( vj , vi )$ ::&#x3D; the same edge.<br><strong>Directed graph (digraph):</strong>  $&lt; v_i , v_j &gt; ::&#x3D; v_i -&gt; v_j  \neq &lt; vj , vi &gt;$<br>In this class,Restrictions :<br>(1)  Self loop is illegal.<br>(2)  Multigraph is not considered<br>(Multigraph: A Graph that there could be more than one edge between two nodes)<br><strong>Complete graph:</strong>  a graph that has the maximum number of edges<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-12-27%20165015.gif"><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-12-27%20165307.gif"></p>
-<h3 id="Simple-Implementation-of-Graph"><a href="#Simple-Implementation-of-Graph" class="headerlink" title="Simple Implementation of Graph"></a>Simple Implementation of Graph</h3><h4 id="Adjacency-Matrix"><a href="#Adjacency-Matrix" class="headerlink" title="Adjacency Matrix"></a>Adjacency Matrix</h4><p><code>adj_mat[n][n]</code> is defined for $G(V, E)$ with $n$ vertices, $n &gt; 1$ :<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/AdjMat.png"><br>Note: If G is undirected, then <code>adj_mat[ ][ ]</code> is <strong>symmetric</strong>.<br>Thus we can save space by storing only half of the matrix.<br>In a word, the advantage of adjacency matrix is simple to implement, <strong>but the disadvantage is waste of space.</strong> In praxtice,for most incomplete graphs, more than half of the space is often wasted.</p>
-<h4 id="Adjacency-Lists"><a href="#Adjacency-Lists" class="headerlink" title="Adjacency Lists"></a>Adjacency Lists</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-12-27%20170109.gif"><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-12-27%20170222.gif"></p>
-<h5 id="Simple-Implementation-in-C"><a href="#Simple-Implementation-in-C" class="headerlink" title="Simple Implementation in C"></a>Simple Implementation in C</h5><pre><code class="C">typedef int Vertex;         /* 用顶点下标表示顶点,为整型 */
+<h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>$G( V, E )$  where  $G$ ::= graph,<br>$V = V( G )$ ::= finite nonempty set of vertices,<br>and $E = E( G )$ ::= finite set of edges.<br><strong>Undirected graph:</strong>  $( vi , vj ) = ( vj , vi )$ ::= the same edge.<br><strong>Directed graph (digraph):</strong>  $&lt; v_i , v_j &gt; ::= v_i -&gt; v_j  \neq &lt; vj , vi &gt;$<br>In this class,Restrictions :<br>(1)  Self loop is illegal.<br>(2)  Multigraph is not considered<br>(Multigraph: A Graph that there could be more than one edge between two nodes)<br><strong>Complete graph:</strong>  a graph that has the maximum number of edges<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-12-27%20165015.gif" alt=""><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-12-27%20165307.gif" alt=""></p>
+<h3 id="Simple-Implementation-of-Graph"><a href="#Simple-Implementation-of-Graph" class="headerlink" title="Simple Implementation of Graph"></a>Simple Implementation of Graph</h3><h4 id="Adjacency-Matrix"><a href="#Adjacency-Matrix" class="headerlink" title="Adjacency Matrix"></a>Adjacency Matrix</h4><p><code>adj_mat[n][n]</code> is defined for $G(V, E)$ with $n$ vertices, $n &gt; 1$ :<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/AdjMat.png" alt=""><br>Note: If G is undirected, then <code>adj_mat[ ][ ]</code> is <strong>symmetric</strong>.<br>Thus we can save space by storing only half of the matrix.<br>In a word, the advantage of adjacency matrix is simple to implement, <strong>but the disadvantage is waste of space.</strong> In praxtice,for most incomplete graphs, more than half of the space is often wasted.</p>
+<h4 id="Adjacency-Lists"><a href="#Adjacency-Lists" class="headerlink" title="Adjacency Lists"></a>Adjacency Lists</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-12-27%20170109.gif" alt=""><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-12-27%20170222.gif" alt=""></p>
+<h5 id="Simple-Implementation-in-C"><a href="#Simple-Implementation-in-C" class="headerlink" title="Simple Implementation in C"></a>Simple Implementation in C</h5><pre><code class="lang-C">typedef int Vertex;         /* 用顶点下标表示顶点,为整型 */
 typedef int WeightType;        /* 边的权值设为整型 */
 typedef char DataType;        /* 顶点存储的数据类型设为字符型 */
 
@@ -1216,7 +1201,7 @@ LGraph CreateGraph( int VertexNum )
 &#123; /* 初始化一个有VertexNum个顶点但没有边的图 */
     Vertex V;
     LGraph Graph;
-    
+
     Graph = (LGraph)malloc( sizeof(struct GNode) ); /* 建立图 */
     Graph-&gt;Nv = VertexNum;
     Graph-&gt;Ne = 0;
@@ -1227,11 +1212,11 @@ LGraph CreateGraph( int VertexNum )
        &#125;
     return Graph; 
 &#125;
-       
+
 void InsertEdge( LGraph Graph, Edge E )
 &#123;
     PtrToAdjVNode NewNode;
-    
+
     /* 插入边 &lt;V1, V2&gt; */
     /* 为V2建立新的邻接点 */
     NewNode = (PtrToAdjVNode)malloc(sizeof(struct AdjVNode));
@@ -1240,7 +1225,7 @@ void InsertEdge( LGraph Graph, Edge E )
     /* 将V2插入V1的表头 */
     NewNode-&gt;Next = Graph-&gt;G[E-&gt;V1].FirstEdge;
     Graph-&gt;G[E-&gt;V1].FirstEdge = NewNode;
-        
+
     /* 若是无向图，还要插入边 &lt;V2, V1&gt; */
     /* 为V1建立新的邻接点 */
     NewNode = (PtrToAdjVNode)malloc(sizeof(struct AdjVNode));
@@ -1257,10 +1242,10 @@ LGraph BuildGraph()
     Edge E;
     Vertex V;
     int Nv, i;
-    
+
     scanf(&quot;%d&quot;, &amp;Nv);   /* 读入顶点个数 */
     Graph = CreateGraph(Nv); /* 初始化有Nv个顶点但没有边的图 */ 
-    
+
     scanf(&quot;%d&quot;, &amp;(Graph-&gt;Ne));   /* 读入边数 */
     if ( Graph-&gt;Ne != 0 ) &#123; /* 如果有边 */ 
         E = (Edge)malloc( sizeof(struct ENode) ); /* 建立边结点 */ 
@@ -1279,8 +1264,8 @@ LGraph BuildGraph()
     return Graph;
 &#125;
 </code></pre>
-<h3 id="Toplogical-Sort"><a href="#Toplogical-Sort" class="headerlink" title="Toplogical Sort"></a>Toplogical Sort</h3><h4 id="Definition-5"><a href="#Definition-5" class="headerlink" title="Definition"></a>Definition</h4><p><strong>AOV Network</strong> ::&#x3D; digraph $G$ in which $V( G )$ represents activities ( e.g.  the courses ) and $E( G )$ represents precedence relations ( e.g.  means that C1 is a prerequisite course of C3 ).<br>$i$ is a predecessor of $j$ ::&#x3D; there is a path from $i$ to $j$<br>$i$ is an immediate predecessor of  $j ::&#x3D; &lt; i$,  $j &gt; \in E( G )$,then $j$ is called a <strong>successor</strong> ( immediate successor ) of $i$<br><strong>Partial order</strong> ::&#x3D; a precedence relation which is both <strong>transitive</strong> $( i \to k, k \to j  \Rightarrow  i \to j )$ and <strong>irreflexive</strong> ( $i \to i$ is impossible ).<br>(which means there must be no circles)<br><strong>A topological order</strong> is a linear ordering of the vertices of a graph such that, for any two vertices, $i, j,$ if $i$ is a predecessor of $j$ in the network then $i$ precedes $j$ in the linear ordering.</p>
-<h4 id="Normal-Implementation"><a href="#Normal-Implementation" class="headerlink" title="Normal Implementation"></a>Normal Implementation</h4><pre><code class="C">void Topsort( Graph G )
+<h3 id="Toplogical-Sort"><a href="#Toplogical-Sort" class="headerlink" title="Toplogical Sort"></a>Toplogical Sort</h3><h4 id="Definition-5"><a href="#Definition-5" class="headerlink" title="Definition"></a>Definition</h4><p><strong>AOV Network</strong> ::= digraph $G$ in which $V( G )$ represents activities ( e.g.  the courses ) and $E( G )$ represents precedence relations ( e.g.  means that C1 is a prerequisite course of C3 ).<br>$i$ is a predecessor of $j$ ::= there is a path from $i$ to $j$<br>$i$ is an immediate predecessor of  $j ::= &lt; i$,  $j &gt; \in E( G )$,then $j$ is called a <strong>successor</strong> ( immediate successor ) of $i$<br><strong>Partial order</strong> ::= a precedence relation which is both <strong>transitive</strong> $( i \to k, k \to j  \Rightarrow  i \to j )$ and <strong>irreflexive</strong> ( $i \to i$ is impossible ).<br>(which means there must be no circles)<br><strong>A topological order</strong> is a linear ordering of the vertices of a graph such that, for any two vertices, $i, j,$ if $i$ is a predecessor of $j$ in the network then $i$ precedes $j$ in the linear ordering.</p>
+<h4 id="Normal-Implementation"><a href="#Normal-Implementation" class="headerlink" title="Normal Implementation"></a>Normal Implementation</h4><pre><code class="lang-C">void Topsort( Graph G )
 &#123;   int  Counter;
     Vertex  V, W;
     for ( Counter = 0; Counter &lt; NumVertex; Counter ++ ) &#123;
@@ -1294,8 +1279,8 @@ LGraph BuildGraph()
     &#125;
 &#125;
 </code></pre>
-<p>Analyse the time complexity:$T &#x3D; O( |V|^2 )$</p>
-<h4 id="Implementation-with-Queue"><a href="#Implementation-with-Queue" class="headerlink" title="Implementation with Queue"></a>Implementation with Queue</h4><pre><code class="C">void Topsort( Graph G )
+<p>Analyse the time complexity:$T = O( |V|^2 )$</p>
+<h4 id="Implementation-with-Queue"><a href="#Implementation-with-Queue" class="headerlink" title="Implementation with Queue"></a>Implementation with Queue</h4><pre><code class="lang-C">void Topsort( Graph G )
 &#123;   
     Queue  Q;
     int  Counter = 0;
@@ -1321,13 +1306,13 @@ LGraph BuildGraph()
     DisposeQueue( Q ); /* free memory */
 &#125;
 </code></pre>
-<p>Analyse the time complexity:$T &#x3D; O( |V|+|E| )$</p>
-<h3 id="Shortest-Path"><a href="#Shortest-Path" class="headerlink" title="Shortest Path"></a>Shortest Path</h3><p>Given a digraph $G &#x3D; ( V, E )$, and a cost function $c( e )$ for $e \in E( G )$.   <strong>The length of a path $P$</strong> from source to destination is $\sum_{e_i \in P}c(e_i)$ (also called weighted path length).</p>
-<h4 id="Simple-representation"><a href="#Simple-representation" class="headerlink" title="Simple representation"></a>Simple representation</h4><pre><code class="C">Table[ i ].Dist ::= distance from s to vi  /* initialized to be $\infin$ except for s */
+<p>Analyse the time complexity:$T = O( |V|+|E| )$</p>
+<h3 id="Shortest-Path"><a href="#Shortest-Path" class="headerlink" title="Shortest Path"></a>Shortest Path</h3><p>Given a digraph $G = ( V, E )$, and a cost function $c( e )$ for $e \in E( G )$.   <strong>The length of a path $P$</strong> from source to destination is $\sum_{e_i \in P}c(e_i)$ (also called weighted path length).</p>
+<h4 id="Simple-representation"><a href="#Simple-representation" class="headerlink" title="Simple representation"></a>Simple representation</h4><pre><code class="lang-C">Table[ i ].Dist ::= distance from s to vi  /* initialized to be $\infin$ except for s */
 Table[ i ].Known ::= 1 if vi is checked; or 0 if not
 Table[ i ].Path ::= for tracking the path   /* initialized to be 0 *,上一个点/
 </code></pre>
-<h4 id="Implementation-5"><a href="#Implementation-5" class="headerlink" title="Implementation"></a>Implementation</h4><h5 id="Unweighted-Graph-with-a-Queue"><a href="#Unweighted-Graph-with-a-Queue" class="headerlink" title="Unweighted Graph with a Queue"></a>Unweighted Graph with a Queue</h5><pre><code class="C">void Unweighted( Table T )
+<h4 id="Implementation-5"><a href="#Implementation-5" class="headerlink" title="Implementation"></a>Implementation</h4><h5 id="Unweighted-Graph-with-a-Queue"><a href="#Unweighted-Graph-with-a-Queue" class="headerlink" title="Unweighted Graph with a Queue"></a>Unweighted Graph with a Queue</h5><pre><code class="lang-C">void Unweighted( Table T )
 &#123;   /* T is initialized with the source vertex S given */
     Queue  Q;
     Vertex  V, W;
@@ -1348,8 +1333,8 @@ Table[ i ].Path ::= for tracking the path   /* initialized to be 0 *,上一个�
     DisposeQueue( Q ); /* free memory */
 &#125;
 </code></pre>
-<p>$T &#x3D; O( |V|+|E| )$</p>
-<h5 id="Dijkstra’s-Algorithm-for-Weighted-Graph"><a href="#Dijkstra’s-Algorithm-for-Weighted-Graph" class="headerlink" title="Dijkstra’s Algorithm for Weighted Graph"></a>Dijkstra’s Algorithm for Weighted Graph</h5><pre><code class="C">void Dijkstra( Table T )
+<p>$T = O( |V|+|E| )$</p>
+<h5 id="Dijkstra’s-Algorithm-for-Weighted-Graph"><a href="#Dijkstra’s-Algorithm-for-Weighted-Graph" class="headerlink" title="Dijkstra’s Algorithm for Weighted Graph"></a>Dijkstra’s Algorithm for Weighted Graph</h5><pre><code class="lang-C">void Dijkstra( Table T )
 &#123;   /* T is initialized by Figure 9.30 on p.303 */
     Vertex  V, W;
     for ( ; ; ) &#123;
@@ -1370,13 +1355,13 @@ Table[ i ].Path ::= for tracking the path   /* initialized to be 0 *,上一个�
     &#125; /* end-for( ; ; ) */
 &#125;
 </code></pre>
-<p>NOTE:This algorithm does not work for edge with negative cost.<br>$T &#x3D; O( |V|^2 + |E| )$<br><strong>If this algorithm work with a priority queue</strong>,the time complexity could be<br>$T &#x3D; O( |V| log|V| + |E| log|V| ) &#x3D; O( |E| log|V| )$</p>
+<p>NOTE:This algorithm does not work for edge with negative cost.<br>$T = O( |V|^2 + |E| )$<br><strong>If this algorithm work with a priority queue</strong>,the time complexity could be<br>$T = O( |V| log|V| + |E| log|V| ) = O( |E| log|V| )$</p>
 <h4 id="Acyclic-Graphs"><a href="#Acyclic-Graphs" class="headerlink" title="Acyclic Graphs"></a>Acyclic Graphs</h4><p>If the graph is acyclic, <strong>vertices may be selected in topological order</strong> since when a vertex is selected, its distance can no longer be lowered without any incoming edges from unknown nodes.</p>
-<h3 id="Network-Flow-Problem"><a href="#Network-Flow-Problem" class="headerlink" title="Network Flow Problem"></a>Network Flow Problem</h3><p>$G&#x3D;(V,E)$是一个有向图，其中每条边$(u,v)∈E$均有一个非负容量$c(u,v)&gt;&#x3D;0$。如果$(u,v) \notin E$，则假定$c(u,v)&#x3D;0$。流网络中有两个特别的顶点：源点$s$和汇点$t$。下图展示了一个流网络的实例。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-01-02%20195823.jpg"></p>
+<h3 id="Network-Flow-Problem"><a href="#Network-Flow-Problem" class="headerlink" title="Network Flow Problem"></a>Network Flow Problem</h3><p>$G=(V,E)$是一个有向图，其中每条边$(u,v)∈E$均有一个非负容量$c(u,v)&gt;=0$。如果$(u,v) \notin E$，则假定$c(u,v)=0$。流网络中有两个特别的顶点：源点$s$和汇点$t$。下图展示了一个流网络的实例。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202023-01-02%20195823.jpg" alt=""></p>
 <h3 id="Minimum-Spanning-Tree"><a href="#Minimum-Spanning-Tree" class="headerlink" title="Minimum Spanning Tree"></a>Minimum Spanning Tree</h3><p>A spanning tree of a graph $G$ is a tree which consists of $V( G )$ and a subset of $E( G )$</p>
 <p><strong>Note:</strong></p>
 <ol>
-<li>The minimum spanning tree is a tree since it is acyclic – the number of edges is $|V| – 1$.</li>
+<li>The minimum spanning tree is a tree since it is acyclic — the number of edges is $|V| – 1$.</li>
 <li>It is minimum for the total cost of edges is minimized.</li>
 <li>It is spanning because it covers every vertex.</li>
 <li>A minimum spanning tree exists iff $G$ is connected.</li>
@@ -1384,7 +1369,7 @@ Table[ i ].Path ::= for tracking the path   /* initialized to be 0 *,上一个�
 </ol>
 <h4 id="Prim’s-Algorithm"><a href="#Prim’s-Algorithm" class="headerlink" title="Prim’s Algorithm"></a>Prim’s Algorithm</h4><p>对<strong>顶点</strong>操作，在最小生成树的顶点集$U$和待处理顶点集$V-U$中，不断地寻找最短边(代价最小边)，找到后将对应顶点加入集合$U$，直到所有顶点均处理完毕($V-U$里没有剩余顶点),<strong>DFS</strong></p>
 <p><strong>Prim算法如何保证不成环？因为每次选择的点都是在集合$V$以外的</strong></p>
-<h5 id="Implementation-6"><a href="#Implementation-6" class="headerlink" title="Implementation"></a>Implementation</h5><pre><code class="C">/* 邻接矩阵存储 - Prim最小生成树算法 */
+<h5 id="Implementation-6"><a href="#Implementation-6" class="headerlink" title="Implementation"></a>Implementation</h5><pre><code class="lang-C">/* 邻接矩阵存储 - Prim最小生成树算法 */
 
 Vertex FindMinDist( MGraph Graph, WeightType dist[] )
 &#123; /* 返回未被收录顶点中dist最小者 */
@@ -1409,7 +1394,7 @@ int Prim( MGraph Graph, LGraph MST )
     Vertex parent[MaxVertexNum], V, W;
     int VCount;
     Edge E;
-    
+
     /* 初始化。默认初始点下标是0 */
     for (V=0; V&lt;Graph-&gt;Nv; V++) &#123;
         /* 这里假设若V到W没有直接的边，则Graph-&gt;G[V][W]定义为INFINITY */
@@ -1421,7 +1406,7 @@ int Prim( MGraph Graph, LGraph MST )
     /* 创建包含所有顶点但没有边的图。注意用邻接表版本 */
     MST = CreateGraph(Graph-&gt;Nv);
     E = (Edge)malloc( sizeof(struct ENode) ); /* 建立空的边结点 */
-           
+
     /* 将初始点0收录进MST */
     dist[0] = 0;
     VCount ++;
@@ -1432,7 +1417,7 @@ int Prim( MGraph Graph, LGraph MST )
         /* V = 未被收录顶点中dist最小者 */
         if ( V==ERROR ) /* 若这样的V不存在 */
             break;   /* 算法结束 */
-            
+
         /* 将V及相应的边&lt;parent[V], V&gt;收录进MST */
         E-&gt;V1 = parent[V];
         E-&gt;V2 = V;
@@ -1441,7 +1426,7 @@ int Prim( MGraph Graph, LGraph MST )
         TotalWeight += dist[V];
         dist[V] = 0;
         VCount++;
-        
+
         for( W=0; W&lt;Graph-&gt;Nv; W++ ) /* 对图中的每个顶点W */
             if ( dist[W]!=0 &amp;&amp; Graph-&gt;G[V][W]&lt;INFINITY ) &#123;
             /* 若W是V的邻接点并且未被收录 */
@@ -1457,7 +1442,7 @@ int Prim( MGraph Graph, LGraph MST )
     return TotalWeight;   /* 算法执行完毕，返回最小权重和或错误标记 */
 </code></pre>
 <h4 id="Kruskal’s-Algorithm"><a href="#Kruskal’s-Algorithm" class="headerlink" title="Kruskal’s Algorithm"></a>Kruskal’s Algorithm</h4><p>对<strong>边</strong>操作，每次选取一条最短边，如果不会和当前最小生成树构成环（回路），将此最短边加入最小生成树中。当选取了$n-1$（顶点数-1）条边，或找出了所有符合条件的不成环边最小生成树生成完毕,<strong>BFS</strong></p>
-<pre><code class="C">void Kruskal ( Graph G )
+<pre><code class="lang-C">void Kruskal ( Graph G )
 &#123;   T = &#123; &#125; ;
     while  ( T contains less than |V| - 1 edges &amp;&amp; E is not empty ) &#123;
         choose a least cost edge (v, w) from E ;
@@ -1471,8 +1456,8 @@ int Prim( MGraph Graph, LGraph MST )
         Error ( “No spanning tree” ) ;
 &#125;
 </code></pre>
-<p>Analysis:$T&#x3D;O(|E|log|E|)$</p>
-<h5 id="Implementation-7"><a href="#Implementation-7" class="headerlink" title="Implementation"></a>Implementation</h5><pre><code class="C">/* 邻接表存储 - Kruskal最小生成树算法 */
+<p>Analysis:$T=O(|E|log|E|)$</p>
+<h5 id="Implementation-7"><a href="#Implementation-7" class="headerlink" title="Implementation"></a>Implementation</h5><pre><code class="lang-C">/* 邻接表存储 - Kruskal最小生成树算法 */
 
 /*-------------------- 顶点并查集定义 --------------------*/
 typedef Vertex ElementType; /* 默认元素可以用非负整数表示 */
@@ -1609,14 +1594,14 @@ int Kruskal( LGraph Graph, LGraph MST )
     return TotalWeight;
 &#125;
 </code></pre>
-<h3 id="Depth-First-Search-DFS"><a href="#Depth-First-Search-DFS" class="headerlink" title="Depth-First Search(DFS)"></a>Depth-First Search(DFS)</h3><h4 id="Implementatiom"><a href="#Implementatiom" class="headerlink" title="Implementatiom"></a>Implementatiom</h4><pre><code class="C">void DFS ( Vertex V )  /* this is only a template */
+<h3 id="Depth-First-Search-DFS"><a href="#Depth-First-Search-DFS" class="headerlink" title="Depth-First Search(DFS)"></a>Depth-First Search(DFS)</h3><h4 id="Implementatiom"><a href="#Implementatiom" class="headerlink" title="Implementatiom"></a>Implementatiom</h4><pre><code class="lang-C">void DFS ( Vertex V )  /* this is only a template */
 &#123;   visited[ V ] = true;  /* mark this vertex to avoid cycles */
     for ( each W adjacent to V )
         if ( !visited[ W ] )
     DFS( W );
 &#125; /* T = O( |E| + |V| ) as long as adjacency lists are used */
 </code></pre>
-<h4 id="Application-1-List-Components"><a href="#Application-1-List-Components" class="headerlink" title="Application 1: List Components"></a>Application 1: List Components</h4><pre><code class="C">void ListComponents ( Graph G ) 
+<h4 id="Application-1-List-Components"><a href="#Application-1-List-Components" class="headerlink" title="Application 1: List Components"></a>Application 1: List Components</h4><pre><code class="lang-C">void ListComponents ( Graph G ) 
 &#123;   for ( each V in G ) 
         if ( !visited[ V ] ) &#123;
     DFS( V );
@@ -1624,14 +1609,14 @@ int Kruskal( LGraph Graph, LGraph MST )
         &#125;
 &#125;
 </code></pre>
-<h4 id="Application-2-Biconnectivity"><a href="#Application-2-Biconnectivity" class="headerlink" title="Application 2: Biconnectivity"></a>Application 2: Biconnectivity</h4><p><strong>【Definition】</strong><br><strong>articulation point:</strong> $v$ is an articulation point if $G’ &#x3D; DeleteVertex( G, v )$ has at least 2 connected components.<br><strong>biconnected graph:</strong> $G$ is a biconnected graph if $G$ is connected and has no articulation points.<br><strong>biconnected component:</strong> A biconnected component is a maximal biconnected subgraph.<br>Now, we want to find the <strong>biconnected components</strong> of a connected <strong>undirected</strong> $G$.</p>
+<h4 id="Application-2-Biconnectivity"><a href="#Application-2-Biconnectivity" class="headerlink" title="Application 2: Biconnectivity"></a>Application 2: Biconnectivity</h4><p><strong>【Definition】</strong><br><strong>articulation point:</strong> $v$ is an articulation point if $G’ = DeleteVertex( G, v )$ has at least 2 connected components.<br><strong>biconnected graph:</strong> $G$ is a biconnected graph if $G$ is connected and has no articulation points.<br><strong>biconnected component:</strong> A biconnected component is a maximal biconnected subgraph.<br>Now, we want to find the <strong>biconnected components</strong> of a connected <strong>undirected</strong> $G$.</p>
 <p><strong>Solution:</strong><br>Find the articulation points in $G$:</p>
 <ul>
 <li>The root is an articulation point if it has at least 2 children</li>
 <li>Any other vertex $u$ is an articulation point if $u$ has at least 1 child, and it is impossible to move down at least 1 step and then jump up to u’s ancestor,which means that :<strong>$u$ is not the root, and has at least 1 child such that  $Low( child ) \geq Num( u )$</strong>.</li>
 </ul>
-<p>$Num(u)$:DFS遍历时顶点的序号<br>$Low(u)$:原图中和该顶点有边的顶点的最低序号<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-01-04%20121207.png"><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-01-04%20121232.gif"><br>In this graph,vertices {1，3，5，7} are articulation point.</p>
-<h5 id="Implementation-in-C"><a href="#Implementation-in-C" class="headerlink" title="Implementation in C"></a>Implementation in C</h5><pre><code class="C">#define min(x,y) ((x)&gt;(y)?(y):(x))
+<p>$Num(u)$:DFS遍历时顶点的序号<br>$Low(u)$:原图中和该顶点有边的顶点的最低序号<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202023-01-04%20121207.png" alt=""><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202023-01-04%20121232.gif" alt=""><br>In this graph,vertices {1，3，5，7} are articulation point.</p>
+<h5 id="Implementation-in-C"><a href="#Implementation-in-C" class="headerlink" title="Implementation in C"></a>Implementation in C</h5><pre><code class="lang-C">#define min(x,y) ((x)&gt;(y)?(y):(x))
 void DFS(int u, Graph G, void(*visit)(Vertex V))&#123;
     num[u]=low[u]=count++;
     stack[++top] = u;
@@ -1672,7 +1657,7 @@ void DFS(int u, Graph G, void(*visit)(Vertex V))&#123;
 <li><strong>An Euler circuit</strong> is possible only if the graph is <strong>connected</strong> and each vertex has an <strong>even</strong> degree.</li>
 <li><strong>An Euler tour</strong> is possible if there are <strong>exactly two vertices having odd degree</strong>.  One must start at one of the odd-degree vertices.</li>
 </ul>
-<h3 id="Puzzles-3"><a href="#Puzzles-3" class="headerlink" title="Puzzles"></a>Puzzles</h3><h4 id="Judgement-amp-Choice-1"><a href="#Judgement-amp-Choice-1" class="headerlink" title="Judgement &amp; Choice"></a>Judgement &amp; Choice</h4><h4 id="Program-3"><a href="#Program-3" class="headerlink" title="Program"></a>Program</h4><h2 id="Sort"><a href="#Sort" class="headerlink" title="Sort"></a>Sort</h2><h3 id="Inseration-Sort"><a href="#Inseration-Sort" class="headerlink" title="Inseration Sort"></a>Inseration Sort</h3><h4 id="Implementation-8"><a href="#Implementation-8" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="C">void InsertionSort ( ElementType A[ ], int N ) 
+<h3 id="Puzzles-3"><a href="#Puzzles-3" class="headerlink" title="Puzzles"></a>Puzzles</h3><h4 id="Judgement-amp-Choice-1"><a href="#Judgement-amp-Choice-1" class="headerlink" title="Judgement &amp; Choice"></a>Judgement &amp; Choice</h4><h4 id="Program-3"><a href="#Program-3" class="headerlink" title="Program"></a>Program</h4><h2 id="Sort"><a href="#Sort" class="headerlink" title="Sort"></a>Sort</h2><h3 id="Inseration-Sort"><a href="#Inseration-Sort" class="headerlink" title="Inseration Sort"></a>Inseration Sort</h3><h4 id="Implementation-8"><a href="#Implementation-8" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="lang-C">void InsertionSort ( ElementType A[ ], int N ) 
 &#123; 
       int  j, P; 
       ElementType  Tmp; 
@@ -1687,9 +1672,9 @@ void DFS(int u, Graph G, void(*visit)(Vertex V))&#123;
       &#125;  /* end for-P-loop */
 &#125;
 </code></pre>
-<h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h4><p><strong>The worst case</strong>:Input <code>A[ ]</code> is in reverse order.   $T( N ) &#x3D; O( N^2 )$</p>
-<p><strong>The best case</strong>:Input <code>A[ ]</code> is in sorted order.  $T( N ) &#x3D; O( N )$</p>
-<h3 id="Shell-Sort"><a href="#Shell-Sort" class="headerlink" title="Shell Sort"></a>Shell Sort</h3><h4 id="Implementation-9"><a href="#Implementation-9" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="C">void Shellsort( ElementType A[ ], int N ) 
+<h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h4><p><strong>The worst case</strong>:Input <code>A[ ]</code> is in reverse order.   $T( N ) = O( N^2 )$</p>
+<p><strong>The best case</strong>:Input <code>A[ ]</code> is in sorted order.  $T( N ) = O( N )$</p>
+<h3 id="Shell-Sort"><a href="#Shell-Sort" class="headerlink" title="Shell Sort"></a>Shell Sort</h3><h4 id="Implementation-9"><a href="#Implementation-9" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="lang-C">void Shellsort( ElementType A[ ], int N ) 
 &#123; 
       int  i, j, Increment; 
       ElementType  Tmp; 
@@ -1706,7 +1691,7 @@ void DFS(int u, Graph G, void(*visit)(Vertex V))&#123;
     &#125; /* end for-I and for-Increment loops */
 &#125;
 </code></pre>
-<h3 id="Heap-Sort"><a href="#Heap-Sort" class="headerlink" title="Heap Sort"></a>Heap Sort</h3><h4 id="Implementation-10"><a href="#Implementation-10" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="C">void PercDown(int A[], int N, int p) &#123;
+<h3 id="Heap-Sort"><a href="#Heap-Sort" class="headerlink" title="Heap Sort"></a>Heap Sort</h3><h4 id="Implementation-10"><a href="#Implementation-10" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="lang-C">void PercDown(int A[], int N, int p) &#123;
     int parent, child;
     int temp = A[p];
     for (parent = p; 2 * parent + 1 &lt; N; parent = child) &#123;
@@ -1731,15 +1716,15 @@ void Heapsort( ElementType A[ ], int N )
     &#125; 
 &#125;
 </code></pre>
-<h3 id="QuickSort-Median-3-version"><a href="#QuickSort-Median-3-version" class="headerlink" title="QuickSort(Median-3 version)"></a>QuickSort(Median-3 version)</h3><h4 id="Implementation-11"><a href="#Implementation-11" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="C">#define Cutoff 5
+<h3 id="QuickSort-Median-3-version"><a href="#QuickSort-Median-3-version" class="headerlink" title="QuickSort(Median-3 version)"></a>QuickSort(Median-3 version)</h3><h4 id="Implementation-11"><a href="#Implementation-11" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="lang-C">#define Cutoff 5
 /*小数据下插入排序更快，不足Cutoff用插入排序*/
 
 void  Quicksort( ElementType A[ ], int N ) 
 &#123; 
     Qsort( A, 0, N - 1 ); 
-    /* A: 	the array 	*/
-    /* 0: 	Left index 	*/
-    /* N – 1: Right index	*/
+    /* A:     the array     */
+    /* 0:     Left index     */
+    /* N – 1: Right index    */
 &#125;//面向对象思想，封装过程
 
 /* Return median of Left, Center, and Right */ 
@@ -1781,7 +1766,7 @@ void  Qsort( ElementType A[ ], int Left, int Right )
             InsertionSort( A + Left, Right - Left + 1 );
     &#125;
 </code></pre>
-<h3 id="Complexity-and-Stability"><a href="#Complexity-and-Stability" class="headerlink" title="Complexity and Stability"></a>Complexity and Stability</h3><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/v2-0872ff222124611b3403a888be76c2b9_1440w.jpg"></p>
+<h3 id="Complexity-and-Stability"><a href="#Complexity-and-Stability" class="headerlink" title="Complexity and Stability"></a>Complexity and Stability</h3><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/v2-0872ff222124611b3403a888be76c2b9_1440w.jpg" alt=""></p>
 <h3 id="Puzzles-4"><a href="#Puzzles-4" class="headerlink" title="Puzzles"></a>Puzzles</h3><h4 id="Judgment-and-Choice-2"><a href="#Judgment-and-Choice-2" class="headerlink" title="Judgment and Choice"></a>Judgment and Choice</h4><ol>
 <li><p>During the sorting, processing every element which is not yet at its final position is called a “run”. Which of the following cannot be the result after the second run of quicksort?<br> A.5, 2, 16, 12, 28, 60, 32, 72<br> B.2, 16, 5, 28, 12, 60, 32, 72<br> C.2, 12, 16, 5, 28, 32, 72, 60<br> D.5, 2, 12, 28, 16, 32, 72, 60<br><code>D</code></p>
 <blockquote>
@@ -1795,19 +1780,19 @@ void  Qsort( ElementType A[ ], int Left, int Right )
 </li>
 <li><p>Among the following sorting methods, which ones will be slowed down if we store the elements in a linked structure instead of a sequential structure?<br>Insertion sort; 2. Selection Sort; 3. Bubble sort; 4. Shell sort; 5. Heap sort<br>A.1 and 2 only<br>B.2 and 3 only<br>C.3 and 4 only<br>D.4 and 5 only<br><code>D</code></p>
 <blockquote>
-<p>如果在链表中存储数据，变慢的操作是：访问第 $n$ 个元素，变快的是插入。shell需要访问第 $k$ 个元素，heap需要访问 $i&#x2F;2$ 的元素。</p>
+<p>如果在链表中存储数据，变慢的操作是：访问第 $n$ 个元素，变快的是插入。shell需要访问第 $k$ 个元素，heap需要访问 $i/2$ 的元素。</p>
 </blockquote>
 </li>
 </ol>
-<h2 id="Hashing"><a href="#Hashing" class="headerlink" title="Hashing"></a>Hashing</h2><h3 id="Symbol-Table"><a href="#Symbol-Table" class="headerlink" title="Symbol Table"></a>Symbol Table</h3><h4 id="Definition-6"><a href="#Definition-6" class="headerlink" title="Definition"></a>Definition</h4><p>e.g.<br>In a symbol table for a compiler<br>name &#x3D; identifier (e.g. int)<br>attribute &#x3D; a list of lines that use the identifier, and some other fields</p>
-<p>这里先说一下哈希表的定义：哈希表是一种根据关键码去寻找值的数据映射结构，该结构通过把关键码映射的位置去寻找存放值的地方，说起来可能感觉有点复杂，我想我举个例子你就会明白了，最典型的的例子就是字典，大家估计小学的时候也用过不少新华字典吧，如果我想要获取“按”字详细信息，我肯定会去根据拼音<code>an</code>去查找 拼音索引(当然也可以是偏旁索引)，我们首先去查<code>an</code>在字典的位置，查了一下得到“安”，结果如下。这过程就是键码映射，在公式里面，就是通过<code>key</code>去查找<code>f(key)</code>。其中，按就是关键字<code>(key)</code>，<code>f()</code>就是字典索引，也就是哈希函数，查到的页码4就是哈希值。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-12-26%20232104.gif"><br>细分T和key<br>T：key的值域<br>n：实际的key的数量</p>
-<h4 id="Collision-amp-Overflow"><a href="#Collision-amp-Overflow" class="headerlink" title="Collision &amp; Overflow"></a>Collision &amp; Overflow</h4><p><strong>A collision occurs</strong> when we hash two nonidentical identifiers into the same bucket, i.e.  $f ( i1 ) &#x3D; f ( i2 )$ when $i1 \neq i2$ .<br>但是问题又来了，我们要查的是“按”，而不是“安，但是他们的拼音都是一样的。也就是通过关键字按和关键字安可以映射到一样的字典页码4的位置，这就是哈希冲突(也叫哈希碰撞)，在公式上表达就是key1≠key2，但f(key1)&#x3D;f(key2)。冲突会给查找带来麻烦，你想想，你本来查找的是“按”，但是却找到“安”字，你又得向后翻一两页，在计算机里面也是一样道理的。</p>
+<h2 id="Hashing"><a href="#Hashing" class="headerlink" title="Hashing"></a>Hashing</h2><h3 id="Symbol-Table"><a href="#Symbol-Table" class="headerlink" title="Symbol Table"></a>Symbol Table</h3><h4 id="Definition-6"><a href="#Definition-6" class="headerlink" title="Definition"></a>Definition</h4><p>e.g.<br>In a symbol table for a compiler<br>name = identifier (e.g. int)<br>attribute = a list of lines that use the identifier, and some other fields</p>
+<p>这里先说一下哈希表的定义：哈希表是一种根据关键码去寻找值的数据映射结构，该结构通过把关键码映射的位置去寻找存放值的地方，说起来可能感觉有点复杂，我想我举个例子你就会明白了，最典型的的例子就是字典，大家估计小学的时候也用过不少新华字典吧，如果我想要获取“按”字详细信息，我肯定会去根据拼音<code>an</code>去查找 拼音索引(当然也可以是偏旁索引)，我们首先去查<code>an</code>在字典的位置，查了一下得到“安”，结果如下。这过程就是键码映射，在公式里面，就是通过<code>key</code>去查找<code>f(key)</code>。其中，按就是关键字<code>(key)</code>，<code>f()</code>就是字典索引，也就是哈希函数，查到的页码4就是哈希值。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-12-26%20232104.gif" alt=""><br>细分T和key<br>T：key的值域<br>n：实际的key的数量</p>
+<h4 id="Collision-amp-Overflow"><a href="#Collision-amp-Overflow" class="headerlink" title="Collision &amp; Overflow"></a>Collision &amp; Overflow</h4><p><strong>A collision occurs</strong> when we hash two nonidentical identifiers into the same bucket, i.e.  $f ( i1 ) = f ( i2 )$ when $i1 \neq i2$ .<br>但是问题又来了，我们要查的是“按”，而不是“安，但是他们的拼音都是一样的。也就是通过关键字按和关键字安可以映射到一样的字典页码4的位置，这就是哈希冲突(也叫哈希碰撞)，在公式上表达就是key1≠key2，但f(key1)=f(key2)。冲突会给查找带来麻烦，你想想，你本来查找的是“按”，但是却找到“安”字，你又得向后翻一两页，在计算机里面也是一样道理的。</p>
 <p><strong>An overflow occurs</strong> when we hash a new identifier into a full bucket.</p>
 <h3 id="Hash-Function"><a href="#Hash-Function" class="headerlink" title="Hash Function"></a>Hash Function</h3><ol>
 <li>$f ( x )$ must be easy to compute and <strong>minimizes the number of collisions</strong>.</li>
-<li><strong>$f ( x )$ should be unbiased.</strong>  That is, for any x and any i, we have that Probability$( f ( x ) &#x3D; i ) &#x3D; 1 &#x2F; b$.  Such kind of a hash function is called a uniform hash function.</li>
+<li><strong>$f ( x )$ should be unbiased.</strong>  That is, for any x and any i, we have that Probability$( f ( x ) = i ) = 1 / b$.  Such kind of a hash function is called a uniform hash function.</li>
 </ol>
-<h3 id="Implementation-12"><a href="#Implementation-12" class="headerlink" title="Implementation"></a>Implementation</h3><h4 id="Struct-Definition"><a href="#Struct-Definition" class="headerlink" title="Struct Definition"></a>Struct Definition</h4><pre><code class="C">struct  ListNode; 
+<h3 id="Implementation-12"><a href="#Implementation-12" class="headerlink" title="Implementation"></a>Implementation</h3><h4 id="Struct-Definition"><a href="#Struct-Definition" class="headerlink" title="Struct Definition"></a>Struct Definition</h4><pre><code class="lang-C">struct  ListNode; 
 typedef  struct  ListNode  *Position; 
 struct  HashTbl; 
 typedef  struct  HashTbl  *HashTable; 
@@ -1822,9 +1807,9 @@ typedef  Position  List;
 struct  HashTbl &#123; 
     int  TableSize; 
     List  *TheLists; 
-&#125;; 
+&#125;;
 </code></pre>
-<h4 id="Create-Table"><a href="#Create-Table" class="headerlink" title="Create Table"></a>Create Table</h4><pre><code class="C">HashTable  InitializeTable( int TableSize ) 
+<h4 id="Create-Table"><a href="#Create-Table" class="headerlink" title="Create Table"></a>Create Table</h4><pre><code class="lang-C">HashTable  InitializeTable( int TableSize ) 
 &#123;   HashTable  H; 
     int  i; 
     if ( TableSize &lt; MinTableSize ) &#123; 
@@ -1841,9 +1826,9 @@ struct  HashTbl &#123;
     else    H-&gt;TheLists[ i ]-&gt;Next = NULL;
     &#125; 
     return  H; 
-&#125; 
+&#125;
 </code></pre>
-<h4 id="Find-1"><a href="#Find-1" class="headerlink" title="Find"></a>Find</h4><pre><code class="C">Position  Find ( ElementType Key, HashTable H ) 
+<h4 id="Find-1"><a href="#Find-1" class="headerlink" title="Find"></a>Find</h4><pre><code class="lang-C">Position  Find ( ElementType Key, HashTable H ) 
 &#123; 
     Position P; 
     List L; 
@@ -1854,9 +1839,9 @@ struct  HashTbl &#123;
     while( P != NULL &amp;&amp; P-&gt;Element != Key )  /* Probably need strcmp */ 
     P = P-&gt;Next; 
     return P; 
-&#125; 
+&#125;
 </code></pre>
-<h4 id="Insertion"><a href="#Insertion" class="headerlink" title="Insertion"></a>Insertion</h4><pre><code class="C">void  Insert ( ElementType Key, HashTable H ) 
+<h4 id="Insertion"><a href="#Insertion" class="headerlink" title="Insertion"></a>Insertion</h4><pre><code class="lang-C">void  Insert ( ElementType Key, HashTable H ) 
 &#123; 
     Position   Pos, NewCell; 
     List  L; 
@@ -1871,10 +1856,10 @@ struct  HashTbl &#123;
             L-&gt;Next = NewCell; 
         &#125; 
     &#125; 
-&#125; 
+&#125;
 </code></pre>
 <h4 id="Separate-Chaining"><a href="#Separate-Chaining" class="headerlink" title="Separate Chaining"></a>Separate Chaining</h4><p>使用链接散列表。这个是使用链表解决冲突。表的长度由题目给定。</p>
-<h4 id="Open-Adressing"><a href="#Open-Adressing" class="headerlink" title="Open Adressing"></a>Open Adressing</h4><pre><code class="C">Algorithm: insert key into an array of hash table
+<h4 id="Open-Adressing"><a href="#Open-Adressing" class="headerlink" title="Open Adressing"></a>Open Adressing</h4><pre><code class="lang-C">Algorithm: insert key into an array of hash table
 &#123;
     index = hash(key);
     initialize i = 0// the counter of probing;
@@ -1889,11 +1874,11 @@ struct  HashTbl &#123;
     insert key at index;
 &#125;
 </code></pre>
-<p><strong>$f(x)$:Collision resolving function.$f(0) &#x3D; 0.$</strong></p>
-<h4 id="Liner-Probing"><a href="#Liner-Probing" class="headerlink" title="Liner Probing"></a>Liner Probing</h4><p>$f(i) &#x3D; i$<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-12-27%20082643.gif"></p>
-<h4 id="Quadratic-Probing"><a href="#Quadratic-Probing" class="headerlink" title="Quadratic Probing"></a>Quadratic Probing</h4><p>$f ( i ) &#x3D; i^2 $<br>【Theorem】<br>If quadratic probing is used, and the table size is prime, then a new element can always be inserted if the table is at least half empty.<br>【Proof】<br>Just prove that the first $[TableSize&#x2F;2]$ alternative locations are all distinct.<br>That is, for any<br>$0 &lt; i \neq j &lt; [TableSize&#x2F;2]$, we have<br>$( h(x) + i^2 )% TableSize  \neq  ( h(x) + j^2 ) %   TableSize $<br>Suppose:    $ h(x) + i^2 &#x3D; h(x) + j^2 ( mod \ TableSize )$<br>then:<br> $i^2 &#x3D; j^2 ( mod \ TableSize )$<br> $( i + j ) ( i - j ) &#x3D; 0  (mod \ TableSize )$</p>
+<p><strong>$f(x)$:Collision resolving function.$f(0) = 0.$</strong></p>
+<h4 id="Liner-Probing"><a href="#Liner-Probing" class="headerlink" title="Liner Probing"></a>Liner Probing</h4><p>$f(i) = i$<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-12-27%20082643.gif" alt=""></p>
+<h4 id="Quadratic-Probing"><a href="#Quadratic-Probing" class="headerlink" title="Quadratic Probing"></a>Quadratic Probing</h4><p>$f ( i ) = i^2 $<br>【Theorem】<br>If quadratic probing is used, and the table size is prime, then a new element can always be inserted if the table is at least half empty.<br>【Proof】<br>Just prove that the first $[TableSize/2]$ alternative locations are all distinct.<br>That is, for any<br>$0 &lt; i \neq j &lt; [TableSize/2]$, we have<br>$( h(x) + i^2 )\% TableSize  \neq  ( h(x) + j^2 ) \%   TableSize $<br>Suppose:    $ h(x) + i^2 = h(x) + j^2 ( mod \ TableSize )$<br>then:<br> $i^2 = j^2 ( mod \ TableSize )$<br> $( i + j ) ( i - j ) = 0  (mod \ TableSize )$</p>
 <p>BUT as TableSize is prime,either $( i + j )$ or $( i - j )$ is divisible by TableSize!<br>Contradiction !<br>Q.E.D.</p>
-<h5 id="Implementation-in-Quadratic-Probing"><a href="#Implementation-in-Quadratic-Probing" class="headerlink" title="Implementation in Quadratic Probing"></a>Implementation in Quadratic Probing</h5><h6 id="Find-2"><a href="#Find-2" class="headerlink" title="Find"></a>Find</h6><pre><code class="C">Position  Find ( ElementType Key, HashTable H ) 
+<h5 id="Implementation-in-Quadratic-Probing"><a href="#Implementation-in-Quadratic-Probing" class="headerlink" title="Implementation in Quadratic Probing"></a>Implementation in Quadratic Probing</h5><h6 id="Find-2"><a href="#Find-2" class="headerlink" title="Find"></a>Find</h6><pre><code class="lang-C">Position  Find ( ElementType Key, HashTable H ) 
 &#123;   Position  CurrentPos; 
     int  CollisionNum; 
     CollisionNum = 0; 
@@ -1906,9 +1891,9 @@ struct  HashTbl &#123;
         if ( CurrentPos &gt;= H-&gt;TableSize )  CurrentPos - = H-&gt;TableSize; 
     &#125; 
     return CurrentPos; 
-&#125; 
+&#125;
 </code></pre>
-<h6 id="Insertion-1"><a href="#Insertion-1" class="headerlink" title="Insertion"></a>Insertion</h6><pre><code class="C">void  Insert ( ElementType Key, HashTable H ) 
+<h6 id="Insertion-1"><a href="#Insertion-1" class="headerlink" title="Insertion"></a>Insertion</h6><pre><code class="lang-C">void  Insert ( ElementType Key, HashTable H ) 
 &#123; 
     Position  Pos; 
     Pos = Find( Key, H ); 
@@ -1916,9 +1901,9 @@ struct  HashTbl &#123;
     H-&gt;TheCells[ Pos ].Info = Legitimate; 
     H-&gt;TheCells[ Pos ].Element = Key; /* Probably need strcpy */ 
     &#125; 
-&#125; 
+&#125;
 </code></pre>
-<h4 id="Double-Hashing"><a href="#Double-Hashing" class="headerlink" title="Double Hashing"></a>Double Hashing</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-12-27%20090515.gif"></p>
+<h4 id="Double-Hashing"><a href="#Double-Hashing" class="headerlink" title="Double Hashing"></a>Double Hashing</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/FDS_Review/屏幕截图%202022-12-27%20090515.gif" alt=""></p>
 <h4 id="Rehashing"><a href="#Rehashing" class="headerlink" title="Rehashing"></a>Rehashing</h4><p>动态增长哈希表</p>
 <ol>
 <li>Build another table that is about twice as big;(find the closest prime to the two times big size)</li>
@@ -1931,8 +1916,8 @@ struct  HashTbl &#123;
 <li>When an insertion fails</li>
 <li>When the table reaches a certain load factor</li>
 </ul>
-<p>Usually there should have been $N&#x2F;2$ insertions before rehash, so $O(N)$ rehash only adds a constant cost to each insertion.<br>However, in an interactive system, the unfortunate user whose insertion caused a rehash could see a slowdown.</p>
-<p>通过第一个$hash_1(x)$计算，比如<br>$hash_1(x)&#x3D;key%TableSize$,若此时出现冲突，使用如下的公式计算<br>$(hash_1(key) + i * hash_2(key)) % TableSize $。<br>还有冲突就增加$i$。</p>
+<p>Usually there should have been $N/2$ insertions before rehash, so $O(N)$ rehash only adds a constant cost to each insertion.<br>However, in an interactive system, the unfortunate user whose insertion caused a rehash could see a slowdown.</p>
+<p>通过第一个$hash_1(x)$计算，比如<br>$hash_1(x)=key\%TableSize$,若此时出现冲突，使用如下的公式计算<br>$(hash_1(key) + i * hash_2(key)) \% TableSize $。<br>还有冲突就增加$i$。</p>
 
         </div>
         <!-- .entry-content -->

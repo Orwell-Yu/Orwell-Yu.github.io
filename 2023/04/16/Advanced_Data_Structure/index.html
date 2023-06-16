@@ -365,14 +365,14 @@
         <div class="entry-content">
           <h1 id="Advanced-Data-Structure"><a href="#Advanced-Data-Structure" class="headerlink" title="Advanced Data Structure"></a>Advanced Data Structure</h1><h2 id="Prolegomenon"><a href="#Prolegomenon" class="headerlink" title="Prolegomenon"></a>Prolegomenon</h2><h3 id="Grading-Policies"><a href="#Grading-Policies" class="headerlink" title="Grading Policies"></a>Grading Policies</h3><p><strong>Homework(10)</strong><br><strong>Discussions or quiz(10)</strong><br><strong>Research Project(30)</strong></p>
 <blockquote>
-<p>done in groups of 3<br>choose 2 out of 7<br>Report(20+20)&#x2F;2 points<br>In-class presentation(10~15minutes,10 points)<br>The speaker will be chosen randomly<br>E-mail to sign up for presentation<br>Bonus </p>
+<p>done in groups of 3<br>choose 2 out of 7<br>Report(20+20)/2 points<br>In-class presentation(10~15minutes,10 points)<br>The speaker will be chosen randomly<br>E-mail to sign up for presentation<br>Bonus </p>
 </blockquote>
 <p><strong>MidTerm(10)</strong><br><strong>Final Exam(40)</strong></p>
 <blockquote>
 <p>You can replace the MidTerm by a higher grade in Final Exam </p>
 </blockquote>
 <ul>
-<li>E-mail <a href="mailto:&#100;&#101;&#x6e;&#x67;&#x68;&#97;&#111;&#114;&#x61;&#110;&#x40;&#x7a;&#x6a;&#x75;&#46;&#x65;&#x64;&#117;&#x2e;&#99;&#110;">&#100;&#101;&#x6e;&#x67;&#x68;&#97;&#111;&#114;&#x61;&#110;&#x40;&#x7a;&#x6a;&#x75;&#46;&#x65;&#x64;&#117;&#x2e;&#99;&#110;</a> before 6th March to send your group.</li>
+<li>E-mail denghaoran@zju.edu.cn before 6th March to send your group.</li>
 </ul>
 <h2 id="AVL-Trees-Splay-Trees-and-Amortized-Analysis"><a href="#AVL-Trees-Splay-Trees-and-Amortized-Analysis" class="headerlink" title="AVL Trees,Splay Trees and Amortized Analysis"></a>AVL Trees,Splay Trees and Amortized Analysis</h2><h3 id="AVL-Tree"><a href="#AVL-Tree" class="headerlink" title="AVL Tree"></a>AVL Tree</h3><h4 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h4><p>speed up searching(with insertion and deletion)</p>
 <p><strong>Recall</strong>:To solve this problem,the time complexity is:</p>
@@ -381,81 +381,80 @@
 <li>Sorted Array: $O(logN)$ ; $O(N)$ (Insert)</li>
 <li>Binary Sorted Tree: $O(height)$ ; $O(height)$(Insert)<br>In the worst case,the $O(height)$ is $O(N)$</li>
 </ul>
-<h4 id="Optimize-Balanced-Tree"><a href="#Optimize-Balanced-Tree" class="headerlink" title="Optimize:Balanced Tree"></a>Optimize:Balanced Tree</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20224312.jpg" alt="Picture"></p>
+<h4 id="Optimize-Balanced-Tree"><a href="#Optimize-Balanced-Tree" class="headerlink" title="Optimize:Balanced Tree"></a>Optimize:Balanced Tree</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20224312.jpg" alt="Picture"></p>
 <h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><p><strong>Balanced Tree</strong><br>An empty binary tree is height balanced.  If $T$ is a nonempty binary tree with $T_L$ and $T_R$ as its left and right subtrees, then $T$ is height balanced iff</p>
 <ol>
 <li>$T_L$ and $T_R$ are height balanced</li>
 <li>$|h_L-h_R|\leq1$ where $h_L$ and $h_R$ are the heights of $T_L$ and $T_L$ , respectively.</li>
 </ol>
-<p><strong>Balance Factor(BF)</strong><br>The Balance Factor(BF) of a node&#x3D;$h_L-h_R$ .<br> In an AVL Tree ,$BF(node)&#x3D;-1,0,or 1$.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20225301.jpg" alt="Picture"></p>
+<p><strong>Balance Factor(BF)</strong><br>The Balance Factor(BF) of a node=$h_L-h_R$ .<br> In an AVL Tree ,$BF(node)=-1,0,or 1$.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20225301.jpg" alt="Picture"></p>
 <h4 id="Tree-Roation"><a href="#Tree-Roation" class="headerlink" title="Tree Roation"></a>Tree Roation</h4><ol>
 <li><strong>Tree Rotation</strong> is an operation on a binary tree that changes the suructure without interfering with the order of elements.</li>
 </ol>
-<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20225339.jpg" alt="Picture"></p>
-<ol start="2">
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20225339.jpg" alt="Picture"></p>
+<ol>
 <li>After a rotation,the side of rotation increase its height by 1 whilst the side opposite the rotation decreases its height similarly.</li>
 </ol>
 <p><strong>pseudo code of Left Rotation</strong></p>
 <pre><code>Tree Temp = A-&gt;Left
 A-&gt;Left = B
 B-&gt;Right = Temp
-</code></pre>
-<ol start="3">
+</code></pre><ol>
 <li>The time complexity is $O(1)$.</li>
 </ol>
-<h4 id="Insertion-of-an-AVL-Tree"><a href="#Insertion-of-an-AVL-Tree" class="headerlink" title="Insertion of an AVL Tree"></a>Insertion of an AVL Tree</h4><h5 id="RR-Rotation"><a href="#RR-Rotation" class="headerlink" title="RR Rotation"></a>RR Rotation</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20225446.jpg" alt="Picture"><br><strong>RR Rotation:</strong><br>In General:<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20225536.jpg" alt="Picture"><br><strong>Note:</strong><br>A is <strong>NOT</strong> necessarily thr root of the tree.<strong>A is the first Node that has a wrong BF after the insertion</strong>.<br><strong>The insertion</strong> could be just happened in the right subtree of B <strong>but NOT necessarliy be the right child of B</strong>.</p>
-<h5 id="LL-Rotation"><a href="#LL-Rotation" class="headerlink" title="LL Rotation"></a>LL Rotation</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20225633.jpg" alt="Picture"><br><strong>Mind the NOTE!</strong><br>In General:<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20225706.jpg" alt="Picture"></p>
-<h5 id="LR-Rotation"><a href="#LR-Rotation" class="headerlink" title="LR Rotation"></a>LR Rotation</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20225803.jpg" alt="Picture"><br>In General:<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20225827.jpg" alt="Picture"></p>
-<h5 id="RL-Rotation"><a href="#RL-Rotation" class="headerlink" title="RL Rotation"></a>RL Rotation</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20225920.jpg" alt="Picture"><br>In General:<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-02-28%20230008.jpg" alt="Picture"></p>
-<p><strong>注意：</strong><br>单旋转(Single Rotation)发生在要插入的值<strong>不在</strong>关键边(连接BF值产生异常的点和其相邻点的边)<strong>之间</strong>。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230228200953.jpg"><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230228201012.jpg"><br>图中虚线的边即为关键边，图中待插入的13不在关键边的4 ~ 7之间；12不在关键边13 ~ 14之间。<br>双旋转(Double Rotation)发生在要插入的值<strong>在</strong>关键边的值<strong>之间</strong>，并分为RL旋转与LR旋转。<br>旋转时$k_2$成为最后的根节点，$k_2$左子树给$k_1$作为右子树，$k_2$右子树给$k_3$作为左子树。$k_1$、$k_3$分别作为$k_2$的左右子树。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230228201900.jpg"><br>图中BF值出现异常的点为$k_1$，与其相连的点为$k_3$，判断是LR旋转还是RL旋转的点为$k_2$。</p>
+<h4 id="Insertion-of-an-AVL-Tree"><a href="#Insertion-of-an-AVL-Tree" class="headerlink" title="Insertion of an AVL Tree"></a>Insertion of an AVL Tree</h4><h5 id="RR-Rotation"><a href="#RR-Rotation" class="headerlink" title="RR Rotation"></a>RR Rotation</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20225446.jpg" alt="Picture"><br><strong>RR Rotation:</strong><br>In General:<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20225536.jpg" alt="Picture"><br><strong>Note:</strong><br>A is <strong>NOT</strong> necessarily thr root of the tree.<strong>A is the first Node that has a wrong BF after the insertion</strong>.<br><strong>The insertion</strong> could be just happened in the right subtree of B <strong>but NOT necessarliy be the right child of B</strong>.</p>
+<h5 id="LL-Rotation"><a href="#LL-Rotation" class="headerlink" title="LL Rotation"></a>LL Rotation</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20225633.jpg" alt="Picture"><br><strong>Mind the NOTE!</strong><br>In General:<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20225706.jpg" alt="Picture"></p>
+<h5 id="LR-Rotation"><a href="#LR-Rotation" class="headerlink" title="LR Rotation"></a>LR Rotation</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20225803.jpg" alt="Picture"><br>In General:<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20225827.jpg" alt="Picture"></p>
+<h5 id="RL-Rotation"><a href="#RL-Rotation" class="headerlink" title="RL Rotation"></a>RL Rotation</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20225920.jpg" alt="Picture"><br>In General:<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-02-28%20230008.jpg" alt="Picture"></p>
+<p><strong>注意：</strong><br>单旋转(Single Rotation)发生在要插入的值<strong>不在</strong>关键边(连接BF值产生异常的点和其相邻点的边)<strong>之间</strong>。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/微信图片_20230228200953.jpg" alt=""><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/微信图片_20230228201012.jpg" alt=""><br>图中虚线的边即为关键边，图中待插入的13不在关键边的4 ~ 7之间；12不在关键边13 ~ 14之间。<br>双旋转(Double Rotation)发生在要插入的值<strong>在</strong>关键边的值<strong>之间</strong>，并分为RL旋转与LR旋转。<br>旋转时$k_2$成为最后的根节点，$k_2$左子树给$k_1$作为右子树，$k_2$右子树给$k_3$作为左子树。$k_1$、$k_3$分别作为$k_2$的左右子树。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/微信图片_20230228201900.jpg" alt=""><br>图中BF值出现异常的点为$k_1$，与其相连的点为$k_3$，判断是LR旋转还是RL旋转的点为$k_2$。</p>
 <h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><blockquote>
 <p>Read the declaration and functions in [1] Figures 4.42 – 4.48</p>
 </blockquote>
-<h4 id="Algorithm-Analysis"><a href="#Algorithm-Analysis" class="headerlink" title="Algorithm Analysis"></a>Algorithm Analysis</h4><p>$n_h$&#x3D;$F_n$-$1$<br>$n_h$-&gt;$((1+\sqrt{5})&#x2F;2)^h$<br>$h$-&gt;$O(ln(N))$</p>
+<h4 id="Algorithm-Analysis"><a href="#Algorithm-Analysis" class="headerlink" title="Algorithm Analysis"></a>Algorithm Analysis</h4><p>$n_h$=$F_n$-$1$<br>$n_h$-&gt;$((1+\sqrt{5})/2)^h$<br>$h$-&gt;$O(ln(N))$</p>
 <h3 id="Splay-Tree"><a href="#Splay-Tree" class="headerlink" title="Splay Tree"></a>Splay Tree</h3><h4 id="Target-1"><a href="#Target-1" class="headerlink" title="Target"></a>Target</h4><p>Any $M$ consecutive tree opertaions starting from an empty tree take at most $O(M log N)$ time.</p>
 <h4 id="Insertion-of-a-Splay-Tree"><a href="#Insertion-of-a-Splay-Tree" class="headerlink" title="Insertion of a Splay Tree"></a>Insertion of a Splay Tree</h4><p>X:a Node that is NOT root<br>P:parent of X<br>G:grandParent of X</p>
 <h5 id="Case1-P-is-the-root"><a href="#Case1-P-is-the-root" class="headerlink" title="Case1:P is the root"></a>Case1:P is the root</h5><p>Rotate X and P</p>
-<h5 id="Case2-P-is-not-the-root"><a href="#Case2-P-is-not-the-root" class="headerlink" title="Case2:P is not the root"></a>Case2:P is not the root</h5><h6 id="Zig-zag-Double-Rotation"><a href="#Zig-zag-Double-Rotation" class="headerlink" title="Zig-zag:Double Rotation"></a>Zig-zag:Double Rotation</h6><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-01%20100840.jpg" alt="Picture"></p>
-<h6 id="Zig-zig-Single-Rotation"><a href="#Zig-zig-Single-Rotation" class="headerlink" title="Zig-zig:Single Rotation"></a>Zig-zig:Single Rotation</h6><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-01%20100913.jpg" alt="Picture"></p>
+<h5 id="Case2-P-is-not-the-root"><a href="#Case2-P-is-not-the-root" class="headerlink" title="Case2:P is not the root"></a>Case2:P is not the root</h5><h6 id="Zig-zag-Double-Rotation"><a href="#Zig-zag-Double-Rotation" class="headerlink" title="Zig-zag:Double Rotation"></a>Zig-zag:Double Rotation</h6><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-01%20100840.jpg" alt="Picture"></p>
+<h6 id="Zig-zig-Single-Rotation"><a href="#Zig-zig-Single-Rotation" class="headerlink" title="Zig-zig:Single Rotation"></a>Zig-zig:Single Rotation</h6><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-01%20100913.jpg" alt="Picture"></p>
 <h5 id="Reference-1"><a href="#Reference-1" class="headerlink" title="Reference"></a>Reference</h5><blockquote>
 <p>Read the 32-node example given in Figures 4.52 – 4.60</p>
 </blockquote>
-<p><strong>Note</strong><br>四种旋转情况的总结（适用于选择题画图）<br>其中①②表示操作的顺序<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-06%20185317.png"></p>
+<p><strong>Note</strong><br>四种旋转情况的总结（适用于选择题画图）<br>其中①②表示操作的顺序<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-06%20185317.png" alt=""></p>
 <h4 id="Deletion-of-a-Splay-Tree"><a href="#Deletion-of-a-Splay-Tree" class="headerlink" title="Deletion of a Splay Tree"></a>Deletion of a Splay Tree</h4><ol>
 <li>Find(X) <em>The Node X will be at root.</em></li>
 <li>Remove(X) <em>There will be two subtrees $T_L$ and $T_R$.</em></li>
 <li>FindMax($T_L$) <em>The Largest element will be the root of $T_L$, and has NO right child.</em></li>
 </ol>
 <h3 id="Appendix：Implementation-in-C-AVL-Tree-Splay-Tree"><a href="#Appendix：Implementation-in-C-AVL-Tree-Splay-Tree" class="headerlink" title="Appendix：Implementation in C(AVL Tree,Splay Tree)"></a>Appendix：Implementation in C(AVL Tree,Splay Tree)</h3><p>详见<code>Project1.c</code><br>其中，AVL Tree的删除与普通二叉搜索树相同，为<code>Delete()</code>函数。<br>Splay Tree相关部分需要先初始化<code>NullNode</code>变量。</p>
-<h3 id="Amortized-Analysis-均摊分析"><a href="#Amortized-Analysis-均摊分析" class="headerlink" title="Amortized Analysis(均摊分析)"></a>Amortized Analysis(均摊分析)</h3><h4 id="Recall"><a href="#Recall" class="headerlink" title="Recall"></a>Recall</h4><p><strong>The target of a Splay Tree:</strong> Any $M$ consecutive tree opertaions starting from an empty tree take at most $O(M log N)$ time.<br>–<strong>Amortized time bound</strong></p>
-<h4 id="Aggregate-analysis-聚合分析"><a href="#Aggregate-analysis-聚合分析" class="headerlink" title="Aggregate analysis(聚合分析)"></a>Aggregate analysis(聚合分析)</h4><p><strong>Idea</strong><br>Show that for all n, a sequence of n operations takes worst-case time T(n) in total. In the worst case, the average cost, or amortized cost, per operation is therefore $T(n)&#x2F;n$.</p>
+<h3 id="Amortized-Analysis-均摊分析"><a href="#Amortized-Analysis-均摊分析" class="headerlink" title="Amortized Analysis(均摊分析)"></a>Amortized Analysis(均摊分析)</h3><h4 id="Recall"><a href="#Recall" class="headerlink" title="Recall"></a>Recall</h4><p><strong>The target of a Splay Tree:</strong> Any $M$ consecutive tree opertaions starting from an empty tree take at most $O(M log N)$ time.<br>—<strong>Amortized time bound</strong></p>
+<h4 id="Aggregate-analysis-聚合分析"><a href="#Aggregate-analysis-聚合分析" class="headerlink" title="Aggregate analysis(聚合分析)"></a>Aggregate analysis(聚合分析)</h4><p><strong>Idea</strong><br>Show that for all n, a sequence of n operations takes worst-case time T(n) in total. In the worst case, the average cost, or amortized cost, per operation is therefore $T(n)/n$.</p>
 <p>【<strong>Example</strong>】Stack with <code>MultiPop(int k,Stack S)</code></p>
-<pre><code class="C">Algorithm  &#123;
+<pre><code class="lang-C">Algorithm  &#123;
     while ( !IsEmpty(S) &amp;&amp; k&gt;0 ) &#123;
         Pop(S);
         k - -;
     &#125; /* end while-loop */ 
 &#125;
 </code></pre>
-<p>Consider a sequence of n <code>Push</code>,<code>Pop</code>,and <code>MultiPop</code> operations on an initially empty stack.<br>Because we can pop each object from the stack at most once for each time we have pushed it onto the stack.<br>$sizeof(S) \leq n$<br>$T_{amortized}&#x3D; O( n )&#x2F;n &#x3D; O(1)$</p>
-<h4 id="Accounting-method-信用方法"><a href="#Accounting-method-信用方法" class="headerlink" title="Accounting method(信用方法)"></a>Accounting method(信用方法)</h4><p><strong>Idea</strong><br>When an operation’s amortized cost exceeds its actual cost, we assign the difference to specific objects in the data structure as credit. Credit can help pay for later operations whose amortized cost is less than their actual cost.<br><strong>Note</strong><br>For all sequences of n operations, we must have:<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-01%20101851.jpg"></p>
+<p>Consider a sequence of n <code>Push</code>,<code>Pop</code>,and <code>MultiPop</code> operations on an initially empty stack.<br>Because we can pop each object from the stack at most once for each time we have pushed it onto the stack.<br>$sizeof(S) \leq n$<br>$T_{amortized}= O( n )/n = O(1)$</p>
+<h4 id="Accounting-method-信用方法"><a href="#Accounting-method-信用方法" class="headerlink" title="Accounting method(信用方法)"></a>Accounting method(信用方法)</h4><p><strong>Idea</strong><br>When an operation’s amortized cost exceeds its actual cost, we assign the difference to specific objects in the data structure as credit. Credit can help pay for later operations whose amortized cost is less than their actual cost.<br><strong>Note</strong><br>For all sequences of n operations, we must have:<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-01%20101851.jpg" alt=""></p>
 <p>【<strong>Example</strong>】Stack with <code>MultiPop(int k,Stack S)</code></p>
-<pre><code class="C">    while ( !IsEmpty(S) &amp;&amp; k&gt;0 ) &#123;
+<pre><code class="lang-C">    while ( !IsEmpty(S) &amp;&amp; k&gt;0 ) &#123;
         Pop(S);
         k - -;
     &#125; /* end while-loop */ 
 &#125;
 </code></pre>
-<p>Consider a sequence of n <code>Push</code>,<code>Pop</code>,and <code>MultiPop</code> operations on an initially empty stack.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-01%20102027.jpg"></p>
-<h4 id="Potential-method-势能方法"><a href="#Potential-method-势能方法" class="headerlink" title="Potential method(势能方法)"></a>Potential method(势能方法)</h4><p><strong>Idea</strong><br>Take a closer look at the credit.<br>为了避免给每一种操作都设计一个均摊代价，我们设计一个势能函数来统一化设计均摊代价。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-07%20132907.png"><br>In general, a good potential function should always <strong>assume its minimum</strong> at the start of the sequence.<br>【<strong>Example0</strong>】Stack with <code>MultiPop(int k,Stack S)</code></p>
-<pre><code class="C">    while ( !IsEmpty(S) &amp;&amp; k&gt;0 ) &#123;
+<p>Consider a sequence of n <code>Push</code>,<code>Pop</code>,and <code>MultiPop</code> operations on an initially empty stack.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-01%20102027.jpg" alt=""></p>
+<h4 id="Potential-method-势能方法"><a href="#Potential-method-势能方法" class="headerlink" title="Potential method(势能方法)"></a>Potential method(势能方法)</h4><p><strong>Idea</strong><br>Take a closer look at the credit.<br>为了避免给每一种操作都设计一个均摊代价，我们设计一个势能函数来统一化设计均摊代价。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-07%20132907.png" alt=""><br>In general, a good potential function should always <strong>assume its minimum</strong> at the start of the sequence.<br>【<strong>Example0</strong>】Stack with <code>MultiPop(int k,Stack S)</code></p>
+<pre><code class="lang-C">    while ( !IsEmpty(S) &amp;&amp; k&gt;0 ) &#123;
         Pop(S);
         k - -;
     &#125; /* end while-loop */ 
 &#125;
 </code></pre>
-<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-07%20133450.png"><br>【<strong>Example1</strong>】  Splay Trees: $T_{amortized}$ &#x3D; $O( log N )$<br>$\Phi(T)&#x3D;\Sigma_{i \in T} ln(S(i))$<br>$S(i)$:以<code>x</code>为根的子树中的节点个数。也叫做子树的质。</p>
-<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-07%20134002.png"><br><strong>Appendix:Math</strong><br>If $a + b ≤ c$, and a and b are both positive integers, then:<br>$log{a} + log{b} ≤ 2 log{c} - 2$<br><strong>Proof:</strong><br>By the arithmetic-geometric mean inequality,<br>$(ab)^{1&#x2F;2} ≤ (a+b)&#x2F;2$<br>Thus<br>$(ab)^{1&#x2F;2} ≤ c&#x2F;2$<br>Squaring both sides gives<br>$ab ≤ c^2&#x2F;4$<br>Taking logarithms of both sides proves the lemma.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-07%20135417.png"><br>其中，<code>Zig-zag</code>和<code>Zig-zig</code>都是双旋转，开销为2。<br><strong><code>Zig-zag</code>中</strong>：<br>$R_2(X)$和$R_1(G)$都是整棵树的质，故相互抵消。$R_1(P)&lt;R_1(X)$,故放缩。<br><strong><code>Zig-zig</code>中</strong>：<br>$R_1(X)+R_2(G) \le 2R_2(X)-2$<br>$2+R_2(X)-R_1(X)+R_2(P)-R_1(P)+R_2(G)-R_2(G) \le 2R_2(X) -2 R_1(X) +R_2(P)-R_1(P) \le 3(R_2(X) - R_1(X))$</p>
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-07%20133450.png" alt=""><br>【<strong>Example1</strong>】  Splay Trees: $T<em>{amortized}$ = $O( log N )$<br>$\Phi(T)=\Sigma</em>{i \in T} ln(S(i))$<br>$S(i)$:以<code>x</code>为根的子树中的节点个数。也叫做子树的质。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-07%20134002.png" alt=""><br><strong>Appendix:Math</strong><br>If $a + b ≤ c$, and a and b are both positive integers, then:<br>$log{a} + log{b} ≤ 2 log{c} - 2$<br><strong>Proof:</strong><br>By the arithmetic-geometric mean inequality,<br>$(ab)^{1/2} ≤ (a+b)/2$<br>Thus<br>$(ab)^{1/2} ≤ c/2$<br>Squaring both sides gives<br>$ab ≤ c^2/4$<br>Taking logarithms of both sides proves the lemma.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-07%20135417.png" alt=""><br>其中，<code>Zig-zag</code>和<code>Zig-zig</code>都是双旋转，开销为2。<br><strong><code>Zig-zag</code>中</strong>：<br>$R_2(X)$和$R_1(G)$都是整棵树的质，故相互抵消。$R_1(P)&lt;R_1(X)$,故放缩。<br><strong><code>Zig-zig</code>中</strong>：<br>$R_1(X)+R_2(G) \le 2R_2(X)-2$<br>$2+R_2(X)-R_1(X)+R_2(P)-R_1(P)+R_2(G)-R_2(G) \le 2R_2(X) -2 R_1(X) +R_2(P)-R_1(P) \le 3(R_2(X) - R_1(X))$</p>
 <h2 id="Red-Black-Trees-and-B-Trees"><a href="#Red-Black-Trees-and-B-Trees" class="headerlink" title="Red-Black Trees and B+ Trees"></a>Red-Black Trees and B+ Trees</h2><h3 id="Red-Black-Trees"><a href="#Red-Black-Trees" class="headerlink" title="Red-Black Trees"></a>Red-Black Trees</h3><h4 id="Target-2"><a href="#Target-2" class="headerlink" title="Target"></a>Target</h4><p>Balanced binary seach tree using a key called <em>color</em>.</p>
 <h4 id="Definition-1"><a href="#Definition-1" class="headerlink" title="Definition"></a>Definition</h4><p><strong>Red-Black Tree</strong><br>红黑树是一种含有红黑结点并能自平衡的二叉查找树。它必须满足下面性质：</p>
 <ul>
@@ -469,21 +468,21 @@ B-&gt;Right = Temp
 <p><strong>black-height</strong><br>The black-height of any node x,denoted by <code>bh(x)</code>,is the number of <strong>black</strong> nodes on any simple path from x(<strong>x not included</strong>) down to a leaf.<code>bh(Tree)=bh(root)</code>.</p>
 <p>【<strong>Lemma</strong>】<br>A red-black tree with N internal nodes has height at most $2ln(N +1)$.</p>
 <p><strong>Proof</strong>：</p>
-<p><strong>Lemma1:</strong> For any node x, $sizeof(x) \geq 2^{bh(x)} – 1$.<br>If $h(x) &#x3D; 0$, x is <code>NULL</code> -&gt; $sizeof(x) &#x3D; 2^0 – 1 &#x3D; 0$<br>Suppose it is true for all x with $h(x) \leq k$.<br>For x with $h(x) &#x3D; k + 1$, $bh(child) &#x3D; bh(x) \space or \space bh(x) – 1 $<br>Since $h(child) \leq k$, $sizeof(child) \geq 2^{bh(child)} – 1 \geq 2^{bh(x) – 1} – 1$<br>Hence $sizeof(x) &#x3D; 1 + 2sizeof(child) \geq 2^{bh(x)} – 1$</p>
-<p><strong>Lemma2:</strong> $bh(Tree) \geq h(Tree) &#x2F; 2$<br>Since for every red node, both of its children must be black, hence on any simple path from <em>root</em> to a leaf, at least half the nodes (<em>root</em> not included) must be black.<br>$Sizeof(root) &#x3D; N \geq 2^{bh(Tree)} – 1 \geq 2^{h&#x2F;2} – 1$</p>
+<p><strong>Lemma1:</strong> For any node x, $sizeof(x) \geq 2^{bh(x)} – 1$.<br>If $h(x) = 0$, x is <code>NULL</code> -&gt; $sizeof(x) = 2^0 – 1 = 0$<br>Suppose it is true for all x with $h(x) \leq k$.<br>For x with $h(x) = k + 1$, $bh(child) = bh(x) \space or \space bh(x) – 1 $<br>Since $h(child) \leq k$, $sizeof(child) \geq 2^{bh(child)} – 1 \geq 2^{bh(x) – 1} – 1$<br>Hence $sizeof(x) = 1 + 2sizeof(child) \geq 2^{bh(x)} – 1$</p>
+<p><strong>Lemma2:</strong> $bh(Tree) \geq h(Tree) / 2$<br>Since for every red node, both of its children must be black, hence on any simple path from <em>root</em> to a leaf, at least half the nodes (<em>root</em> not included) must be black.<br>$Sizeof(root) = N \geq 2^{bh(Tree)} – 1 \geq 2^{h/2} – 1$</p>
 <p>由<strong>Lemma1</strong>和<strong>Lemma2</strong>可以得到<strong>Lemma</strong>的结论。</p>
 <h4 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h4><p>由于贸然插入黑色节点很有可能会导致性质5出现问题，故我们尽量插入<strong>红色</strong>节点。<br>综合考虑五条性质，插入<strong>红色</strong>节点时，<strong>只有性质2</strong>和<strong>性质4</strong>有可能会被破坏。</p>
-<h5 id="Case-1"><a href="#Case-1" class="headerlink" title="Case 1"></a>Case 1</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-07%20211745.png"><br>此时插入的红色节点<code>z</code>依然可能破坏性质2或者4，故作迭<strong>代处理</strong>。<br>定义<code>z</code>, <code>z.p</code>, <code>y</code>, <code>z’</code><br>循环终止条件：<strong>为了保证满足性质4</strong>。<br>自底向上修正树，z的子树都满足红黑性质<br>结束后把根节点染成黑色<br>循环过程中，如果<code>z</code>变为根节点，则(2)被破坏，(4)被保留；否则<code>z.p</code>及其祖先的颜色不会改变，(2)被保留，如果<code>z.p</code>为红色则(4)被破坏。性质4<strong>只可能</strong>在<code>z</code>和<code>z.p</code>之间被破坏<br>循环开始前，如果<code>z.p</code>是根，则红黑树性质决定<code>z.p</code>为黑色，循环调整之前不会改变<code>z.p</code>的颜色<br>循环结束后，<code>z.p</code>是黑色的（如果<code>z</code>为根节点那么其父节点哨兵结点也是黑色的），性质(4)不会被破坏，只有可能性质(2)被破坏，所以对根节点进行染色<br>还有三项对称情况。</p>
-<h5 id="Case-2-amp-Case-3"><a href="#Case-2-amp-Case-3" class="headerlink" title="Case 2 &amp; Case 3"></a>Case 2 &amp; Case 3</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-07%20212542.png"><br>case 2、3<strong>不需要</strong>迭代。<br>对于case2、3来说，红黑树插入操作<strong>循环总数不超过2</strong>，因为case2、3一旦被执行就结束了。</p>
-<h5 id="Algorithm-Analysis-1"><a href="#Algorithm-Analysis-1" class="headerlink" title="Algorithm Analysis"></a>Algorithm Analysis</h5><p>总的来说，红黑树的插入操作中，我们有：<br>$T &#x3D; O( h ) &#x3D; O( lnN )$</p>
-<h4 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h4><p>When we do deletions,we must add 1 blcak to the path of the replacing node.<br><strong>登场人物</strong>：4个Case<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-07%20213823.png"><br>分别操作(Case 1 见上图)<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-07%20213942.png"><br>兄弟红易兄弟黑，换色单旋接着推；<br>侄黑父红换兄色，父侄双黑染红兄，上推；<br>近侄红来远侄黑，旋转能把模样改；<br>远侄红来单旋转，父兄换色侄变黑。</p>
+<h5 id="Case-1"><a href="#Case-1" class="headerlink" title="Case 1"></a>Case 1</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-07%20211745.png" alt=""><br>此时插入的红色节点<code>z</code>依然可能破坏性质2或者4，故作迭<strong>代处理</strong>。<br>定义<code>z</code>, <code>z.p</code>, <code>y</code>, <code>z’</code><br>循环终止条件：<strong>为了保证满足性质4</strong>。<br>自底向上修正树，z的子树都满足红黑性质<br>结束后把根节点染成黑色<br>循环过程中，如果<code>z</code>变为根节点，则(2)被破坏，(4)被保留；否则<code>z.p</code>及其祖先的颜色不会改变，(2)被保留，如果<code>z.p</code>为红色则(4)被破坏。性质4<strong>只可能</strong>在<code>z</code>和<code>z.p</code>之间被破坏<br>循环开始前，如果<code>z.p</code>是根，则红黑树性质决定<code>z.p</code>为黑色，循环调整之前不会改变<code>z.p</code>的颜色<br>循环结束后，<code>z.p</code>是黑色的（如果<code>z</code>为根节点那么其父节点哨兵结点也是黑色的），性质(4)不会被破坏，只有可能性质(2)被破坏，所以对根节点进行染色<br>还有三项对称情况。</p>
+<h5 id="Case-2-amp-Case-3"><a href="#Case-2-amp-Case-3" class="headerlink" title="Case 2 &amp; Case 3"></a>Case 2 &amp; Case 3</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-07%20212542.png" alt=""><br>case 2、3<strong>不需要</strong>迭代。<br>对于case2、3来说，红黑树插入操作<strong>循环总数不超过2</strong>，因为case2、3一旦被执行就结束了。</p>
+<h5 id="Algorithm-Analysis-1"><a href="#Algorithm-Analysis-1" class="headerlink" title="Algorithm Analysis"></a>Algorithm Analysis</h5><p>总的来说，红黑树的插入操作中，我们有：<br>$T = O( h ) = O( lnN )$</p>
+<h4 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h4><p>When we do deletions,we must add 1 blcak to the path of the replacing node.<br><strong>登场人物</strong>：4个Case<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-07%20213823.png" alt=""><br>分别操作(Case 1 见上图)<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-07%20213942.png" alt=""><br>兄弟红易兄弟黑，换色单旋接着推；<br>侄黑父红换兄色，父侄双黑染红兄，上推；<br>近侄红来远侄黑，旋转能把模样改；<br>远侄红来单旋转，父兄换色侄变黑。</p>
 <h3 id="B-Trees"><a href="#B-Trees" class="headerlink" title="B+ Trees"></a>B+ Trees</h3><h4 id="Definition-2"><a href="#Definition-2" class="headerlink" title="Definition"></a>Definition</h4><p>A B+ tree of order M is a tree with the following structural properties:</p>
 <ul>
 <li>The root is either a leaf or has between 2 and M children.</li>
-<li>All nonleaf nodes (except the root) have between $\lceil M&#x2F;2 \rceil$ and $M$ children.</li>
+<li>All nonleaf nodes (except the root) have between $\lceil M/2 \rceil$ and $M$ children.</li>
 <li>All leaves are at the same depth.</li>
 </ul>
-<p>Assume each nonroot leaf also has between $\lceil M&#x2F;2 \rceil$ and $M$ children.</p>
+<p>Assume each nonroot leaf also has between $\lceil M/2 \rceil$ and $M$ children.</p>
 <h4 id="Find"><a href="#Find" class="headerlink" title="Find"></a>Find</h4><h4 id="Insert-1"><a href="#Insert-1" class="headerlink" title="Insert"></a>Insert</h4><pre><code>Btree  Insert ( ElementType X,  Btree T ) 
 &#123; 
     Search from root to leaf for X and find the proper leaf node;
@@ -495,8 +494,7 @@ B-&gt;Right = Temp
             check its parent;
     &#125;
 &#125;
-</code></pre>
-<h2 id="Inverted-File-Index"><a href="#Inverted-File-Index" class="headerlink" title="Inverted File Index"></a>Inverted File Index</h2><h3 id="Inverted-File-Index-1"><a href="#Inverted-File-Index-1" class="headerlink" title="Inverted File Index"></a>Inverted File Index</h3><h4 id="Definition-3"><a href="#Definition-3" class="headerlink" title="Definition"></a>Definition</h4><p><strong>Index</strong> is a mechanism for locating a given term in a text.<br><strong>Inverted file</strong> contains a list of pointers(e.g. the number of a page) to all occurrences of that term in the text.</p>
+</code></pre><h2 id="Inverted-File-Index"><a href="#Inverted-File-Index" class="headerlink" title="Inverted File Index"></a>Inverted File Index</h2><h3 id="Inverted-File-Index-1"><a href="#Inverted-File-Index-1" class="headerlink" title="Inverted File Index"></a>Inverted File Index</h3><h4 id="Definition-3"><a href="#Definition-3" class="headerlink" title="Definition"></a>Definition</h4><p><strong>Index</strong> is a mechanism for locating a given term in a text.<br><strong>Inverted file</strong> contains a list of pointers(e.g. the number of a page) to all occurrences of that term in the text.</p>
 <h4 id="Index-Generateor"><a href="#Index-Generateor" class="headerlink" title="Index Generateor"></a>Index Generateor</h4><h2 id="Leftist-Heaps-and-Skew-Heaps"><a href="#Leftist-Heaps-and-Skew-Heaps" class="headerlink" title="Leftist Heaps and Skew Heaps"></a>Leftist Heaps and Skew Heaps</h2><h3 id="Leftist-Heap"><a href="#Leftist-Heap" class="headerlink" title="Leftist Heap"></a>Leftist Heap</h3><h4 id="Recall-1"><a href="#Recall-1" class="headerlink" title="Recall"></a>Recall</h4><p><strong>Heap:</strong> Structure Property + Order Property<br>结构性质：</p>
 <ul>
 <li>堆是完全二叉树</li>
@@ -522,18 +520,18 @@ B-&gt;Right = Temp
 <ul>
 <li>the same as normal heap</li>
 </ul>
-<h4 id="Definiition"><a href="#Definiition" class="headerlink" title="Definiition"></a>Definiition</h4><h5 id="NPL"><a href="#NPL" class="headerlink" title="NPL"></a>NPL</h5><p>The null path length,Npl(x),of any node X is the length of the <strong>shortest path</strong> from X to a node <strong>without two childeren</strong>. Define Npl(NULL)&#x3D;-1.<br><strong>Note:</strong><br>$Npl(x)&#x3D;min{Npl(c)+1}$ , for all c as children of x</p>
+<h4 id="Definiition"><a href="#Definiition" class="headerlink" title="Definiition"></a>Definiition</h4><h5 id="NPL"><a href="#NPL" class="headerlink" title="NPL"></a>NPL</h5><p>The null path length,Npl(x),of any node X is the length of the <strong>shortest path</strong> from X to a node <strong>without two childeren</strong>. Define Npl(NULL)=-1.<br><strong>Note:</strong><br>$Npl(x)=min{Npl(c)+1}$ , for all c as children of x</p>
 <h5 id="Leftist-Heap-2"><a href="#Leftist-Heap-2" class="headerlink" title="Leftist Heap"></a>Leftist Heap</h5><p>The leftist heap property is that for every node x in the heap,the null path length of the left child is <strong>at least as large as</strong>  ($\geq $) that of the right child.</p>
-<p><strong>Example:</strong><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-21%20142211.png"></p>
+<p><strong>Example:</strong><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-21%20142211.png" alt=""></p>
 <p><strong>【Theorem】</strong>：<br>A leftist tree with r nodes on the right path must have at least $2^r-1$ nodes.</p>
 <p>So we can find that the length of the right path of a leftist tree with N nodes is $\lfloor log{(N+1)}\rfloor$</p>
-<h4 id="Merge-Operation-Recursive"><a href="#Merge-Operation-Recursive" class="headerlink" title="Merge Operation Recursive"></a>Merge Operation Recursive</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-21%20142435.png"></p>
+<h4 id="Merge-Operation-Recursive"><a href="#Merge-Operation-Recursive" class="headerlink" title="Merge Operation Recursive"></a>Merge Operation Recursive</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-21%20142435.png" alt=""></p>
 <ol>
 <li>比较需要合并的两棵树树根节点谁更小，大的与小的右子树合并</li>
 <li>递归方法合并根节点小的右子树和根节点大的整棵树。</li>
 <li>比较新树的左右子树哪一个的$Npl$更大，若右边更大则交换左右子树。</li>
 </ol>
-<h5 id="Declaration"><a href="#Declaration" class="headerlink" title="Declaration"></a>Declaration</h5><pre><code class="C">struct TreeNode 
+<h5 id="Declaration"><a href="#Declaration" class="headerlink" title="Declaration"></a>Declaration</h5><pre><code class="lang-C">struct TreeNode 
 &#123; 
     ElementType Element;
     PriorityQueue Left;
@@ -541,10 +539,10 @@ B-&gt;Right = Temp
     int Npl;
 &#125; ;
 </code></pre>
-<h5 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h5><pre><code class="C">PriorityQueue  Merge ( PriorityQueue H1, PriorityQueue H2 )
+<h5 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h5><pre><code class="lang-C">PriorityQueue  Merge ( PriorityQueue H1, PriorityQueue H2 )
 &#123; 
-    if ( H1 == NULL )   return H2;	
-    if ( H2 == NULL )   return H1;	
+    if ( H1 == NULL )   return H2;    
+    if ( H2 == NULL )   return H1;    
     if ( H1-&gt;Element &lt; H2-&gt;Element )  return Merge1( H1, H2 );
     else return Merge1( H2, H1 );
 &#125;
@@ -552,24 +550,24 @@ B-&gt;Right = Temp
 static PriorityQueue
 Merge1( PriorityQueue H1, PriorityQueue H2 )
 &#123; 
-    if ( H1-&gt;Left == NULL ) 	/* single node */
-        H1-&gt;Left = H2;	/* H1-&gt;Right is already NULL 
+    if ( H1-&gt;Left == NULL )     /* single node */
+        H1-&gt;Left = H2;    /* H1-&gt;Right is already NULL 
                     and H1-&gt;Npl is already 0 */
     else &#123;
         H1-&gt;Right = Merge( H1-&gt;Right, H2 );     /* Step 1 &amp; 2 */
         if ( H1-&gt;Left-&gt;Npl &lt; H1-&gt;Right-&gt;Npl )
-            SwapChildren( H1 );	/* Step 3 */
+            SwapChildren( H1 );    /* Step 3 */
         H1-&gt;Npl = H1-&gt;Right-&gt;Npl + 1;
     &#125; /* end else */
     return H1;
 &#125;
 </code></pre>
-<h5 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h5><p>$T_p &#x3D; O(log N)$</p>
+<h5 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h5><p>$T_p = O(log N)$</p>
 <h4 id="Merge-Operation-Iterative"><a href="#Merge-Operation-Iterative" class="headerlink" title="Merge Operation Iterative"></a>Merge Operation Iterative</h4><ol>
 <li>Sort the right paths without changing their left children</li>
 <li>Swap children if necessary</li>
 </ol>
-<h5 id="Implementation-1"><a href="#Implementation-1" class="headerlink" title="Implementation"></a>Implementation</h5><pre><code class="C++">// 定义左偏树结点结构体
+<h5 id="Implementation-1"><a href="#Implementation-1" class="headerlink" title="Implementation"></a>Implementation</h5><pre><code class="lang-C++">// 定义左偏树结点结构体
 struct Node &#123;
     int val; // 结点值
     int dist; // 结点距离
@@ -604,19 +602,19 @@ Node* merge(Node* x, Node* y) &#123;
     return x; // 返回最终合并后的根节点（初始为最底层修改过的父节点）
 &#125;
 </code></pre>
-<h5 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h5><p>$T_p &#x3D; O(log N)$</p>
+<h5 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h5><p>$T_p = O(log N)$</p>
 <h4 id="DeleteMin-Operation"><a href="#DeleteMin-Operation" class="headerlink" title="DeleteMin Operation"></a>DeleteMin Operation</h4><ol>
 <li>Delete the root</li>
 <li>Merge the two subtrees</li>
 </ol>
-<h5 id="Analysis-2"><a href="#Analysis-2" class="headerlink" title="Analysis"></a>Analysis</h5><p>$T_p &#x3D; O(log N)$</p>
-<h3 id="Skew-Heap"><a href="#Skew-Heap" class="headerlink" title="Skew Heap"></a>Skew Heap</h3><h4 id="Definition-4"><a href="#Definition-4" class="headerlink" title="Definition"></a>Definition</h4><p><strong>Idea:</strong><br>Always swap the left and right children except that the largest of all the nodes on the right paths does not have its children swapped.  <strong>No Npl.</strong><br>总是交换左右子节点，除了右边路径上最大的节点没有交换它的子节点。<strong>不需要Npl。</strong><br>由于没有npl，它可以节省更多空间。斜堆也不要求堆是左倾堆。<br>由于斜堆并不是严格的左倾堆，最坏的情况下右路长度可能为<code>N</code>，因此采用递归调用<code>merge</code>的风险是出现<code>stack overflow</code>。<br>只要一直插入如下图所示的结构（第一个节点不是，是为了方便画），<code>Skew Heap</code>就会退化成右倾的一条链。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/20210501224550211.png"></p>
+<h5 id="Analysis-2"><a href="#Analysis-2" class="headerlink" title="Analysis"></a>Analysis</h5><p>$T_p = O(log N)$</p>
+<h3 id="Skew-Heap"><a href="#Skew-Heap" class="headerlink" title="Skew Heap"></a>Skew Heap</h3><h4 id="Definition-4"><a href="#Definition-4" class="headerlink" title="Definition"></a>Definition</h4><p><strong>Idea:</strong><br>Always swap the left and right children except that the largest of all the nodes on the right paths does not have its children swapped.  <strong>No Npl.</strong><br>总是交换左右子节点，除了右边路径上最大的节点没有交换它的子节点。<strong>不需要Npl。</strong><br>由于没有npl，它可以节省更多空间。斜堆也不要求堆是左倾堆。<br>由于斜堆并不是严格的左倾堆，最坏的情况下右路长度可能为<code>N</code>，因此采用递归调用<code>merge</code>的风险是出现<code>stack overflow</code>。<br>只要一直插入如下图所示的结构（第一个节点不是，是为了方便画），<code>Skew Heap</code>就会退化成右倾的一条链。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/20210501224550211.png" alt=""></p>
 <h4 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h4><ol>
 <li>如果一个空斜堆与一个非空斜堆合并，返回非空斜堆。</li>
 <li>如果两个斜堆都非空，那么比较两个根节点，取较小堆的根节点为新的根节点。将”较小堆的根节点的右孩子”和”较大堆”进行合并。</li>
 <li>合并后，交换新堆根节点的左孩子和右孩子。</li>
 </ol>
-<h5 id="Implementation-2"><a href="#Implementation-2" class="headerlink" title="Implementation"></a>Implementation</h5><pre><code class="C">SkewNode* merge_skewheap(SkewHeap x, SkewHeap y)
+<h5 id="Implementation-2"><a href="#Implementation-2" class="headerlink" title="Implementation"></a>Implementation</h5><pre><code class="lang-C">SkewNode* merge_skewheap(SkewHeap x, SkewHeap y)
 &#123;
     if(x == NULL)
         return y;
@@ -639,39 +637,39 @@ Node* merge(Node* x, Node* y) &#123;
 </code></pre>
 <p>对于<code>Skew Heap</code>插入新的节点实质上也可以看作<code>Merge</code>操作。</p>
 <h4 id="Amortized-Analysis"><a href="#Amortized-Analysis" class="headerlink" title="Amortized Analysis"></a>Amortized Analysis</h4><p><strong>【Definition】</strong> A node p is <strong>heavy</strong> if the number of descendants of p’s right subtree is at least half of the number of descendants of p, and light otherwise.  Note that the number of descendants of a node includes the node itself.<br>如果节点p的右子树的子代数至少是p子代数的一半，则节点p为<strong>重</strong>，否则为轻。请注意，节点的后代数量包括节点本身。</p>
-<p>The <strong>only</strong> nodes whose heavy&#x2F;light status can change are nodes that are initially on the right path.<br>合并操作中，<strong>只有</strong>右路径上的节点轻重状态回改变。右路径上<strong>重节点一定变轻节点，而轻节点不一定变重节点</strong>。</p>
-<p>这里我们使用均摊分析中的势能方法分析斜堆的算法复杂度。<br>如果我们如下定义$D_i$:<br>$D_i&#x3D;$the root of the resulting tree</p>
+<p>The <strong>only</strong> nodes whose heavy/light status can change are nodes that are initially on the right path.<br>合并操作中，<strong>只有</strong>右路径上的节点轻重状态回改变。右路径上<strong>重节点一定变轻节点，而轻节点不一定变重节点</strong>。</p>
+<p>这里我们使用均摊分析中的势能方法分析斜堆的算法复杂度。<br>如果我们如下定义$D_i$:<br>$D_i=$the root of the resulting tree</p>
 <p>那么，我们如下定义势能函数：</p>
-<p>$\Phi(D_i)&#x3D;$number of <strong>heavy</strong> nodes</p>
-<p>设合并前两个斜堆的右路径上的<strong>重节点</strong>数量分别为$h_1$,$h_2$，所有左路径上的<strong>重节点</strong>数量为$h$（由于这些重节点的轻重<strong>不再</strong>变化），所有右路径上的轻节点数量分别为$l_1$,$l_2$。<br>我们可以观察到，在合并之前，<br>$\Phi_0&#x3D;h_1+h_2+h$</p>
-<p>由于在合并过程中，重节点<strong>一定</strong>变轻节点（左右子树要经过交换），而轻节点<strong>不一定</strong>变重节点。<br>经过合并之后：<br>$\Phi_N\leq l_1+l_2$（最差情况，<strong>所有</strong>的轻节点都叛变了）<br>而最差情况：<br>$T_{worst} &#x3D; l_1 + h_1 + l_2 + h_2$<br>所以，根据势能方法的定义，<br>$T_{amortized} &#x3D; T_{worst} + \Phi_N – \Phi_0  \leq 2 (l_1 + l_2)$<br>而$l &#x3D; O( log N )$<br>故$T_{amortized} &#x3D; O( log N )$</p>
+<p>$\Phi(D_i)=$number of <strong>heavy</strong> nodes</p>
+<p>设合并前两个斜堆的右路径上的<strong>重节点</strong>数量分别为$h_1$,$h_2$，所有左路径上的<strong>重节点</strong>数量为$h$（由于这些重节点的轻重<strong>不再</strong>变化），所有右路径上的轻节点数量分别为$l_1$,$l_2$。<br>我们可以观察到，在合并之前，<br>$\Phi_0=h_1+h_2+h$</p>
+<p>由于在合并过程中，重节点<strong>一定</strong>变轻节点（左右子树要经过交换），而轻节点<strong>不一定</strong>变重节点。<br>经过合并之后：<br>$\Phi<em>N\leq l_1+l_2$（最差情况，<strong>所有</strong>的轻节点都叛变了）<br>而最差情况：<br>$T</em>{worst} = l<em>1 + h_1 + l_2 + h_2$<br>所以，根据势能方法的定义，<br>$T</em>{amortized} = T<em>{worst} + \Phi_N – \Phi_0  \leq 2 (l_1 + l_2)$<br>而$l = O( log N )$<br>故$T</em>{amortized} = O( log N )$</p>
 <h3 id="Binomial-Queue"><a href="#Binomial-Queue" class="headerlink" title="Binomial Queue"></a>Binomial Queue</h3><h4 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h4><p>A binomial queue is not a heap-ordered tree, but rather a collection of heap-ordered trees, known as a forest.  Each heap-ordered tree is a binomial tree.</p>
 <p>A binomial tree of height 0 is a one-node tree.</p>
-<p>A binomial tree, $B_k$, of height $k$ is formed by attaching a binomial tree, $B_{k – 1}$, to the root of another binomial tree, $B_{k – 1}$.</p>
-<p>仅包含一个结点的有序树是一棵二项树称为$B_0$树。二项树$B_k$由两棵$B_{k-1}$树组成，其中一棵$B_{k-1}$树的根作为另一棵$B_{k-1}$树根的最左孩子$(k≥0)$。</p>
-<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-28%20134549.png"></p>
-<p><strong>Note</strong>:$B_k$ consists of a root with k    children, which are  $B_0, B_1, …, B_{k – 1} $.  $B_k$ has exactly  $2^k$ nodes. The number of nodes at depth $d$ is $\tbinom{k}{d}$.</p>
-<p>$B_k$ structure + heap order + one binomial tree for each height.<br>$\Rightarrow$ A priority queue of any size can be uniquely represented by a collection of binomial trees.<br>一些由二项树<strong>构成</strong>的树林被称作二项堆，是一种优先队列。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-03-28%20134816.png"></p>
-<h4 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h4><h5 id="FindMin"><a href="#FindMin" class="headerlink" title="FindMin"></a>FindMin</h5><p>The minimum key is in one of the roots.<br>There are at most $\lceil logN \rceil$    roots, hence $T_p &#x3D; O(logN)$.</p>
+<p>A binomial tree, $B<em>k$, of height $k$ is formed by attaching a binomial tree, $B</em>{k – 1}$, to the root of another binomial tree, $B_{k – 1}$.</p>
+<p>仅包含一个结点的有序树是一棵二项树称为$B<em>0$树。二项树$B_k$由两棵$B</em>{k-1}$树组成，其中一棵$B<em>{k-1}$树的根作为另一棵$B</em>{k-1}$树根的最左孩子$(k≥0)$。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-28%20134549.png" alt=""></p>
+<p><strong>Note</strong>:$B<em>k$ consists of a root with k    children, which are  $B_0, B_1, …, B</em>{k – 1} $.  $B_k$ has exactly  $2^k$ nodes. The number of nodes at depth $d$ is $\tbinom{k}{d}$.</p>
+<p>$B_k$ structure + heap order + one binomial tree for each height.<br>$\Rightarrow$ A priority queue of any size can be uniquely represented by a collection of binomial trees.<br>一些由二项树<strong>构成</strong>的树林被称作二项堆，是一种优先队列。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-03-28%20134816.png" alt=""></p>
+<h4 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h4><h5 id="FindMin"><a href="#FindMin" class="headerlink" title="FindMin"></a>FindMin</h5><p>The minimum key is in one of the roots.<br>There are at most $\lceil logN \rceil$    roots, hence $T_p = O(logN)$.</p>
 <p>We can remember the minimum and update whenever it is changed.Then this operation will take $O(1)$.</p>
-<h5 id="Merge-1"><a href="#Merge-1" class="headerlink" title="Merge"></a>Merge</h5><p><strong>Note</strong>: If the smallest nonexistent binomial tree is Bi , then $T_p &#x3D; Const · (i + 1)$.<br>Performing $N$ Inserts on an initially empty binomial queue will take $O(N)$ worst-case time.  Hence the average time is constant.</p>
+<h5 id="Merge-1"><a href="#Merge-1" class="headerlink" title="Merge"></a>Merge</h5><p><strong>Note</strong>: If the smallest nonexistent binomial tree is Bi , then $T_p = Const · (i + 1)$.<br>Performing $N$ Inserts on an initially empty binomial queue will take $O(N)$ worst-case time.  Hence the average time is constant.</p>
 <h5 id="DeleteMin"><a href="#DeleteMin" class="headerlink" title="DeleteMin"></a>DeleteMin</h5><p>Step 1: FindMin in $B_k$<br>Step 2: Remove $B_k$ from $H$<br>Step 3: Remove root from $B_k$<br>Step 4: <code>Merge (H’, H”)</code></p>
-<h4 id="Implementation-3"><a href="#Implementation-3" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="C">//definition
+<h4 id="Implementation-3"><a href="#Implementation-3" class="headerlink" title="Implementation"></a>Implementation</h4><pre><code class="lang-C">//definition
 typedef struct BinNode *Position;
 typedef struct Collection *BinQueue;
 typedef struct BinNode *BinTree;  /* missing from p.176 */
 
 struct BinNode 
 &#123; 
-    ElementType	    Element;
-    Position	    LeftChild;
-    Position 	    NextSibling;
+    ElementType        Element;
+    Position        LeftChild;
+    Position         NextSibling;
 &#125; ;
 
 struct Collection 
 &#123; 
-    int	    	CurrentSize;  /* total number of nodes */
-    BinTree	TheTrees[ MaxTrees ];
+    int            CurrentSize;  /* total number of nodes */
+    BinTree    TheTrees[ MaxTrees ];
 &#125;;
 
 //merge two binomial trees
@@ -783,10 +781,10 @@ ElementType DeleteMin( BinQueue H )
 </code></pre>
 <h3 id="Backtracking"><a href="#Backtracking" class="headerlink" title="Backtracking"></a>Backtracking</h3><p>A sure-fire way to find the answer to a problem is to make a list of all candidate answers, examine each, and following the examination of all or some of the candidates, declare the identified answer.</p>
 <p>Backtracking enables us to eliminate the explicit examination of a large subset of the candidates while still guaranteeing that the answer will be found if the algorithm is run to termination.</p>
-<p>The basic idea is that suppose we have a partial solution ( $x_1, … , x_i$ ) where each $x_k \in S_k$ for  $1 \leq k \leq i &lt; n$.   First we add  $x_{i+1} \in S_{i+1}$ and check if ( $x_1, … , x_i, x_{i+1}$ ) satisfies the constrains.  If the answer is “yes” we continue to add the next x, else we delete $x_{i+1}$ and backtrack to the previous partial solution ( $x_1, … , x_{i}$ ).</p>
+<p>The basic idea is that suppose we have a partial solution ( $x<em>1, … , x_i$ ) where each $x_k \in S_k$ for  $1 \leq k \leq i &lt; n$.   First we add  $x</em>{i+1} \in S<em>{i+1}$ and check if ( $x_1, … , x_i, x</em>{i+1}$ ) satisfies the constrains.  If the answer is “yes” we continue to add the next x, else we delete $x<em>{i+1}$ and backtrack to the previous partial solution ( $x_1, … , x</em>{i}$ ).</p>
 <p>我们不断枚举，当发现<strong>不满足条件</strong>时，回溯到上一步，继续枚举。</p>
-<h4 id="The-Turnpike-Reconstruction-Problem"><a href="#The-Turnpike-Reconstruction-Problem" class="headerlink" title="The Turnpike Reconstruction Problem"></a>The Turnpike Reconstruction Problem</h4><p>Given N points on the x-axis with coordinates $x_1 &lt;  x_2 &lt; …&lt; x_N$ .  Assume that $x_1 &#x3D; 0$.  There are $N ( N – 1 ) &#x2F; 2$ distances between every pair of points.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-04-04%20153553.png"></p>
-<pre><code class="C">bool Reconstruct ( DistType X[ ], DistSet D, int N, int left, int right )
+<h4 id="The-Turnpike-Reconstruction-Problem"><a href="#The-Turnpike-Reconstruction-Problem" class="headerlink" title="The Turnpike Reconstruction Problem"></a>The Turnpike Reconstruction Problem</h4><p>Given N points on the x-axis with coordinates $x_1 &lt;  x_2 &lt; …&lt; x_N$ .  Assume that $x_1 = 0$.  There are $N ( N – 1 ) / 2$ distances between every pair of points.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-04-04%20153553.png" alt=""></p>
+<pre><code class="lang-C">bool Reconstruct ( DistType X[ ], DistSet D, int N, int left, int right )
 &#123; /* X[1]...X[left-1] and X[right+1]...X[N] are solved */
     bool Found = false;
     if ( Is_Empty( D ) )
@@ -822,14 +820,14 @@ ElementType DeleteMin( BinQueue H )
         &#125;
         /* finish checking option 2 */
     &#125; /* finish checking all the options */
-    
+
     return Found;
 &#125;
 </code></pre>
 <h4 id="Eight-Queens"><a href="#Eight-Queens" class="headerlink" title="Eight Queens"></a>Eight Queens</h4><p>Find a placement of  8 queens on an 8 X 8 chessboard such that no two queens attack.</p>
 <p>Two queens are said to attack iff they are in the same row, column, diagonal, or antidiagonal of the chessboard.</p>
-<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-04-04%20153849.png"></p>
-<pre><code class="C">void EightQueens ( int k )
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-04-04%20153849.png" alt=""></p>
+<pre><code class="lang-C">void EightQueens ( int k )
 &#123;   int i;
     if ( k &gt; N ) &#123; /* a solution is found */
         PrintSolution( );
@@ -850,7 +848,7 @@ bool Place ( int k )
     return true;
 &#125;
 </code></pre>
-<h4 id="General-Backtracking"><a href="#General-Backtracking" class="headerlink" title="General Backtracking"></a>General Backtracking</h4><pre><code class="C">bool Backtracking ( int i )
+<h4 id="General-Backtracking"><a href="#General-Backtracking" class="headerlink" title="General Backtracking"></a>General Backtracking</h4><pre><code class="lang-C">bool Backtracking ( int i )
 &#123;   Found = false;
     if ( i &gt; N )
         return true; /* solved with (x1, …, xN) */
@@ -869,24 +867,24 @@ bool Place ( int k )
 &#125;
 </code></pre>
 <p>回溯的效率跟S的规模、约束函数的复杂性、满足约束条件的结点数相关。<br>约束函数决定了剪枝的效率，但是如果函数本身太复杂也未必合算。<br>满足约束条件的结点数最难估计，使得复杂度分析很难完成。</p>
-<h3 id="Divide-and-Conquer"><a href="#Divide-and-Conquer" class="headerlink" title="Divide and Conquer"></a>Divide and Conquer</h3><h4 id="Algorithm-Design"><a href="#Algorithm-Design" class="headerlink" title="Algorithm Design"></a>Algorithm Design</h4><p><strong>Divide</strong>: the problem into a number of sub-problems.<br><strong>Conquer</strong>: the sub-problems by solving them recursively.<br><strong>Combine</strong>: the solutions to the sub-problems into the solution for the original problem.<br><strong>General recurrence:</strong> $T(N) &#x3D; aT(N&#x2F;b) + f(N)$</p>
+<h3 id="Divide-and-Conquer"><a href="#Divide-and-Conquer" class="headerlink" title="Divide and Conquer"></a>Divide and Conquer</h3><h4 id="Algorithm-Design"><a href="#Algorithm-Design" class="headerlink" title="Algorithm Design"></a>Algorithm Design</h4><p><strong>Divide</strong>: the problem into a number of sub-problems.<br><strong>Conquer</strong>: the sub-problems by solving them recursively.<br><strong>Combine</strong>: the solutions to the sub-problems into the solution for the original problem.<br><strong>General recurrence:</strong> $T(N) = aT(N/b) + f(N)$</p>
 <h4 id="Closest-Points-Problem"><a href="#Closest-Points-Problem" class="headerlink" title="Closest Points Problem"></a>Closest Points Problem</h4><p>Given $N$ points in a plane.  Find the closest pair of points.  (If two points have the same position, then that pair is the closest with distance 0.)</p>
-<h4 id="Algorithm-Analysis-2"><a href="#Algorithm-Analysis-2" class="headerlink" title="Algorithm Analysis"></a>Algorithm Analysis</h4><h5 id="Substitution-method"><a href="#Substitution-method" class="headerlink" title="Substitution method"></a>Substitution method</h5><h5 id="Recursion-tree-method"><a href="#Recursion-tree-method" class="headerlink" title="Recursion-tree method"></a>Recursion-tree method</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-04-11%20144025.png"><br>一个示例，用于分析算法复杂度的方法，叶子节点表示划分完成后最小子问题的时间开销，中间节点表示合并子问题的时间开销。</p>
-<h5 id="Master-method"><a href="#Master-method" class="headerlink" title="Master method"></a>Master method</h5><p><strong>【Master Theorem】</strong><br>Let $a \geq 1$ and $b &gt; 1$ be constants, let $f(N)$ be a function, and let $T(N)$ be defined on the nonnegative integers by the recurrence  $T(N) &#x3D; aT(N&#x2F;b) + f(N)$.  Then:</p>
+<h4 id="Algorithm-Analysis-2"><a href="#Algorithm-Analysis-2" class="headerlink" title="Algorithm Analysis"></a>Algorithm Analysis</h4><h5 id="Substitution-method"><a href="#Substitution-method" class="headerlink" title="Substitution method"></a>Substitution method</h5><h5 id="Recursion-tree-method"><a href="#Recursion-tree-method" class="headerlink" title="Recursion-tree method"></a>Recursion-tree method</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-04-11%20144025.png" alt=""><br>一个示例，用于分析算法复杂度的方法，叶子节点表示划分完成后最小子问题的时间开销，中间节点表示合并子问题的时间开销。</p>
+<h5 id="Master-method"><a href="#Master-method" class="headerlink" title="Master method"></a>Master method</h5><p><strong>【Master Theorem】</strong><br>Let $a \geq 1$ and $b &gt; 1$ be constants, let $f(N)$ be a function, and let $T(N)$ be defined on the nonnegative integers by the recurrence  $T(N) = aT(N/b) + f(N)$.  Then:</p>
 <ol>
-<li><p>If $f(N)&#x3D;O(N^{log_b{a-\epsilon}})$ for some constant $\epsilon &gt; 0$, then $T(N)&#x3D;\Theta(N^{log_ba})$</p>
+<li><p>If $f(N)=O(N^{log_b{a-\epsilon}})$ for some constant $\epsilon &gt; 0$, then $T(N)=\Theta(N^{log_ba})$</p>
 </li>
-<li><p>If $f(N)&#x3D;\Theta(N^{log_ba})$, then $T(N)&#x3D;\Theta(N^{log_ba}logN)$</p>
+<li><p>If $f(N)=\Theta(N^{log_ba})$, then $T(N)=\Theta(N^{log_ba}logN)$</p>
 </li>
-<li><p>If $f(N)&#x3D;\Omega(N^{log_b{a+\epsilon}})$ for some constant $\epsilon &gt; 0$, <strong>and if</strong>  $ af(N&#x2F;b)&lt;cf(N)$ for some constant $c &lt; 1$ and all sufficiently large $N$, then $T(N)&#x3D;\Theta f(N)$</p>
+<li><p>If $f(N)=\Omega(N^{log_b{a+\epsilon}})$ for some constant $\epsilon &gt; 0$, <strong>and if</strong>  $ af(N/b)&lt;cf(N)$ for some constant $c &lt; 1$ and all sufficiently large $N$, then $T(N)=\Theta f(N)$</p>
 </li>
 </ol>
 <p><strong>【Example】</strong> </p>
 <ul>
-<li>Mergesort has $a &#x3D; b &#x3D; 2$, and case 2<br>$T &#x3D; O( N log N )$</li>
-<li>$a &#x3D; b &#x3D; 2$,  $f (N) &#x3D; NlogN$  ?<br>$T &#x3D; O( N log N )$ (X)<br>这时候主方法就挂了，因为没有满足三种中的任意一种，这种情况下要用递归树。</li>
+<li>Mergesort has $a = b = 2$, and case 2<br>$T = O( N log N )$</li>
+<li>$a = b = 2$,  $f (N) = NlogN$  ?<br>$T = O( N log N )$ (X)<br>这时候主方法就挂了，因为没有满足三种中的任意一种，这种情况下要用递归树。</li>
 </ul>
-<p>其他两种主方法的形式：<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-04-11%20152946.png"><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-04-11%20153132.png"></p>
+<p>其他两种主方法的形式：<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-04-11%20152946.png" alt=""><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-04-11%20153132.png" alt=""></p>
 
         </div>
         <!-- .entry-content -->
