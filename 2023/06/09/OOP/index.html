@@ -6,7 +6,7 @@
   
   <title itemprop="name">OOP复习笔记 | mio的博客</title>
   
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/hutaoicon.png">
+    <link rel="shortcut icon" href="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/hutaoicon.png">
   
   <meta http-equiv="x-dns-prefetch-control" content="on">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
@@ -73,7 +73,7 @@
     <div class="focusinfo no-select">
       <div class="header-tou">
         <a href="https://orwell-yu.github.io/">
-          <img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/mio avatar.jpg">
+          <img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/mio avatar.jpg">
         </a>
       </div>
       <div class="header-info">
@@ -87,7 +87,7 @@
               
                 <li>
                   <a href="https://github.com/Orwell-Yu" target="_blank" class="social-github" title="github">
-                    <img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/social/github.png">
+                    <img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/social/github.png">
                   </a>
                 </li>
               
@@ -95,7 +95,7 @@
               
                 <li>
                   <a href="https://space.bilibili.com/350209137?spm_id_from=333.1007.0.0" target="_blank" class="social-github" title="bilibili">
-                    <img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/social/bilibili.png">
+                    <img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/social/bilibili.png">
                   </a>
                 </li>
               
@@ -103,7 +103,7 @@
               
                 <li>
                   <a href="https://www.zhihu.com/people/legend-67-50" target="_blank" class="social-github" title="zhihu">
-                    <img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/social/zhihu.png">
+                    <img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/social/zhihu.png">
                   </a>
                 </li>
               
@@ -111,7 +111,7 @@
               
                 <li>
                   <a href="https://twitter.com/yu_zhewen" target="_blank" class="social-github" title="Twitter">
-                    <img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/social/twitter.png">
+                    <img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/social/twitter.png">
                   </a>
                 </li>
               
@@ -333,7 +333,7 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/cover.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/cover.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/cover.png);" src="https://gcore.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/cover.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
@@ -341,7 +341,7 @@
       <p class="entry-census">
         <span>
           <a href="">
-            <img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/mio%20avatar.jpg">
+            <img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/mio%20avatar.jpg">
           </a>
         </span>
         <span>
@@ -492,7 +492,7 @@ f() &#123;
     int *p = malloc(sizeof(int)); //allocated vars.
 &#125;
 </code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/屏幕截图%202023-03-02%20154259.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/屏幕截图%202023-03-02%20154259.png" alt=""></p>
 <h4 id="Global-Vars"><a href="#Global-Vars" class="headerlink" title="Global Vars"></a>Global Vars</h4><ul>
 <li>vars defined outside any functions</li>
 <li>can be shared btw .cpp files</li>
@@ -543,7 +543,7 @@ delete[] p;
 <blockquote>
 <p>The presence of the brackets tells the program that it should free the whole array, not just the element.<br>若不写[]只会删除一个大小的变量，比如只删除一个四位大小的int[0]其他部分都不会被释放，造成内存泄漏</p>
 </blockquote>
-<h4 id="The-New-delete-Mech"><a href="#The-New-delete-Mech" class="headerlink" title="The New-delete Mech"></a>The New-delete Mech</h4><p><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/屏幕截图%202023-03-09%20143519.png" alt=""><br>Use delete (no brackets) if you used new to allocate a  single entity.<br>It’s safe to apply delete to the null pointer (nothing  happens).<br>Use delete [] if you used new [] to allocate an array.<br>Don’t use delete to free the same block of memory twice  in succession.<br>Don’t use delete to free memory that new didn’t allocate.</p>
+<h4 id="The-New-delete-Mech"><a href="#The-New-delete-Mech" class="headerlink" title="The New-delete Mech"></a>The New-delete Mech</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/屏幕截图%202023-03-09%20143519.png" alt=""><br>Use delete (no brackets) if you used new to allocate a  single entity.<br>It’s safe to apply delete to the null pointer (nothing  happens).<br>Use delete [] if you used new [] to allocate an array.<br>Don’t use delete to free the same block of memory twice  in succession.<br>Don’t use delete to free memory that new didn’t allocate.</p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>References are a new data type in C++</p>
 <pre><code class="lang-C++">char c;    // a character
 char* p = &amp;c; // a pointer to a character
@@ -916,7 +916,7 @@ Object is being deleted
 .
 label: statement;
 </code></pre>
-<p>在这里，label 是识别被标记语句的标识符，可以是任何除 C++ 关键字以外的纯文本。标记语句可以是任何语句，放置在标识符和冒号（:）后边。<br><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/goto.png" alt=""></p>
+<p>在这里，label 是识别被标记语句的标识符，可以是任何除 C++ 关键字以外的纯文本。标记语句可以是任何语句，放置在标识符和冒号（:）后边。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/goto.png" alt=""></p>
 <h4 id="Storage-Allocation"><a href="#Storage-Allocation" class="headerlink" title="Storage Allocation"></a>Storage Allocation</h4><ul>
 <li>The compiler allocates all the storage for a scope at the opening brace of that scope.</li>
 <li>The constructor call doesn’t happen until the sequence point where the object is deﬁned.</li>
@@ -1096,7 +1096,7 @@ main()&#123;
 <p>声明跟定义要一致：如果在每个文件里都实现一次该内联函数的话，那么，最好保证每个定义都是一样的，否则，将会引起未定义的行为。如果不是每个文件里的定义都一样，那么，编译器展开的是哪一个，那要看具体的编译器而定。所以，最好将内联函数定义放在头文件中。</p>
 <h4 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h4><h5 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h5><p>面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类，这使得创建和维护一个应用程序变得更容易。这样做，也达到了重用代码功能和提高执行效率的效果。</p>
 <p>当创建一个类时，您不需要重新编写新的数据成员和成员函数，只需指定新建的类继承了一个已有的类的成员即可。这个已有的类称为基类，新建的类称为派生类。</p>
-<p>继承代表了 <strong>is-a</strong> 关系。例如，哺乳动物是动物，狗是哺乳动物，因此，狗是动物，等等。<br><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/cpp-inheritance-2020-12-15-1.png" alt=""></p>
+<p>继承代表了 <strong>is-a</strong> 关系。例如，哺乳动物是动物，狗是哺乳动物，因此，狗是动物，等等。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/cpp-inheritance-2020-12-15-1.png" alt=""></p>
 <h5 id="基类-amp-派生类"><a href="#基类-amp-派生类" class="headerlink" title="基类 &amp; 派生类"></a>基类 &amp; 派生类</h5><p>一个类可以派生自多个类，这意味着，它可以从多个基类继承数据和函数。定义一个派生类，我们使用一个类派生列表来指定基类。类派生列表以一个或多个基类命名，形式如下：</p>
 <pre><code class="lang-Cpp">class derived-class: access-specifier base-class
 </code></pre>
@@ -2143,7 +2143,7 @@ li.remove(value)//删除li中所有值为value的元素
 li.remove_if(pred)//删除li中所有满足谓词pred的元素
 </code></pre>
 <h4 id="map-multimap"><a href="#map-multimap" class="headerlink" title="map/multimap"></a>map/multimap</h4><p><code>map</code>和<code>multimap</code>都需要<code>#include&lt;map&gt;</code>，唯一的不同是，<code>map</code>的键值<code>key</code>不可重复，而<code>multimap</code>可以，也正是由于这种区别，<code>map</code>支持<code>[ ]</code>运算符，<code>multimap</code>不支持<code>[ ]</code>运算符。在用法上没什么区别。</p>
-<p><code>C++</code>中<code>map</code>提供的是一种键值对容器，里面的数据都是成对出现的,如下图：每一对中的第一个值称之为关键字<code>(key)</code>，每个关键字只能在<code>map</code>中出现一次；第二个称之为该关键字的对应值。<br><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/map-example.jpeg" alt=""><br><code>Map</code>是<code>STL</code>的一个关联容器，它提供一对一（其中第一个可以称为关键字，每个关键字只能在<code>map</code>中出现一次，第二个可能称为该关键字的值）的数据 处理能力，由于这个特性，它完成有可能在我们处理一对一数据的时候，在编程上提供快速通道。这里说下<code>map</code>内部数据的组织，<code>map</code>内部自建一颗红黑树，这颗树具有对数据自动排序的功能，所以在<code>map</code>内部所有的数据都是有序的。</p>
+<p><code>C++</code>中<code>map</code>提供的是一种键值对容器，里面的数据都是成对出现的,如下图：每一对中的第一个值称之为关键字<code>(key)</code>，每个关键字只能在<code>map</code>中出现一次；第二个称之为该关键字的对应值。<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/map-example.jpeg" alt=""><br><code>Map</code>是<code>STL</code>的一个关联容器，它提供一对一（其中第一个可以称为关键字，每个关键字只能在<code>map</code>中出现一次，第二个可能称为该关键字的值）的数据 处理能力，由于这个特性，它完成有可能在我们处理一对一数据的时候，在编程上提供快速通道。这里说下<code>map</code>内部数据的组织，<code>map</code>内部自建一颗红黑树，这颗树具有对数据自动排序的功能，所以在<code>map</code>内部所有的数据都是有序的。</p>
 <h6 id="map的初始化"><a href="#map的初始化" class="headerlink" title="map的初始化"></a>map的初始化</h6><pre><code class="lang-cpp">#include&lt;map&gt;  // 头文件
 map&lt;type1, type2&gt; mp;  // 声明一个键值类型分别为type2-&gt;type1的map
 map&lt;type1, type2&gt; mp(mymp);  // mp是mymp的一个副本
@@ -3119,7 +3119,7 @@ int main ()
 <p>由于我们抛出了一个类型为 const char<em> 的异常，因此，当捕获该异常时，我们必须在 catch 块中使用 const char</em>。当上面的代码被编译和执行时，它会产生下列结果：</p>
 <pre><code class="lang-bash">Division by zero condition!
 </code></pre>
-<h4 id="标准异常"><a href="#标准异常" class="headerlink" title="标准异常"></a>标准异常</h4><p><code>C++</code> 标准库定义了一组异常类，我们可以在程序中使用这些异常类处理异常。它们是以父子类层次结构组织起来的，如下所示：<br><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/exceptions_in_cpp.png" alt=""><br>下表描述了上图中每个异常类：<br>|异常|描述|<br>|:—-|:—-|<br>|std::exception|该异常是所有标准 C++ 异常的父类。|<br>|std::bad_alloc|该异常可以通过 new 抛出。|<br>|std::bad_cast|该异常可以通过 dynamic_cast 抛出。|<br>|std::bad_exception|这在处理 C++ 程序中无法预期的异常时非常有用。|<br>|std::bad_typeid|该异常可以通过 typeid 抛出。|<br>|std::logic_error|理论上可以通过读取代码来检测到的异常。|<br>|std::domain_error|当使用了一个无效的数学域时，会抛出该异常。|<br>|std::invalid_argument|当使用了无效的参数时，会抛出该异常。|<br>|std::length_error|当创建了太长的 std::string 时，会抛出该异常。|<br>|std::out_of_range|该异常可以通过方法抛出，例如 std::vector 和 std::bitset&lt;&gt;::operator<a href=""></a>。|<br>|std::runtime_error|理论上不可以通过读取代码来检测到的异常。|<br>|std::overflow_error|当发生数学上溢时，会抛出该异常。|<br>|std::range_error|当尝试存储超出范围的值时，会抛出该异常。|<br>|std::underflow_error|当发生数学下溢时，会抛出该异常。|</p>
+<h4 id="标准异常"><a href="#标准异常" class="headerlink" title="标准异常"></a>标准异常</h4><p><code>C++</code> 标准库定义了一组异常类，我们可以在程序中使用这些异常类处理异常。它们是以父子类层次结构组织起来的，如下所示：<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/OOP/exceptions_in_cpp.png" alt=""><br>下表描述了上图中每个异常类：<br>|异常|描述|<br>|:—-|:—-|<br>|std::exception|该异常是所有标准 C++ 异常的父类。|<br>|std::bad_alloc|该异常可以通过 new 抛出。|<br>|std::bad_cast|该异常可以通过 dynamic_cast 抛出。|<br>|std::bad_exception|这在处理 C++ 程序中无法预期的异常时非常有用。|<br>|std::bad_typeid|该异常可以通过 typeid 抛出。|<br>|std::logic_error|理论上可以通过读取代码来检测到的异常。|<br>|std::domain_error|当使用了一个无效的数学域时，会抛出该异常。|<br>|std::invalid_argument|当使用了无效的参数时，会抛出该异常。|<br>|std::length_error|当创建了太长的 std::string 时，会抛出该异常。|<br>|std::out_of_range|该异常可以通过方法抛出，例如 std::vector 和 std::bitset&lt;&gt;::operator<a href=""></a>。|<br>|std::runtime_error|理论上不可以通过读取代码来检测到的异常。|<br>|std::overflow_error|当发生数学上溢时，会抛出该异常。|<br>|std::range_error|当尝试存储超出范围的值时，会抛出该异常。|<br>|std::underflow_error|当发生数学下溢时，会抛出该异常。|</p>
 <h4 id="定义新的异常"><a href="#定义新的异常" class="headerlink" title="定义新的异常"></a>定义新的异常</h4><p>您可以通过继承和重载 <code>exception</code> 类来定义新的异常。下面的实例演示了如何使用 <code>std::exception</code> 类来实现自己的异常：</p>
 <pre><code class="lang-cpp">#include &lt;iostream&gt;
 #include &lt;exception&gt;
@@ -3257,8 +3257,8 @@ int main()&#123;
           <div class="reward-open">赏
             <div class="reward-main">
               <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/custom/donate/AliPay.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/custom/donate/WeChatPay.jpg"></li>
+                <li class="alipay-code"><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/custom/donate/AliPay.jpg"></li>
+                <li class="wechat-code"><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/custom/donate/WeChatPay.jpg"></li>
               </ul>
             </div>
           </div>
@@ -3283,7 +3283,7 @@ int main()&#123;
           
             <a href="/2023/06/27/Advanced_Data_Structure/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/cover.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/cover.jpg">
+                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/cover.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/cover.jpg">
               </div>
               <span class="label">
               Previous Post</span>
@@ -3301,7 +3301,7 @@ int main()&#123;
           
             <a href="/2023/06/03/Chinese_media/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/chinese_media/cover.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/chinese_media/cover.png">
+                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/chinese_media/cover.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/chinese_media/cover.png">
               </div>
               <span class="label">
               Next Post</span>
@@ -3361,7 +3361,7 @@ int main()&#123;
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/mio%20avatar.jpg" itemprop="image" alt="mio" height="70" width="70"></a>
+          <a href="" class="profile gravatar"><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/mio%20avatar.jpg" itemprop="image" alt="mio" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
@@ -3451,9 +3451,9 @@ int main()&#123;
 <script type="text/javascript">
 /* <![CDATA[ */
 if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+  var Poi = {"pjax":"1","movies":{"url": "https://gcore.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
 } else {
-  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+  var Poi = {"pjax":"1","movies":{"url": "https://gcore.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
 }
 /* ]]> */
 
@@ -3547,7 +3547,7 @@ $(document).ready(function() {
   </section>
   <div id="mo-nav" class="">
   <div class="m-avatar">
-    <img src="https://cdn.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/mio avatar.jpg">
+    <img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/face/mio avatar.jpg">
   </div>
   <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">秋山澪の小站</p>
   <p style="text-align: center; word-spacing: 20px;">
