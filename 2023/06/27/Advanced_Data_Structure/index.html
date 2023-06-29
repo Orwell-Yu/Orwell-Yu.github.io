@@ -1669,7 +1669,7 @@ D.If $N>M$, we have $R<em>N =max</em>{1≤i≤M} (P<em>i +R</em>{N−M}​ )$</p
 <h4 id="Bad-Cases"><a href="#Bad-Cases" class="headerlink" title="Bad Cases"></a>Bad Cases</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-05-23%20142155.png" alt=""></p>
 <h4 id="Solution-Metroplis"><a href="#Solution-Metroplis" class="headerlink" title="Solution(Metroplis)"></a>Solution(Metroplis)</h4><pre><code class="lang-C">SolutionType Metropolis()
 &#123;   Define constants k and T;
-    Start from a feasible solution S  FS ;
+    Start from a feasible solution S in FS ;
     MinCost = cost(S);
     while (1) &#123;
         S’ = Randomly chosen from N(S); 
@@ -1685,14 +1685,70 @@ D.If $N>M$, we have $R<em>N =max</em>{1≤i≤M} (P<em>i +R</em>{N−M}​ )$</p
     return S;
 &#125;
 </code></pre>
-<h3 id="Simulated-Annealing"><a href="#Simulated-Annealing" class="headerlink" title="Simulated Annealing"></a>Simulated Annealing</h3><h4 id="Definition-10"><a href="#Definition-10" class="headerlink" title="Definition"></a>Definition</h4><p>Simulated annealing is a probabilistic technique for approximating the global optimum of a given function. Specifically, it is a metaheuristic to approximate global optimization in a large search space for an optimization problem. It is often used when the search space is discrete (e.g., all tours that visit a given set of cities).</p>
-<h4 id="Hopfield-Neural-Networks"><a href="#Hopfield-Neural-Networks" class="headerlink" title="Hopfield Neural Networks"></a>Hopfield Neural Networks</h4><h5 id="Definition-11"><a href="#Definition-11" class="headerlink" title="Definition"></a>Definition</h5><h4 id="The-Max-Cut-Problem"><a href="#The-Max-Cut-Problem" class="headerlink" title="The Max-Cut Problem"></a>The Max-Cut Problem</h4><h5 id="Definition-12"><a href="#Definition-12" class="headerlink" title="Definition"></a>Definition</h5><p>Given an undirected graph $G = (V, E)$.  Find a subset $S$ of $V$ such that the weight of edges $(u, v)$ in $E$ with $u \in S$ and $v \notin S$ is maximized.</p>
+<h3 id="Simulated-Annealing-Metroplis-Algorithm"><a href="#Simulated-Annealing-Metroplis-Algorithm" class="headerlink" title="Simulated Annealing(Metroplis Algorithm)"></a>Simulated Annealing(Metroplis Algorithm)</h3><h4 id="Definition-10"><a href="#Definition-10" class="headerlink" title="Definition"></a>Definition</h4><p>Simulated annealing is a probabilistic technique for approximating the global optimum of a given function. Specifically, it is a metaheuristic to approximate global optimization in a large search space for an optimization problem. It is often used when the search space is discrete (e.g., all tours that visit a given set of cities).</p>
+<h4 id="Hopfield-Neural-Networks"><a href="#Hopfield-Neural-Networks" class="headerlink" title="Hopfield Neural Networks"></a>Hopfield Neural Networks</h4><h5 id="Definition-11"><a href="#Definition-11" class="headerlink" title="Definition"></a>Definition</h5><p>Graph $G = (V, E)$ with integer edge weights $w$ (positive or negative).<br>If $w_e &lt; 0$, where $e = (u, v)$, then $u$ and $v$ want to have the same state;if $w_e&gt; 0$  then $u$ and $v$ want different states.<br>The absolute value $|w_e|$ indicates the strength of this requirement.<br>Output: A configuration $S$ of the network – an assignment of the state $s_u$ to each node $u$<br><em>There may be no configuration that respects the requirements imposed by all the edges.</em><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20100003.png" alt=""></p>
+<h5 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h5><pre><code class="lang-C">ConfigType State_flipping()
+&#123;
+    Start from an arbitrary configuration S;
+    while ( ! IsStable(S) ) &#123;
+        u = GetUnsatisfied(S);
+        su = - su;
+    &#125;
+    return S;
+&#125;
+</code></pre>
+<h5 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20100237.png" alt=""></p>
+<h5 id="Claim"><a href="#Claim" class="headerlink" title="Claim"></a>Claim</h5><p>Any local maximum in the state-flipping algorithm to maximize $\Phi $ is a stable configuration.<br><strong>Is it a polynomial time algorithm?</strong><br>Still an open question: to find an algorithm that constructs stable states in time polynomial in $n$ and $logW$ (rather than $n$ and $W$), or in a number of primitive arithmetic operations that is polynomial in $n$ alone, independent of the value of $W$.</p>
+<h4 id="The-Max-Cut-Problem"><a href="#The-Max-Cut-Problem" class="headerlink" title="The Max-Cut Problem"></a>The Max-Cut Problem</h4><h5 id="Definition-12"><a href="#Definition-12" class="headerlink" title="Definition"></a>Definition</h5><p>Given an undirected graph $G = (V, E)$.  Find a subset $S$ of $V$ such that the weight of edges $(u, v)$ in $E$ with $u \in S$ and $v \notin S$ is maximized.</p>
+<h5 id="How-good-is-the-Local-Optimum"><a href="#How-good-is-the-Local-Optimum" class="headerlink" title="How good is the Local Optimum?"></a>How good is the Local Optimum?</h5><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20101517.png" alt=""></p>
 <h3 id="A-better-local-search-algorithm"><a href="#A-better-local-search-algorithm" class="headerlink" title="A better local search algorithm"></a>A better local search algorithm</h3><ul>
 <li>The neighborhood of a solution should be rich enough that we do not tend to get stuck in bad local optima; </li>
 <li>but the neighborhood of a solution should not be too large, since we want to be able to efficiently search the set of neighbors for possible local moves.</li>
 </ul>
 <h4 id="Kernighan-Lin-heuristic"><a href="#Kernighan-Lin-heuristic" class="headerlink" title="Kernighan-Lin heuristic"></a>Kernighan-Lin heuristic</h4><p>Single-flip -&gt; k-flip $\Theta(n^k)$ for searching in neighbors</p>
-<h2 id="Randomized-Algorithms"><a href="#Randomized-Algorithms" class="headerlink" title="Randomized Algorithms"></a>Randomized Algorithms</h2><h3 id="Definition-13"><a href="#Definition-13" class="headerlink" title="Definition"></a>Definition</h3><p>The algorithm behaves randomly – make random decisions as the algorithm processes the worst-case input</p>
+<h3 id="Exercises-4"><a href="#Exercises-4" class="headerlink" title="Exercises"></a>Exercises</h3><h4 id="Judgement-5"><a href="#Judgement-5" class="headerlink" title="Judgement"></a>Judgement</h4><ol>
+<li>Greedy method is a special case of local search.<blockquote>
+<p>False<br>Greedy是不断前进，最后达到解。而local search是不断修改值，选择一个最佳的解。求出的每一个解都是最终的解。</p>
+</blockquote>
+</li>
+<li>For the graph given in the following figure, if we start from deleting the black vertex, then local search can always find the minimum vertex cover.<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/150.png" alt=""><blockquote>
+<p>True<br>一个点可以删除的条件是：这条边的另一个点没有被删除。如果可以删除，则任意删除一个。如果不能删除，则算法结束。剩下的点越少越好。<br>如果删除黑点，那么不能删除右边的点，也不能删除下面的点，只能删除最下面两个。因此确实达到了最优解。</p>
+</blockquote>
+</li>
+<li>Since finding a locally optimal solution is presumably easier than finding an optimal solution, we can claim that for any local search algorithm, one step of searching in neighborhoods can always be done in polynomial time.<blockquote>
+<p>False<br>PPT上说Local Search是不是一个多项式时间算法还是未知的。</p>
+</blockquote>
+</li>
+<li>In local search, if the optimization function has a constant value in a neighborhood, there will be a problem.<blockquote>
+<p>True<br>说明到了一个低谷或者山峰。或者平衡状态。需要随机选择一个转移。</p>
+</blockquote>
+</li>
+<li><p>Random restarts can help a local search algorithm to better find global maxima that are surrounded by local maxima.</p>
+<blockquote>
+<p>True<br>算法如果到达local maxiam就停止了，但是如果随机开始，那么可能会到达local maxiam和global maxium之间，然后找到全局最优。</p>
+</blockquote>
+</li>
+<li><p>In Metropolis Algorithm, the probability of jumping up depends on T, the temperature. When the temperature is high, it’ll be close to the original gradiant descent method.</p>
+<blockquote>
+<p>True<br>温度高的时候会跳跃，温度低的时候接近下降算法。</p>
+</blockquote>
+</li>
+<li><p>Local search algorithm can be used to solve lots of classic problems, such as SAT and N-Queen problems. Define the configuration of SAT to be X = vector of assignments of $N$ boolean variables, and that of N-Queen to be Y = positions of the $N$ queens in each column. The sizes of the search spaces of SAT and N-Queen are $O(2^N)$ and $O(N^N)$,respectively.</p>
+<blockquote>
+<p>True<br>搜索空间指的是所有可能。虽然$N$皇后准确来说应该是$N!$</p>
+</blockquote>
+</li>
+<li><p>We are given a set of sites $S=${$s<em>1,s</em>​2,…,s<em>​n​​$} in the plane, and we want to choose a set of $k$ centers $C$={$c_1, c</em>​2,⋯,c_​k$} so that the maximum distance from a site to the nearest center is minimized. Here ci can be an arbitrary point in the plane.<br>A local search algorithm arbitrarily choose $k$ points in the plane to be the centers, then<br>(1) divide $S$ into $k$ sets, where $S_i$ is the set of all sites for which $c_i$ is the nearest center; and<br>(2) for each $S_i$, compute the central position as a new center for all the sites in Si.<br>If steps (1) and (2) cause the covering radius to strictly decrease, we perform another iteration, otherwise the algorithm stops.<br>When the above local search algorithm terminates, the covering radius of its solution is at most 2 times the optimal covering radius.</p>
+<blockquote>
+<p>False<br>原因在于K center近似比不能低于2.否则P=NP，K center可以规约为r=1的Vertex Cover问题。</p>
+<h4 id="Choose-the-correct-answer-9"><a href="#Choose-the-correct-answer-9" class="headerlink" title="Choose the correct answer"></a>Choose the correct answer</h4></blockquote>
+</li>
+<li>A bipartite graph $G$ is one whose vertex set can be partitioned into two sets $A$ and $B$, such that each edge in the graph goes between a vertex in $A$ and a vertex in $B$. Matching $M$ in $G$ is a set of edges that have no end points in common. Maximum Bipartite Matching Problem finds a matching with the greatest number of edges (over all matching).<br>Consider the following Gradient Ascent Algorithm:<br><code>As long as there is an edge whose endpoints are unmatched, add it to the current matching. When there is no longer such an edge, terminate with a locally optimal matching.</code><br>Let $M_1$ and $M_2$ be matchings in a bipartite graph $G$. Which of the following statements is true?<br>A.This gradient ascent algorithm never returns the maximum matching.<br>B.Suppose that $∣M_1∣&gt;2∣M_2∣$. Then there must be an edge $e$ in $M_1$  such that $M_2 ∪ {e}$ is a matching in $G$.<br>C.Any locally optimal matching returned by the gradient ascent algorithm in a bipartite graph $G$ is at most half as large as a maximum matching in $G$.<br>D.All of the above<blockquote>
+<p>B</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="Randomized-Algorithms"><a href="#Randomized-Algorithms" class="headerlink" title="Randomized Algorithms"></a>Randomized Algorithms</h2><h3 id="Definition-13"><a href="#Definition-13" class="headerlink" title="Definition"></a>Definition</h3><p>The algorithm behaves randomly – <strong>make random decisions</strong> as the algorithm processes the <strong>worst-case</strong> input.<br>$Pr[ A ]$ := the probability of the even A<br>$\overline{A}$:= the complementary of the event $A$ ($A$ did not occur )<br>$E[ X ]$ := the expectation (the “average value”) of the random variable $X$<br>$E[ X ] = \sum_{i=1}^{n} x_i Pr[ X = x_i ]$</p>
 <h3 id="Examples-2"><a href="#Examples-2" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Hiring-Problem"><a href="#Hiring-Problem" class="headerlink" title="Hiring Problem"></a>Hiring Problem</h4><h5 id="Definition-14"><a href="#Definition-14" class="headerlink" title="Definition"></a>Definition</h5><p>Given a set of $n$ applicants, select the best one.  The applicants are interviewed one by one in a random order.  After each interview, the applicant is either hired or rejected.  If the applicant is hired, the process stops.  Otherwise, the next applicant is interviewed.  The goal is to maximize the probability of hiring the best applicant.</p>
 <p><strong>Interviewing cost</strong> $c_i$ for each applicant $i$.<br><strong>Hire cost</strong> $c_h$ for each applicant $i$.<br>Assume that $c_i$ &lt;&lt; $c_h$ for all $i$.</p>
 <h5 id="Solution-Naive"><a href="#Solution-Naive" class="headerlink" title="Solution Naive"></a>Solution Naive</h5><pre><code class="lang-C">int Hiring ( EventType C[ ], int N )
@@ -1710,7 +1766,7 @@ D.If $N>M$, we have $R<em>N =max</em>{1≤i≤M} (P<em>i +R</em>{N−M}​ )$</p
     return Best;
 &#125;
 </code></pre>
-<p><strong>Worst Case:</strong>The candidates come in increasing quality order.$O(nC_h)$</p>
+<p><strong>Worst Case:</strong> The candidates come in increasing quality order.$O(nC_h)$</p>
 <h5 id="Solution-Randomized"><a href="#Solution-Randomized" class="headerlink" title="Solution Randomized"></a>Solution Randomized</h5><pre><code class="lang-C">int RandomizedHiring ( EventType C[ ], int N )
 &#123;   /* candidate 0 is a least-qualified dummy candidate */
     int Best = 0;
@@ -1736,7 +1792,7 @@ D.If $N>M$, we have $R<em>N =max</em>{1≤i≤M} (P<em>i +R</em>{N−M}​ )$</p
     Sort A, using P as the sort keys;
 &#125;
 </code></pre>
-<p><strong>Claim:</strong> PermuteBySorting produces a uniform random permutation of the input, assuming all priorities are distinct.</p>
+<p><strong>Claim:</strong> Permute By Sorting produces a uniform random permutation of the input, assuming all priorities are distinct.</p>
 <p><strong>Cost:</strong> $O(C_hlogN+NC_i)$<br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-05-30%20135238.png" alt=""><br>Note that the possibliity of hiring the $i$th candidate is $1/i$,because the $i$th candidate must be the best one among the first $i$ candidates.</p>
 <h4 id="Online-Hiring-Problem"><a href="#Online-Hiring-Problem" class="headerlink" title="Online Hiring Problem"></a>Online Hiring Problem</h4><pre><code class="lang-C">int OnlineHiring ( EventType C[ ], int N, int k )
 &#123;
@@ -1756,7 +1812,188 @@ D.If $N>M$, we have $R<em>N =max</em>{1≤i≤M} (P<em>i +R</em>{N−M}​ )$</p
     return Best;
 &#125;
 </code></pre>
-<h4 id="Randomized-Quick-Sort"><a href="#Randomized-Quick-Sort" class="headerlink" title="Randomized Quick Sort"></a>Randomized Quick Sort</h4><h2 id="Parallel-Algorithms"><a href="#Parallel-Algorithms" class="headerlink" title="Parallel Algorithms"></a>Parallel Algorithms</h2><h2 id="External-Sorting"><a href="#External-Sorting" class="headerlink" title="External Sorting"></a>External Sorting</h2><h3 id="Why-external-sorting"><a href="#Why-external-sorting" class="headerlink" title="Why external sorting?"></a>Why external sorting?</h3><ul>
+<h4 id="Randomized-Quick-Sort"><a href="#Randomized-Quick-Sort" class="headerlink" title="Randomized Quick Sort"></a>Randomized Quick Sort</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20113109.png" alt=""></p>
+<h3 id="Exercises-5"><a href="#Exercises-5" class="headerlink" title="Exercises"></a>Exercises</h3><h4 id="Judgement-6"><a href="#Judgement-6" class="headerlink" title="Judgement"></a>Judgement</h4><ol>
+<li>Randomized algorithms are for solving the problems with randomly generated inputs.<blockquote>
+<p>False<br>随机算法是为了解决最坏情况下的输入。</p>
+</blockquote>
+</li>
+<li>The worst-case running time is equal to the expected running time within constant factors for any randomized algorithm.<blockquote>
+<p>False<br>快速排序的最坏情况是$O(n^2)$，但是期望时间是$O(nlogn)$</p>
+</blockquote>
+</li>
+<li><p>Let $a=(a<em>1,a​_2,…,a</em>​i,…,a<em>j,…,a_n)$ denote the list of elements we want to sort. In the quicksort algorithm, if the pivot is selected uniformly at random. Then any two elements get compared at most once and the probability of $a_i$ and $a</em>​j$ being compared is $2/(j−i+1)$ for $j&gt;i$, given that $a_i$ or $a_j$ is selected as the pivot.</p>
+<blockquote>
+<p>False<br>假如有4个元素，第3个被选中。如果$a_1&gt;a_3$, $a_4<a_3$, 那么$a_1$和$a_4$发生交换，然后算法就停止了，不会比较$a_2$和$a_3$，此时而$a_1>a_3$概率为$1/2$，$a_4&lt;a_3$的概率为$1/2$, 因此概率为$1/4$。</p>
+</blockquote>
+</li>
+<li><p>Reviewing the randomized QuickSort in our course, we always select a central splitter as a pivot before recursions, make sure that each side contains at least $n/4$ elements. Hence, differing from the deterministic QuickSort, the worst case expected running time of the randomized QuickSort is $Θ(NlogN)$.</p>
+<blockquote>
+<p>True<br>由于每次都选择中间的元素作为pivot，因此每次都会将数组分成两部分，每部分的元素个数都是原来的一半，因此递归的深度为$O(logn)$，每次递归的时间复杂度为$O(n)$，因此总的时间复杂度为$\Theta (nlogn)$</p>
+<h4 id="Choose-the-correct-answer-10"><a href="#Choose-the-correct-answer-10" class="headerlink" title="Choose the correct answer"></a>Choose the correct answer</h4></blockquote>
+</li>
+<li>If we repeatedly perform independent trials of an experiment, each of which succeeds with probability $p&gt;0$, then the expected number of trials we need to perform until the first success is:<br>A.$p/(1−p)$<br>B.$1/(1−p)$<br>C.$1/p$<br>D.None of the above<blockquote>
+<p><strong>Answer:C</strong><br>如果我们反复进行独立试验，每次试验成功的概率为$p &gt; 0$，那么直到第一次成功需要进行的平均试验次数为：<br>使用几何分布的概念，可以计算直到第一次成功所需的平均试验次数。在几何分布中，我们关注的是在一系列独立伯努利试验中，需要多少次试验才能实现第一次成功，每次试验的成功概率为$p$。<br>第一次成功发生在第$k$次试验的概率由以下公式给出：<br>$P(X = k) = (1 - p)^{k-1} \cdot p$<br>在这里，$X$表示随机变量，表示直到第一次成功所需的试验次数。公式$(1 - p)^{k-1}$表示在第$k-1$次试验中发生$k-1$次失败，然后在第$k$次试验中发生一次成功的概率，$p$表示成功的概率。<br>几何分布的期望值或均值由成功概率的倒数给出：<br>$E(X) = \frac{1}{p}$<br>因此，直到第一次成功所需的平均试验次数为$1/p$。</p>
+</blockquote>
+</li>
+<li>Given a 3-SAT formula with k clauses, in which each clause has three variables, the MAX-3SAT problem is to find a truth assignment that satisfies as many clauses as possible. A simple randomized algorithm is to flip a coin, and to set each variable true with probability $1/2$, independently for each variable. Which of the following statements is FALSE?<br>A.The expected number of clauses satisfied by this random assignment is $7k/8$.<br>B.For every instance of 3-SAT, there is a truth assignment that satisfies at least a $7/8$ fraction of all clauses.<br>C.If we repeatedly generate random truth assignments until one of them satisfies $≥7k/8$ clauses, then this algorithm is a 8/7-approximation algorithm.<br>D.The probability that a random assignment satisfies at least $7k/8$ clauses is at most $1/(8k)$.<blockquote>
+<p><strong>Answer:D</strong><br>A. 这个陈述是正确的。根据随机算法，每个子句被满足的概率为$1/2^3 = 1/8$，因此对于k个子句，期望满足的子句数量为$(1/8) \cdot k = k/8$。因此，满足的子句数量的期望是$7k/8$，陈述A是正确的。<br>B. 这个陈述是正确的。根据随机算法，每个子句被满足的概率为$1/2^3 = 1/8$。对于一个3-SAT公式，每个子句有三个变量，因此共有$3k$个子句。期望满足的子句数量为$(1/8) \cdot 3k = 3k/8$。现在我们来考虑子句比例。最坏情况下，假设每个子句都有不同的变量组合，这意味着它们之间没有重叠的变量。在这种情况下，我们可以将至多$1/8$的子句满足为最差的情况。因此，我们可以保证至少有$1 - 1/8 = 7/8$的子句比例可以被满足。<br>C. 这个陈述是正确的。当我们重复生成随机真值赋值，直到其中一个满足$≥7k/8$个子句时，我们期望满足的子句数量为$7k/8$。因此，这个算法是一个$8/7$-近似算法，因为我们期望满足的子句数量是最优解（最大满足子句数）的$8/7$倍。<br>D. 这个陈述是错误的。根据概率的性质，至少满足$7k/8$个子句的概率应该大于等于每个子句独立满足的概率，即$1/8$。因此，满足至少$7k/8$个子句的概率最低为$1/8$，而不是$1/(8k)$。因此，陈述D是错误的。</p>
+</blockquote>
+</li>
+<li>Given a linked list containg $N$ nodes. Our task is to remove all the nodes. At each step, we randomly choose one node in the current list, then delete the selected node together with all the nodes after it. Here we assume that each time we choose one node uniformly among all the remaining nodes. What is the expected number of steps to remove all the nodes?<br>A.$Θ(logN)$<br>B.$N/e$<br>C.$N/2$<br>D.$\sqrt{N}$<blockquote>
+<p><strong>Answer:A</strong><br>删去当前节点需要1步，选择的节点可能是$N$个中任意一个，如果选择第$i$个，那么需要删除$N-i$个。$i$的范围是$1$到$N-1$因此复杂度为<br>$T ( N ) =  \frac 1N(T(1)+T(2)+…+T(N-1))+1$<br>如果是$N$的话，1无法消掉。而$logN$刚好可以消掉1</p>
+</blockquote>
+</li>
+<li>The Online Hiring Algorithm ( hire only once ) is described as the following:<pre><code class="lang-c++">int OnlineHiring ( EventType C[ ], int N, int k )
+&#123;
+ int Best = N;
+ int BestQ = -INFINITY ;
+ for ( i=1; i&lt;=k; i++ ) &#123;
+     Qi = interview( i );
+     if ( Qi &gt; BestQ )   BestQ = Qi;
+ &#125;
+ for ( i=k+1; i&lt;=N; i++ ) &#123;
+     Qi = interview( i );
+     if ( Qi &gt; BestQ ) &#123;
+         Best = i;
+         break;
+     &#125;
+ &#125;
+ return Best;
+&#125;
+</code></pre>
+Assume that the quality input $C[ ]$ is uniformly random. When $N = 271$ and $k = 90$, the probability of hiring the $Nth$ candidate is__.<br>A.$1/e$<br>B.$1/N$<br>C.$1/3$<br>D.$1/k$<blockquote>
+<p><strong>Answer:C</strong><br>要求雇佣第271个，因此前270个中，最好的必须落在前k个，就是前90个中，概率是90/270=1/3</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="Parallel-Algorithms"><a href="#Parallel-Algorithms" class="headerlink" title="Parallel Algorithms"></a>Parallel Algorithms</h2><h3 id="Parallel-Random-Access-Machine-PRAM"><a href="#Parallel-Random-Access-Machine-PRAM" class="headerlink" title="Parallel Random Access Machine (PRAM)"></a>Parallel Random Access Machine (PRAM)</h3><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20145518.png" alt=""></p>
+<h4 id="To-resolve-access-conflicts"><a href="#To-resolve-access-conflicts" class="headerlink" title="To resolve access conflicts"></a>To resolve access conflicts</h4><ul>
+<li>Exclusive-Read Exclusive-Write (EREW)</li>
+<li>Concurrent-Read Exclusive-Write (CREW)</li>
+<li>Concurrent-Read Concurrent-Write (CRCW)<ul>
+<li>Arbitrary rule</li>
+<li>Priority rule (P with the smallest number)</li>
+<li>Common rule (if all the processors are trying to write the same value)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Example-The-summation-problem"><a href="#Example-The-summation-problem" class="headerlink" title="Example: The summation problem."></a>Example: The summation problem.</h3><h4 id="PRAM-Algorithm"><a href="#PRAM-Algorithm" class="headerlink" title="PRAM Algorithm"></a>PRAM Algorithm</h4><pre><code class="lang-c++">for Pi ,  1 &lt;= i &lt;= n  pardo
+  B(0, i) := A( i )
+  for h = 1 to log n do
+    if i &lt;= n/2^h
+      B(h, i) := B(h-1, 2i-1) + B(h-1, 2i)
+    else stay idle
+  for i = 1: output B(log n, 1); for i &gt; 1: stay idle
+</code></pre>
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20145937.png" alt=""></p>
+<h4 id="Work-Depth-WD-Presentation"><a href="#Work-Depth-WD-Presentation" class="headerlink" title="Work-Depth (WD) Presentation"></a>Work-Depth (WD) Presentation</h4><pre><code class="lang-c++">for Pi ,  1 &lt;= i &lt;= n  pardo
+   B(0, i) := A( i )
+for h = 1 to log n 
+    for Pi, 1 &lt;= i &lt;= n/2^h  pardo
+        B(h, i) := B(h-1, 2i-1) + B(h-1, 2i)
+for i = 1 pardo
+   output  B(log n, 1)
+</code></pre>
+<p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20150443.png" alt=""></p>
+<h4 id="Measuring-the-Performance"><a href="#Measuring-the-Performance" class="headerlink" title="Measuring the Performance"></a>Measuring the Performance</h4><ul>
+<li>Work load – total number of operations: $W(n)$</li>
+<li>Worst-case running time: $T(n)$</li>
+<li>$W(n)$ operations and $T(n)$ time<h5 id="Measuring-the-Performance-of-PRAM"><a href="#Measuring-the-Performance-of-PRAM" class="headerlink" title="Measuring the Performance of PRAM"></a>Measuring the Performance of PRAM</h5></li>
+<li>$P(n) = W(n)/T(n)$ processors and $T(n)$ time (on a PRAM)</li>
+<li>$W(n)/p$ time using any number of $p ≤ W(n)/T(n)$ processors (on a PRAM)</li>
+<li>$W(n)/p + T(n)$ time using any number of $p $ processors (on a PRAM)<h5 id="Measuring-the-Performance-of-WD"><a href="#Measuring-the-Performance-of-WD" class="headerlink" title="Measuring the Performance of WD"></a>Measuring the Performance of WD</h5><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20151008.png" alt=""></li>
+</ul>
+<h3 id="Example-The-prefix-sum-problem"><a href="#Example-The-prefix-sum-problem" class="headerlink" title="Example: The prefix-sum problem"></a>Example: The prefix-sum problem</h3><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20151156.png" alt=""><br>$C(i,j)$的含义是：以$C(i,j)$为根的树，最右边的叶子加到$A(1)$的值<br>$B$是从下往上算，$C$是从上往下计算。</p>
+<h4 id="Algorithm-1"><a href="#Algorithm-1" class="headerlink" title="Algorithm"></a>Algorithm</h4><pre><code class="lang-c++">for Pi , 1 &lt;= i &lt;= n pardo
+  B(0, i) := A(i)
+for h = 1 to log n
+  for i , 1 &lt;= i &lt;= n/2^h pardo
+    B(h, i) := B(h - 1, 2i - 1) + B(h - 1, 2i)
+for h = log n to 0
+  for i even, 1 &lt;= i &lt;= n/2^h pardo
+    C(h, i) := C(h + 1, i/2)
+  for i = 1 pardo
+    C(h, 1) := B(h, 1)
+  for i odd, 3 &lt;= i &lt;= n/2^h pardo
+    C(h, i) := C(h + 1, (i - 1)/2) + B(h, i)
+for Pi , 1 &lt;= i &lt;= n pardo
+  Output C(0, i)
+</code></pre>
+<h4 id="Measuring-the-Performance-1"><a href="#Measuring-the-Performance-1" class="headerlink" title="Measuring the Performance"></a>Measuring the Performance</h4><p>$W(n) = O(N)$ and $T(n) =O( log n )$</p>
+<h3 id="Example-Merging"><a href="#Example-Merging" class="headerlink" title="Example: Merging"></a>Example: Merging</h3><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20151845.png" alt=""><br>到A中每个元素在B中排名，B中每个元素在A中排名，在结果中的排名就是在A中排名+在B中排名。<br>因此，给了Rank，merge复杂度是$T(N)=O(1)$, $W(N)=O(N)$</p>
+<h4 id="Algorithm-Binary-Search"><a href="#Algorithm-Binary-Search" class="headerlink" title="Algorithm: Binary Search"></a>Algorithm: Binary Search</h4><pre><code class="lang-c++">for Pi , 1 &lt;= i &lt;= n  pardo
+    RANK(i, B) := BS(A(i), B)
+    RANK(i, A) := BS(B(i), A)
+</code></pre>
+<p>$W(n) = O(N log N)$ and $T(n) = O(log N)$</p>
+<h4 id="Algorithm-Serial-Ranking"><a href="#Algorithm-Serial-Ranking" class="headerlink" title="Algorithm: Serial Ranking"></a>Algorithm: Serial Ranking</h4><pre><code class="lang-c++">i = j = 0; 
+while ( i &lt;= n || j &lt;= m ) &#123;
+    if ( A(i+1) &lt; B(j+1) )
+        RANK(++i, B) = j;
+    else RANK(++j, A) = i;
+&#125;
+</code></pre>
+<p>$W(n) = O(N+M)$ and $T(n) = O(N+M)$</p>
+<h4 id="Parallel-Ranking"><a href="#Parallel-Ranking" class="headerlink" title="Parallel Ranking"></a>Parallel Ranking</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20152411.png" alt=""></p>
+<h3 id="Example-Maximal-Finding"><a href="#Example-Maximal-Finding" class="headerlink" title="Example: Maximal Finding"></a>Example: Maximal Finding</h3><h4 id="Summation"><a href="#Summation" class="headerlink" title="Summation"></a>Summation</h4><p>和相邻的比较，大的进入上一层，最后时间一共$T(N)=O(logN)$，$W(N)=O(N)$</p>
+<h4 id="All-Pairs"><a href="#All-Pairs" class="headerlink" title="All Pairs"></a>All Pairs</h4><pre><code class="lang-cpp">for Pi , 1 &lt;= i &lt;= n  pardo
+    B(i) := 0
+for i and j, 1 &lt;= i, j &lt;= n  pardo
+    if ( (A(i) &lt; A(j)) || ((A(i) = A(j)) &amp;&amp; (i &lt; j)) )
+            B(i) = 1
+    else B(j) = 1
+for Pi , 1 &lt;= i &lt;= n  pardo
+    if B(i) == 0
+       A(i) is a maximum in A
+</code></pre>
+<p>分为$N^2$个进程，每个进程做第$i$个和第$j$个比较，$j$是$i$后面任何一个, 将小的那个记录成1.<br>然后分成$N$个进程，每个进程检查这个元素是不是0，是0的就是最大元素。<br>$W(N)=N^2$, $T(N)=O(1)$</p>
+<h4 id="A-Doubly-logarithmic-Paradigm"><a href="#A-Doubly-logarithmic-Paradigm" class="headerlink" title="A Doubly-logarithmic Paradigm"></a>A Doubly-logarithmic Paradigm</h4><p><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20153019.png" alt=""></p>
+<h5 id="按照-sqrt-N-进行分组"><a href="#按照-sqrt-N-进行分组" class="headerlink" title="按照$\sqrt N $进行分组"></a>按照$\sqrt N $进行分组</h5><p>$T(N)=O(loglogN)$, $W(N)=O(NloglogN)$</p>
+<h5 id="按照-h-loglogN-进行分组"><a href="#按照-h-loglogN-进行分组" class="headerlink" title="按照$h=loglogN$进行分组"></a>按照$h=loglogN$进行分组</h5><p>$T(N)=O(loglogN)$, $W(N)=O(N)$</p>
+<h5 id="按照-n-frac-78-分组"><a href="#按照-n-frac-78-分组" class="headerlink" title="按照$n^{\frac 78}$分组"></a>按照$n^{\frac 78}$分组</h5><p>$T(N)=O(1)$,$W(N)=O(N)$ </p>
+<h3 id="Exercises-6"><a href="#Exercises-6" class="headerlink" title="Exercises"></a>Exercises</h3><h4 id="Judgement-7"><a href="#Judgement-7" class="headerlink" title="Judgement"></a>Judgement</h4><ol>
+<li>EREW does not allow simultaneous access by more than one processor to the same memory location for read or write purposes.<blockquote>
+<p>True<br>定义</p>
+</blockquote>
+</li>
+<li>CREW allows concurrent access for reads but not for writes.<blockquote>
+<p>True<br>定义</p>
+</blockquote>
+</li>
+<li>CRCW allows concurrent access for both reads and writes.<blockquote>
+<p>True<br>定义</p>
+</blockquote>
+</li>
+<li>In Work-Depth presentation, each time unit consists of a sequence of instructions to be performed concurrently; the sequence of instructions may include any number.<blockquote>
+<p>True</p>
+<h4 id="Choose-the-Correct-Answer"><a href="#Choose-the-Correct-Answer" class="headerlink" title="Choose the Correct Answer"></a>Choose the Correct Answer</h4></blockquote>
+</li>
+<li>The prefix-min problem is to find for each $i$, $1≤i≤n$, the smallest element among $A(1)$, $A(2), ⋯, A(i)$. What is the run time and work load for the following algorithm?<pre><code class="lang-c++">for i, 1≤i≤n pardo
+B(0, i) = A(i)
+for h=1 to log(n)
+for i, 1≤i≤n/2^h pardo
+ B(h, i) = min &#123;B(h-1, 2i-1), B(h-1, 2i)&#125;
+for h=log(n) to 0
+for i even, 1≤i≤n/2^h pardo
+ C(h, i) = C(h+1, i/2)
+for i=1 pardo
+ C(h, 1) = B(h, 1)
+for i odd, 3≤i≤n/2^h pardo
+ C(h, i) = min &#123;C(h + 1, (i - 1)/2), B(h, i)&#125;
+for i, 1≤i≤n pardo
+Output C(0, i)
+</code></pre>
+A.$O(n), O(n)$<br>B.$O(logn), O(logn)$<br>C.$O(logn), O(n)$<br>D.$O(n), O(logn)$<blockquote>
+<p><strong>Answer:C</strong><br>首先时间复杂度看外侧有一个$logN$的循环，内部是$i$个进程并行，每个进程是$O(1)$，因此时间为$O(logN)$, work load是$n/2^h$级数求和，答案是$N$</p>
+</blockquote>
+</li>
+<li>Which one of the following statements about the Maximum Finding problem is true?<br>A.There exists a serial algorithm with time complexity being $O(logN)$.<br>B. No parallel algorithm can solve the problem in $O(1)$ time.<br>C.When partitioning the problem into sub-problems and solving them in parallel, compared with $\sqrt{N}$, choosing $loglogN$ as the size of each sub-problem can reduce the work load and the worst-case time complexity.<br>D.Parallel random sampling algorithm can run in $O(1)$ time and $O(N)$ work with very high probability.<blockquote>
+<p><strong>Answer:D</strong><br>A顺序算法至少是N, B肯定不对,all pairs和random都是T=O(1),C只能减少work load</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="External-Sorting"><a href="#External-Sorting" class="headerlink" title="External Sorting"></a>External Sorting</h2><h3 id="Why-external-sorting"><a href="#Why-external-sorting" class="headerlink" title="Why external sorting?"></a>Why external sorting?</h3><ul>
 <li>The data to be sorted is too large to fit in memory.<h3 id="The-Main-Cost-I-O"><a href="#The-Main-Cost-I-O" class="headerlink" title="The Main Cost: I/O"></a>The Main Cost: I/O</h3></li>
 <li>The main cost of external sorting is the number of I/O operations.</li>
 <li>The data stored in the disk is divided into blocks of size $B$.</li>
@@ -1774,7 +2011,8 @@ D.If $N>M$, we have $R<em>N =max</em>{1≤i≤M} (P<em>i +R</em>{N−M}​ )$</p
 <h4 id="Use-2-1-Tapes-to-do-2-way-Merge"><a href="#Use-2-1-Tapes-to-do-2-way-Merge" class="headerlink" title="Use 2+1 Tapes to do 2-way Merge"></a>Use 2+1 Tapes to do 2-way Merge</h4><p><strong>Claim:</strong> : If the number of runs is a Fibonacci number $F<em>N$,then the best way to distribute them is to split them into $F</em>{N–1}$ and $F_{N–2}$.</p>
 <p>However, if we split them into Fibonacci numbers, the number of passes will be increased. </p>
 <h4 id="For-a-K-way-Merge"><a href="#For-a-K-way-Merge" class="headerlink" title="For a K-way Merge"></a>For a K-way Merge</h4><p><strong>Claim:</strong> : For a k-way merge,$F<em>{N}^{(K)} = F</em>{N–1}^{(K)} + F<em>{N–2}^{(K)} + … + F</em>{N–K}^{(K)}$k, where $F<em>{i}^{(K)} = 0$ for $ 0 \leq i \leq K-2$, and $F</em>{K-1}^{(K)} = 1$.</p>
-<h3 id="Longer-Runs"><a href="#Longer-Runs" class="headerlink" title="Longer Runs"></a>Longer Runs</h3><p>How can generate longer runs?</p>
+<h3 id="Longer-Runs"><a href="#Longer-Runs" class="headerlink" title="Longer Runs"></a>Longer Runs</h3><p>How can generate longer runs?<br><strong>Replacement selection</strong><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20163526.png" alt=""></p>
+<h3 id="minimize-the-merge-time"><a href="#minimize-the-merge-time" class="headerlink" title="minimize the merge time"></a>minimize the merge time</h3><p><strong>Huffman Tree</strong><br><img src="https://gcore.jsdelivr.net/gh/Orwell-Yu/cdn@latest/img/post/ADS/屏幕截图%202023-06-29%20164212.png" alt=""></p>
 
         </div>
         <!-- .entry-content -->
